@@ -7,6 +7,7 @@
 // Deploy: see DEPLOY-AI.md. Swap MODEL if you prefer a different Claude model.
 
 const MODEL = "claude-sonnet-4-6";
+const ANNOTATE_MODEL = "claude-haiku-4-5-20251001"; // browse-by-pillar notes are a simple task → use the faster/cheaper model
 
 const PILLARS_DOC = `
 authority: Structured confidence, earned through restraint. Editorial, low density, footnoted.
@@ -139,7 +140,7 @@ export default async function handler(req, res) {
     r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-      body: JSON.stringify({ model: MODEL, max_tokens: 1600, system, messages: [{ role: "user", content: user }] })
+      body: JSON.stringify({ model: annotateMode ? ANNOTATE_MODEL : MODEL, max_tokens: 1600, system, messages: [{ role: "user", content: user }] })
     });
   } catch (e) {
     // Never echo the raw error — it can include the request headers (the API key).
