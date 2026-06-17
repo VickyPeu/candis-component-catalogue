@@ -100,8 +100,11 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
 
-  const key = process.env.ANTHROPIC_API_KEY;
+  // Trim defensively: a stray newline/space in the env var would make the
+  // auth header invalid (and must never be echoed back to the caller).
+  const key = (process.env.ANTHROPIC_API_KEY || "").trim();
   if (!key) return res.status(500).json({ error: "ANTHROPIC_API_KEY is not set" });
+  if (/\s/.test(key)) return res.status(500).json({ error: "ANTHROPIC_API_KEY is malformed (contains whitespace) — re-enter it as a single line" });
 
   let body = req.body;
   if (typeof body === "string") { try { body = JSON.parse(body || "{}"); } catch { body = {}; } }
@@ -118,7 +121,11 @@ export default async function handler(req, res) {
       headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
       body: JSON.stringify({ model: MODEL, max_tokens: 1600, system: SYSTEM, messages: [{ role: "user", content: user }] })
     });
-  } catch (e) { return res.status(502).json({ error: "request to Anthropic failed", detail: String(e).slice(0, 200) }); }
+  } catch (e) {
+    // Never echo the raw error — it can include the request headers (the API key).
+    console.error("Anthropic request failed:", e);
+    return res.status(502).json({ error: "request to Anthropic failed" });
+  }
 
   if (!r.ok) { const t = await r.text(); return res.status(502).json({ error: "Anthropic " + r.status, detail: t.slice(0, 300) }); }
 
