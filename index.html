@@ -151,7 +151,7 @@ beforeafter:`<svg viewBox="0 0 680 380" aria-hidden="true"><rect x="290" y="18" 
 exitintent:`<svg viewBox="0 0 680 360" aria-hidden="true"><rect x="0" y="0" width="680" height="360" rx="8" fill="#2b1a2e" opacity="0.08"/><line x1="640" y1="20" x2="652" y2="32" stroke="#716571" stroke-width="1.5"/><line x1="652" y1="20" x2="640" y2="32" stroke="#716571" stroke-width="1.5"/><text x="628" y="30" text-anchor="end" class="lb">close ×</text><rect x="40" y="50" width="600" height="270" rx="14" class="kard"/><rect x="70" y="80" width="150" height="13" rx="6" class="ph"/><text x="228" y="91" class="lb">eyebrow</text><rect x="70" y="104" width="220" height="22" rx="4" class="ph"/><text x="298" y="120" class="lb">heading</text><rect x="70" y="142" width="40" height="38" rx="5" class="ph"/><rect x="122" y="142" width="40" height="38" rx="5" class="ph"/><rect x="174" y="142" width="40" height="38" rx="5" class="ph"/><rect x="226" y="142" width="40" height="38" rx="5" class="ph"/><text x="116" y="166" text-anchor="middle" class="lb">:</text><text x="168" y="166" text-anchor="middle" class="lb">:</text><text x="220" y="166" text-anchor="middle" class="lb">:</text><text x="70" y="198" class="lb">countdown (optional)</text><rect x="70" y="214" width="158" height="32" rx="6" class="fld"/><text x="84" y="234" class="lb">email field</text><rect x="238" y="214" width="80" height="32" rx="6" class="btn"/><text x="278" y="234" text-anchor="middle" class="lb">button</text><text x="70" y="266" class="lb">button or email field</text><rect x="414" y="87" width="196" height="196" rx="10" class="fr"/><text x="512" y="189" text-anchor="middle" class="lb">image · 1:1</text></svg>`
 };
 const DATA=[
-{id:"bentom",name:"Grid Section — Bento M",cat:"feature_grids",ct:"gridSection",cthint:"set Variant = bento_M",pillars:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"],chips:["standard_setter","translation_of_complexity","thought_leader"],cd:false,density:"medium",media:"image, icon",
+{id:"bentom",name:"Grid Section — Bento M",cat:"feature_grids",ct:"gridSection",cthint:"set Variant = bento_M",vfield:"fields.variant",variant:"bento_M",pillars:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"],chips:["standard_setter","translation_of_complexity","thought_leader"],cd:false,density:"medium",media:"image, icon",
 kw:["overview","grid","bento","feature","features","benefit","benefits","cards","capabilities","process","steps","flow"],
 purpose:"Mainly an overview grid for a group of related points; can also show a light numbered flow or a link collection.",
 tip:"Use product images or icons and explain each point in a Bento M card. Need step numbers for a flow? Put them in the image, icon or heading.",
@@ -217,7 +217,7 @@ str:["Two modes: button click OR inline form","Form covers consultation booking,
 lim:["Should carry one clear ask","Form mode needs a linked form entry","Keep CTA copy tight"],
 anti:"Don't stack multiple competing CTAs. Don't use it as a content section. Don't bury the action under long copy."},
 
-{id:"beforeafter",name:"Before / After Slider",cat:"process",ct:"customComponent",cthint:"set Component variant = before_after_slider",pillars:["translation_of_complexity","trust_anchor","standard_setter"],chips:["translation_of_complexity"],cd:false,density:"medium",media:"image",
+{id:"beforeafter",name:"Before / After Slider",cat:"process",ct:"customComponent",cthint:"set Component variant = before_after_slider",vfield:"fields.componentVariant",variant:"before_after_slider",pillars:["translation_of_complexity","trust_anchor","standard_setter"],chips:["translation_of_complexity"],cd:false,density:"medium",media:"image",
 kw:["before","after","before/after","transformation","workflow","ohne und mit","slider","reveal","drag","change","pain","relief","process","product"],
 purpose:"An interactive before/after comparison across 3–4 paired Bento M cards — drag to reveal on desktop, toggle on mobile.",
 tip:"Pair each “before” pain with its “after” relief across 3–4 cards; visitors drag (or toggle on mobile) to feel the change.",
@@ -228,7 +228,7 @@ str:["Interactive reveal makes the contrast memorable","3–4 paired cards cover
 lim:["Needs paired before/after content per card","Interaction differs desktop (drag) vs mobile (toggle)","Lives inside customComponent — less discoverable"],
 anti:"Not for non-transformation content. Don't mismatch the before/after card counts."},
 
-{id:"exitintent",name:"Exit Intent Modal",cat:"conversion",ct:"customComponent",cthint:"set Component variant = exit_intent_modal, then link a Modal and pick its variant",pillars:["trust_anchor","standard_setter"],chips:[],cd:true,density:"low",media:"image (optional)",
+{id:"exitintent",name:"Exit Intent Modal",cat:"conversion",ct:"customComponent",cthint:"set Component variant = exit_intent_modal, then link a Modal and pick its variant",vfield:"fields.componentVariant",variant:"exit_intent_modal",pillars:["trust_anchor","standard_setter"],chips:[],cd:true,density:"low",media:"image (optional)",
 kw:["exit intent","exit-intent","modal","popup","pop-up","overlay","deal","offer","summer deal","end of year","end-of-year","urgency","urgent","countdown","timer","survey","limited time","banner","leave","exit","promo"],
 purpose:"An overlay that surfaces one urgent or high-value ask over the page — a limited-time deal, a survey, or a booking prompt. Pops up on exit or after X seconds, globally or on chosen pages.",
 tip:"Use it for time-sensitive asks — e.g. a deal with a live countdown that pops up when a visitor moves to leave (or after a set number of seconds). The action can be a button or an email capture.",
@@ -249,7 +249,8 @@ function score(d,q,qp){let sc=0;for(const k of d.kw){if(q.includes(k))sc+=3;}for
 
 function cardHTML(d){
  const chips=d.cd?`<span class="pill" style="background:var(--p-neutral)1f;color:var(--p-neutral)">Depends on content</span>`:d.chips.map(pill).join("");
- const create=`https://app.contentful.com/spaces/${SPACE}/environments/${ENV}/entries?contentTypeId=${d.ct}`;
+ const vf=d.variant?`&filters.0.key=${d.vfield}&filters.0.op=&filters.0.val=${d.variant}`:"";
+ const create=`https://app.contentful.com/spaces/${SPACE}/views/entries?contentTypeId=${d.ct}&contentTypeIds=${d.ct}${vf}`;
  const budgetRows=d.budget.map(r=>`<div class="spec-row"><span class="spec-k">${r[0]}</span><span class="spec-v">${r[1]}</span></div>`).join("");
  return `<div class="meta-top"><span class="cat">${CATS[d.cat]}</span><div class="pills">${chips}</div></div>
  <h2 class="cname">${d.name}</h2>
