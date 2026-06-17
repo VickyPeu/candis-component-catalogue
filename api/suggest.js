@@ -71,7 +71,16 @@ const CATALOG = [
   copyBudget:"eyebrow ~32 · before/after headings ~24 · card heading ≤80", assets:"before 3–4 images (16:10) + after 3–4 images (16:10)",
   useCases:["'Ohne und mit Candis' workflow comparison","pain (before) → relief (after) across steps","any before/after transformation"],
   strengths:["interactive reveal makes the contrast memorable","shows not tells"], limitations:["needs paired before/after content per card","lives inside customComponent"],
-  antiPattern:"Not for non-transformation content. Don't mismatch the before/after counts."}
+  antiPattern:"Not for non-transformation content. Don't mismatch the before/after counts."},
+
+ {id:"exitintent", name:"Exit Intent Modal", category:"conversion", contentType:"customComponent",
+  pillarsServe:["trust_anchor","standard_setter"], contentDependent:true,
+  architecture:"Two-level. A customComponent (variant exit_intent_modal) is the wrapper — it only controls placement/frequency (showOnCommonPages / showOnLandingPages / showOnBlogPostPages, or displayOnPages for specific pages) and links a modal entry. The modal holds the content + a variant. Relevant variant here: exit_intent (opens when a visitor moves to leave, or after triggerAfterSeconds) and exit_intent_countdown (same, with a countdown banner using exitIntentCountdownEndDate). Modal has eyebrow/heading/paragraph, an optional image, and an action that is EITHER a button (ctaButton, up to two) OR an email-capture form. (The same modal type also powers a 'common' button-triggered booking modal and gated downloads — factsheet/pricing_summary/info_packages/implementation_guide — but those are out of scope for this catalogue entry.)",
+  copyBudget:"eyebrow ~32 · heading ~50 (punchy) · button ~25 · reassurance/privacy note short", assets:"optional: 1 image",
+  useCases:["limited-time deal (summer / end-of-year) with a countdown","short survey or feedback prompt","'book a consultation' prompt (→ Demodesk)","time-limited announcement on exit or after X seconds"],
+  strengths:["appears over any page without touching its layout","placement control: globally by page type or specific pages","timing control — on exit and/or after X seconds","built-in countdown banner for genuine urgency"],
+  limitations:["two-level setup — wrapper customComponent plus a linked modal entry","interruptive — overuse trains visitors to dismiss it","no character limits set in Contentful"],
+  antiPattern:"Don't run it everywhere all the time or stack multiple modals on one page — one clear, worth-interrupting ask. Not a regular content section."}
 ];
 
 const SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and on Candis's messaging pillars.
