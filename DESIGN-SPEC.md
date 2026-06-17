@@ -4,37 +4,38 @@ Single source of truth for how the tool **and** the skeletons look, so everythin
 Two parts: **A) Tool design tokens** (the catalogue page itself, styled like the Candis website) and
 **B) Skeleton rules** (the low-fi wireframes — kept neutral greyscale on purpose, NOT brand-coloured).
 
-🟡 = value estimated from website screenshots — **Vicky to confirm / replace with the exact Candis hex / font.**
+Values below are **confirmed by Vicky (2026-06-17)** and live in the tool.
 
 ---
 
 ## A) Tool design tokens (catalogue page → more like candis.io)
 
 ### Colours
-| Token | Use | Value (🟡 = confirm) |
+| Token | Use | Value |
 |---|---|---|
-| `--bg` | page background (warm cream) | 🟡 `#F7F5F2` |
-| `--surface` | cards / panels | `#FFFFFF` |
-| `--ink` | headlines, near-black plum | 🟡 `#1E1A24` |
-| `--body` | body text | 🟡 `#5A5766` |
-| `--muted` | eyebrows / captions (uppercase) | 🟡 `#8A8794` |
-| `--accent` | primary violet (headline highlight, links, active) | 🟡 `#7C5CFC` |
-| `--accent-soft` | lavender panel background | 🟡 `#F1ECFB` |
-| `--dark` | dark aubergine section background | 🟡 `#2A2233` |
-| `--border` | hairline borders | 🟡 `#E7E3DD` |
-| `--success` | green status dot | 🟡 `#2FA86A` |
+| `--bg` | page background (warm off-white) | `#faf8f8` |
+| `--surface` | cards / panels | `#ffffff` |
+| `--ink` | headlines, near-black plum | `#2b1a2e` |
+| `--body` | body text | `#5a4c5b` |
+| `--muted` | eyebrows / captions (uppercase) | `#9e959c` |
+| `--accent` | primary violet (headline highlight, links, active) | `#895fd5` |
+| `--accent-soft` | lavender panel background | `#f6f1fd` |
+| `--accent-line` | lavender border | `#e7daf7` |
+| `--dark` | dark aubergine section background | `#2b1a2e` |
+| `--line` / border | hairline borders | `#ded8d8` |
+| `--success` | green status dot | `#2fa86a` |
 
 Pillar colours stay as-is (Authority `#3F3A74`, Thought Leader `#75323B`, Standard Setter `#206062`,
 Trust Anchor `#314C39`, Translation of Complexity `#BE704C`).
 
-### Typography
-| Role | Font (🟡 = confirm exact Candis font) | Notes |
+### Typography — **Inter** everywhere (weights 300 light · 400 regular · 600 semi-bold)
+| Role | Font / weight | Notes |
 |---|---|---|
-| Display / headings | 🟡 serif — Candis uses an elegant serif; interim = **Fraunces** | large, `--ink`, tight leading |
-| Accent word in headline | same serif, colour `--accent` | like "Rechnungsmanagement-Software" |
-| Body | 🟡 grotesk sans — interim = **Hanken Grotesk** | `--body` |
-| Eyebrow / label | sans, **UPPERCASE**, letter-spacing ~0.12em, `--muted` | like "ALLE FUNKTIONEN IM ÜBERBLICK" |
-| Spec / mono bits | **JetBrains Mono** | copy budgets, field specs |
+| Display / headings | Inter **600** | large, `--ink`, tight leading (-0.02em) |
+| Accent word in headline | Inter 600, colour `--accent` | like "Rechnungsmanagement-Software" |
+| Body | Inter **400** | `--body` |
+| Eyebrow / label | Inter 400–600, **UPPERCASE**, letter-spacing ~0.12em, `--muted` | like "ALLE FUNKTIONEN IM ÜBERBLICK" |
+| Spec / numeric bits | Inter (light 300 ok) | copy budgets, field specs |
 
 ### Components / patterns (from the website)
 - **Buttons:** primary = filled `--dark` (near-black plum), white text, radius ~8px; secondary = `--surface` + `--border`.
@@ -54,15 +55,21 @@ Skeletons stay **greyscale/neutral** (a wireframe, not the final design) so they
 real component. **They do NOT use the brand violet.** These rules fix the "sometimes an outline, sometimes
 not" inconsistency.
 
-### Skeleton palette (fixed)
+### Skeleton palette (fixed) — Candis plum greyscale ramp
+Neutral on purpose (a wireframe), but drawn from the Candis plum ramp so it sits with the brand.
 | Token | Use | Value |
 |---|---|---|
-| placeholder fill | text bars, media fill | `#DCD9CD` |
-| container stroke | outlined boxes | `#B4B2A9` |
-| field fill / stroke | input fields | `#ECEAE1` / `#9C9A90` |
-| button fill | buttons | `#C2BFB3` |
-| label text | element names | `#6B6A65`, mono, 11px |
-| dim backdrop | behind modals/overlays | `#6B6A65` @ 10–12% opacity |
+| card / surface | skeleton card fill | `#ffffff` |
+| placeholder fill | text bars | `#ded8d8` |
+| asset-slot fill / stroke | image / video boxes | `#ede8e8` / `#c1babe` |
+| container stroke | outlined boxes (cards) | `#c1babe` (card border `#ded8d8`) |
+| field fill / stroke | input fields | `#ede8e8` / `#9e959c` |
+| button fill | buttons | `#9e959c` |
+| label text | element names | `#716571`, Inter, 11px |
+| dim backdrop | behind modals/overlays | `#2b1a2e` @ ~8% opacity |
+| check / cross | comparison tables | green `#1D9E75` / red `#E24B4A` (semantic, kept) |
+
+Ramp reference (lightest→darkest): `#ffffff · #faf8f8 · #ede8e8 · #ded8d8 · #c1babe · #9e959c · #7e737e · #716571 · #665a67 · #5a4c5b · #463748 · #372639 · #2b1a2e`.
 
 ### The core rule — three categories, each rendered ONE way
 1. **Text** (eyebrow, heading, paragraph, any copy) → **filled solid rounded bars**, **NEVER an outline**.
