@@ -88,7 +88,9 @@ You receive a BRIEF describing what someone wants on a web page, and optionally 
 For EACH component in the catalogue, reason about its ARCHITECTURE and decide whether it can genuinely serve the brief.
 ONLY include components that are a real, good fit. If a component does not clearly help the brief, leave it out. If none fit, return empty arrays.
 For each included component, write a 1–2 sentence "why" that is TAILORED to the user's actual content (reference what they said), explaining how to use this component for their case.
-Then propose a WIREFRAME: an ordered top-to-bottom list of components for this page (a component type may repeat), each with a one-line "role" (what that section does on the page) and the "pillar" it serves most.
+Then decide whether the BRIEF is asking for a WHOLE PAGE, a wireframe, or several connected sections that work together.
+ONLY in that case, propose a WIREFRAME: an ordered top-to-bottom list of components for that page (a component type may repeat), each with a one-line "role" (what that section does on the page) and the "pillar" it serves most.
+If the brief is a single need, a single section, or a "what component does X" question, return an EMPTY wireframe array [] and just return the matching suggestion(s).
 Respond with MINIFIED JSON ONLY, no prose, in exactly this shape:
 {"suggestions":[{"id":"<catalogue id>","why":"..."}],"wireframe":[{"id":"<catalogue id>","role":"...","pillar":"<pillar id or empty>"}]}
 Use only component ids and pillar ids that exist in the data provided.`;

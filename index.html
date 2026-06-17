@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#faf8f8; --surface:#fff; --ink:#2b1a2e; --body:#5a4c5b; --muted:#9e959c; --line:#ded8d8; --accent:#895fd5;
+    --bg:#faf8f8; --surface:#fff; --ink:#2b1a2e; --body:#463748; --muted:#716571; --line:#ded8d8; --accent:#895fd5;
     --accent-soft:#f6f1fd; --accent-line:#e7daf7; --dark:#2b1a2e;
     --serif:"Inter",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif; --mono:"Inter",system-ui,sans-serif;
     --p-authority:#3F3A74; --p-thought:#75323B; --p-standard:#206062; --p-trust:#314C39; --p-translation:#BE704C; --p-neutral:#5F5E5A;
@@ -41,10 +41,6 @@
   .pchip:hover{border-color:var(--pc)}
   .pchip.on{background:var(--pc);color:#fff;border-color:var(--pc)}
   .pchip.on .dot{background:#fff}
-  /* Category chips — neutral, squared (structural, not messaging) */
-  .cchip{font-size:12px;padding:5px 11px;border:1px solid var(--line);border-radius:7px;background:var(--bg);cursor:pointer;user-select:none;color:var(--body)}
-  .cchip:hover{border-color:var(--ink);color:var(--ink)}
-  .cchip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
   .interpret{font-size:14px;color:var(--muted);margin:22px 0 10px;min-height:18px}
   .interpret b{color:var(--ink);font-weight:600}
   #wire{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:16px;padding:18px 20px;margin-bottom:16px}
@@ -73,7 +69,7 @@
   .shout{display:flex;gap:14px;align-items:flex-start;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:14px;padding:14px 16px;margin-bottom:22px}
   .shout .tagk{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:#fff;border:1px solid var(--accent-line);border-radius:6px;padding:4px 8px;white-space:nowrap}
   .shout p{margin:0;font-size:14.5px;color:#463748}
-  .visual{margin:0 0 22px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:16px;padding:16px 16px 10px;position:relative}
+  .visual{margin:0 0 22px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px 16px 10px;position:relative}
   .visual .vlabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
   .visual svg{display:block;width:100%;height:auto;max-height:420px}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
@@ -121,8 +117,7 @@
   </div>
   <div class="examples" id="examples"><span class="lbl">Try</span></div>
   <div class="filters">
-    <div class="chips" id="pillarChips"><span class="lbl">Pillar</span></div>
-    <div class="chips" id="catChips"><span class="lbl">Category</span></div>
+    <div class="chips" id="pillarChips"><span class="lbl">Browse by pillar</span></div>
   </div>
   <div class="interpret" id="interpret"></div>
   <div id="wire" style="display:none"></div>
@@ -161,7 +156,7 @@ kw:["overview","grid","bento","feature","features","benefit","benefits","cards",
 purpose:"Mainly an overview grid for a group of related points; can also show a light numbered flow or a link collection.",
 tip:"Use product images or icons and explain each point in a Bento M card. Need step numbers for a flow? Put them in the image, icon or heading.",
 assets:"Per card: 1 image (16:10) OR 1 icon · 2–9 cards",
-budget:[["Section eyebrow","32"],["Card heading (each)","80, required"],["Cards","2–9 (ideal 3/6)"]],
+budget:[["Section eyebrow","32 characters"],["Card heading (each)","80 characters, required"],["Cards","2–9 (ideal 3/6)"]],
 uses:["Overview / feature or benefit grid (main purpose)","Light numbered flow (numbers in image/icon/heading)","Link collection (e.g. to blog posts) → Thought-Leader character"],
 str:["Flexible — carries many content types and almost any pillar","Image OR icon per card + short text","Optional link per card","2–9 items, ideal 3 or 6"],
 lim:["Card heading hard-capped at 80 chars","For pure trust-building, others fit better","With >6 items the grid gets busy"],
@@ -172,7 +167,7 @@ kw:["video","explainer","demo","testimonial","pov","watch","play","film","clip",
 purpose:"Gives one statement room and backs it with a video — explainer, demo, testimonial or POV.",
 tip:"Screen-record the flow in Candis and show it as a video — the moving product makes a process concrete and proves it works.",
 assets:"1 video (file, YouTube or Wistia) + 1 thumbnail image (16:9)",
-budget:[["Section eyebrow","~32"],["Section heading","~60"],["Video display title","~60"],["Video meta description","~150–160"]],
+budget:[["Section eyebrow","~32 characters"],["Section heading","~60 characters"],["Video display title","~60 characters"],["Video meta description","~150–160 characters"]],
 uses:["Product explainer / demo video","Testimonial / customer story as video","Founder / vision POV video","One video center stage with framing copy"],
 str:["A single focal point — no competition","Video shows instead of tells","Three hosting options: file, YouTube, Wistia","Lots of real estate — for especially important videos"],
 lim:["Can't carry multiple parallel points (use Grid/Bento)","Video adds load weight (esp. mobile)"],
@@ -183,7 +178,7 @@ kw:["image","photo","picture","screenshot","visual","editorial","brand","diagram
 purpose:"Gives one statement room and supports it with a single strong image — editorial, brand or explanatory.",
 tip:"Use one strong product screenshot or brand image and let the heading + paragraph carry the point. A labelled diagram works great here too.",
 assets:"1 image — ratio is free choice, but it always spans the full width of the component (+ optional separate mobile image) · provide alt text",
-budget:[["Section eyebrow","~32"],["Section heading","~60"],["Image alt text","~125"],["Image title","~60"]],
+budget:[["Section eyebrow","~32 characters"],["Section heading","~60 characters"],["Image alt text","~125 characters"],["Image title","~60 characters"]],
 uses:["Editorial / brand image moment","Diagram or before/after visual","Product screenshot as a focal proof","One important image center stage with framing copy"],
 str:["A single focal point","Lots of real estate for one important image","Lighter than video — faster load","Built-in alt text (accessibility + SEO)"],
 lim:["A static image shows less than a video","Can't carry multiple parallel points","Strongly image-dependent"],
@@ -194,7 +189,7 @@ kw:["compare","comparison","versus","vs","candis vs","competitor","competitors",
 purpose:"A comparison table that pits Candis against other tools, feature by feature, with green checkmarks and red crosses.",
 tip:"List the features that matter, check Candis, and be honest with a red cross where a competitor leads — it makes the whole table more believable.",
 assets:"No images required",
-budget:[["Section eyebrow","~32"],["Column headers","short, ~15–20"],["Feature labels","concise, ~60"]],
+budget:[["Section eyebrow","~32 characters"],["Column headers","short, ~15–20 characters"],["Feature labels","concise, ~60 characters"]],
 uses:["Whenever the messaging wants a “Candis vs …” angle","Candis vs competitor tools, feature by feature","Candis features vs the market standard","A long matrix that needs collapsing / accordion"],
 str:["Side-by-side reads as “we measure up”","Honest red crosses build credibility","Accordion + collapse-by-default keep it compact","Checks / crosses scan fast"],
 lim:["Needs accurate, maintained competitive data","Dense — too many rows/columns overwhelm","2–4 comparison columns max (+ label column)"],
@@ -205,7 +200,7 @@ kw:["compare","comparison","versus","vs","candis vs","competitor","alternative",
 purpose:"A text-based comparison table for nuanced, not-black-and-white comparisons; leaves the “right fit” call to the reader.",
 tip:"When it's not black-and-white, write a sentence per cell on what each option really offers and let the reader decide — that reads as honest.",
 assets:"No images required",
-budget:[["Section eyebrow","~32"],["Column headers","short, ~15–20"],["Cell text","a sentence or two"]],
+budget:[["Section eyebrow","~32 characters"],["Column headers","short, ~15–20 characters"],["Cell text","a sentence or two"]],
 uses:["Whenever the messaging wants a “Candis vs …” angle (nuanced)","Nuanced comparison where “it depends”","Explaining trade-offs / fit by use case","A multi-category decision overview (selectable categories)"],
 str:["Free text per cell → room for nuance","Reads as honest → builds trust","Selectable categories keep it navigable","Sets the criteria that matter"],
 lim:["Text-heavy → can get long","Needs accurate, maintained context","Less instantly scannable than a checkmark table"],
@@ -216,7 +211,7 @@ kw:["cta","call to action","sign up","signup","sign-up","email","newsletter","co
 purpose:"A conversion section that drives one action — click a button (e.g. book a consultation) or sign up via a form (e.g. email).",
 tip:"Pick one action. For a low-friction ask use a button (“book a free consultation”); to capture leads use the email form.",
 assets:"Optional: 1 image — upload 16:10, but the copy sets the component height, so the image is stretched/cropped to a different ratio · copy & graphic must be briefed together",
-budget:[["Section heading","~50 (punchy)"],["Button text","~25"],["Success/error msgs","short, 1 line"]],
+budget:[["Section heading","~50 characters (punchy)"],["Button text","~25 characters"],["Success/error msgs","short, 1 line"]],
 uses:["“Book a consultation / demo” button (or Demodesk form)","Newsletter / waitlist email sign-up","Gated content download (PDF on submit)","End-of-page conversion ask"],
 str:["Two modes: button click OR inline form","Form covers consultation booking, email, gated PDF","Optional image + background colours","Focused, single ask"],
 lim:["Should carry one clear ask","Form mode needs a linked form entry","Keep CTA copy tight"],
@@ -227,7 +222,7 @@ kw:["before","after","before/after","transformation","workflow","ohne und mit","
 purpose:"An interactive before/after comparison across 3–4 paired Bento M cards — drag to reveal on desktop, toggle on mobile.",
 tip:"Pair each “before” pain with its “after” relief across 3–4 cards; visitors drag (or toggle on mobile) to feel the change.",
 assets:"Before: 3–4 images (16:10) + After: 3–4 images (16:10) — one per Bento M card",
-budget:[["Section eyebrow","~32"],["Before / after headings","short, ~24"],["Card heading (each)","80 (from Bento M)"]],
+budget:[["Section eyebrow","~32 characters"],["Before / after headings","short, ~24 characters"],["Card heading (each)","80 characters (from Bento M)"]],
 uses:["“Ohne und mit Candis” workflow comparison","Showing pain (before) → relief (after) across steps","Any before/after transformation story"],
 str:["Interactive reveal makes the contrast memorable","3–4 paired cards cover a multi-step transformation","Shows, not tells","Before = recognisable pain, after = Candis relief"],
 lim:["Needs paired before/after content per card","Interaction differs desktop (drag) vs mobile (toggle)","Lives inside customComponent — less discoverable"],
@@ -238,7 +233,7 @@ kw:["exit intent","exit-intent","modal","popup","pop-up","overlay","deal","offer
 purpose:"An overlay that surfaces one urgent or high-value ask over the page — a limited-time deal, a survey, or a booking prompt. Pops up on exit or after X seconds, globally or on chosen pages.",
 tip:"Use it for time-sensitive asks — e.g. a deal with a live countdown that pops up when a visitor moves to leave (or after a set number of seconds). The action can be a button or an email capture.",
 assets:"Optional: 1 image — 1:1 (square) ratio; shown beside the text",
-budget:[["Eyebrow","~32"],["Heading","~50 (punchy)"],["Button text","~25"],["Reassurance / privacy note","short"]],
+budget:[["Eyebrow","~32 characters"],["Heading","~50 characters (punchy)"],["Button text","~25 characters"],["Reassurance / privacy note","short"]],
 uses:["Summer / end-of-year deal with a countdown","Short survey or feedback prompt","“Book a consultation” prompt (→ Demodesk)","Time-limited announcement on exit or after X seconds"],
 str:["Appears over any page without touching its layout","Placement control: globally by page type, or specific pages","Timing control — on exit and/or after X seconds","Built-in countdown banner for genuine urgency"],
 lim:["Two-level setup — wrapper customComponent plus a linked Modal entry","Interruptive — overuse trains visitors to dismiss it","No character limits set in Contentful"],
@@ -260,7 +255,7 @@ function cardHTML(d){
  <h2 class="cname">${d.name}</h2>
  <p class="purpose">${d.purpose}</p>
  <div class="shout"><span class="tagk">${aiNotes[d.id]?"For your brief":"How it can work"}</span><p>${aiNotes[d.id]||d.tip}</p></div>
- <figure class="visual"><div class="vlabel">Structure · wireframe (no copy)</div>${SK[d.id]}</figure>
+ <figure class="visual"><div class="vlabel">Structure · wireframe</div>${SK[d.id]}</figure>
  <div class="grid-2">
    <section class="panel spec">
      <h3>What you need to build this</h3>
@@ -333,8 +328,7 @@ const SEARCH_ICO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.innerHTML=SEARCH_ICO;b.appendChild(document.createTextNode(t));b.addEventListener("click",()=>{$("ask").value=t;go();});exHost.appendChild(b);});
 // Pillar chips — coloured by swimlane
 Object.keys(PILLARS).forEach(k=>{const b=document.createElement("span");b.className="pchip";b.style.setProperty("--pc","var("+PILLARS[k][1]+")");b.innerHTML='<span class="dot"></span>';b.appendChild(document.createTextNode(PILLARS[k][0]));b.addEventListener("click",()=>{b.classList.toggle("on");if(selP.has(k))selP.delete(k);else selP.add(k);cur=0;renderHeuristic();});$("pillarChips").appendChild(b);});
-// Category chips — neutral squared (structural)
-Object.keys(CATS).forEach(k=>{const b=document.createElement("span");b.className="cchip";b.textContent=CATS[k];b.addEventListener("click",()=>{b.classList.toggle("on");if(selC.has(k))selC.delete(k);else selC.add(k);cur=0;renderHeuristic();});$("catChips").appendChild(b);});
+// Category filter removed — discovery happens via the LLM search; CATS still labels each card.
 $("ask").addEventListener("input",()=>{cur=0;renderHeuristic();});
 $("askBtn").addEventListener("click",go);
 $("ask").addEventListener("keydown",e=>{if(e.key==="Enter")go();});
