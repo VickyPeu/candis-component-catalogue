@@ -255,7 +255,7 @@ function cardHTML(d){
  return `<div class="meta-top"><span class="cat">${CATS[d.cat]}</span><div class="pills">${chips}</div></div>
  <h2 class="cname">${d.name}</h2>
  <p class="purpose">${d.purpose}</p>
- <div class="shout"><span class="tagk">${aiNotes[d.id]?"For your brief":"How it can work"}</span><p>${aiNotes[d.id]||d.tip}</p></div>
+ <div class="shout"><span class="tagk">${aiNotes[d.id]?noteLabel:"How it can work"}</span><p>${aiNotes[d.id]||d.tip}</p></div>
  <figure class="visual"><div class="vlabel">Structure · wireframe</div>${SK[d.id]}</figure>
  <div class="grid-2">
    <section class="panel spec">
@@ -276,7 +276,7 @@ function cardHTML(d){
  </div>`;
 }
 
-let results=[], cur=0, aiNotes={}, aiWire=[];
+let results=[], cur=0, aiNotes={}, aiWire=[], noteLabel="For your brief";
 const selP=new Set(),selC=new Set();
 const $=id=>document.getElementById(id);
 function heuristic(){
@@ -304,10 +304,24 @@ function renderHeuristic(){
  if(!active){$("slider").style.display="none";$("empty").style.display="block";$("interpret").innerHTML="";paintWire();return;}
  const {order,qp,q}=heuristic();const bits=[...qp].map(p=>PILLARS[p][0]);
  paint(order, q?'Suggesting for <b>“'+raw+'”</b>'+(bits.length?" · pillar signal: "+bits.join(", "):"")+' — '+order.length+' match'+(order.length===1?"":"es"):order.length+' component'+(order.length===1?"":"s"));
+ if(!raw && selP.size && AI_ENDPOINT) annotatePillars(order);
+}
+// Browse-by-pillar: ask the LLM for a pillar-tailored "how it can work" per shown component (no filtering, no wireframe).
+async function annotatePillars(list){
+ if(!AI_ENDPOINT || !selP.size || !list.length) return;
+ const ids=list.map(d=>d.id), reqP=[...selP];
+ try{
+  const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pillars:reqP,annotate:ids})});
+  if(!r.ok)return;
+  const data=await r.json();
+  if(data.notes && Object.keys(data.notes).length && reqP.length===selP.size && reqP.every(p=>selP.has(p))){
+   aiNotes=data.notes; noteLabel="For "+reqP.map(p=>PILLARS[p][0]).join(" + "); repaintActive();
+  }
+ }catch(e){}
 }
 async function aiSuggest(){
  const raw=$("ask").value.trim();if(!raw){renderHeuristic();return;}
- aiNotes={};aiWire=[];$("empty").style.display="none";$("slider").style.display="none";paintWire();
+ aiNotes={};aiWire=[];noteLabel="For your brief";$("empty").style.display="none";$("slider").style.display="none";paintWire();
  $("interpret").innerHTML='Thinking — evaluating each component for <b>“'+raw+'”</b>…';
  try{
   const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({brief:raw,pillars:[...selP]})});

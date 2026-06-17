@@ -95,6 +95,13 @@ Respond with MINIFIED JSON ONLY, no prose, in exactly this shape:
 {"suggestions":[{"id":"<catalogue id>","why":"..."}],"wireframe":[{"id":"<catalogue id>","role":"...","pillar":"<pillar id or empty>"}]}
 Use only component ids and pillar ids that exist in the data provided.`;
 
+// Annotate mode: no filtering, no wireframe — just a pillar-tailored "how it can work" per given component.
+const ANNOTATE_SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and messaging pillars.
+You receive a set of COMPONENTS and one or more DESIRED PILLARS.
+For EACH component, write ONE concrete 1–2 sentence note on how that specific component can be used to support the given pillar(s) — tailored to the pillar's intent, referencing what the pillar is about (not a generic description). E.g. for a Video under "Thought Leader", describe the kind of video that carries editorial opinion / POV.
+Respond with MINIFIED JSON ONLY, no prose, in exactly this shape: {"notes":{"<component id>":"..."}}
+Include every component id you were given. Use only the component ids and pillar ids provided.`;
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -112,16 +119,27 @@ export default async function handler(req, res) {
   if (typeof body === "string") { try { body = JSON.parse(body || "{}"); } catch { body = {}; } }
   const brief = (body && body.brief ? String(body.brief) : "").slice(0, 2000);
   const pillars = Array.isArray(body && body.pillars) ? body.pillars : [];
-  if (!brief) return res.status(400).json({ error: "brief required" });
+  const annotate = Array.isArray(body && body.annotate) ? body.annotate.filter(x => typeof x === "string").slice(0, 20) : [];
+  // Annotate mode = browse-by-pillar: pillar-tailored "how it can work" for the given components (no brief, no filtering, no wireframe).
+  const annotateMode = annotate.length > 0 && pillars.length > 0;
+  if (!brief && !annotateMode) return res.status(400).json({ error: "brief, or annotate + pillars, required" });
 
-  const user = `BRIEF:\n${brief}\n\nDESIRED PILLARS: ${pillars.join(", ") || "(none specified)"}\n\nPILLARS REFERENCE:${PILLARS_DOC}\n\nCOMPONENT CATALOGUE (JSON):\n${JSON.stringify(CATALOG)}`;
+  let system, user;
+  if (annotateMode) {
+    const subset = CATALOG.filter(c => annotate.includes(c.id));
+    system = ANNOTATE_SYSTEM;
+    user = `DESIRED PILLARS: ${pillars.join(", ")}\n\nPILLARS REFERENCE:${PILLARS_DOC}\n\nCOMPONENTS TO ANNOTATE (JSON):\n${JSON.stringify(subset)}`;
+  } else {
+    system = SYSTEM;
+    user = `BRIEF:\n${brief}\n\nDESIRED PILLARS: ${pillars.join(", ") || "(none specified)"}\n\nPILLARS REFERENCE:${PILLARS_DOC}\n\nCOMPONENT CATALOGUE (JSON):\n${JSON.stringify(CATALOG)}`;
+  }
 
   let r;
   try {
     r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-      body: JSON.stringify({ model: MODEL, max_tokens: 1600, system: SYSTEM, messages: [{ role: "user", content: user }] })
+      body: JSON.stringify({ model: MODEL, max_tokens: 1600, system, messages: [{ role: "user", content: user }] })
     });
   } catch (e) {
     // Never echo the raw error — it can include the request headers (the API key).
@@ -136,7 +154,12 @@ export default async function handler(req, res) {
   let out;
   try { out = JSON.parse(text); }
   catch { const m = text.match(/\{[\s\S]*\}/); try { out = m ? JSON.parse(m[0]) : null; } catch { out = null; } }
-  if (!out || typeof out !== "object") out = { suggestions: [], wireframe: [] };
+  if (!out || typeof out !== "object") out = {};
+
+  if (annotateMode) {
+    const notes = (out.notes && typeof out.notes === "object") ? out.notes : {};
+    return res.status(200).json({ notes });
+  }
   if (!Array.isArray(out.suggestions)) out.suggestions = [];
   if (!Array.isArray(out.wireframe)) out.wireframe = [];
   return res.status(200).json(out);
