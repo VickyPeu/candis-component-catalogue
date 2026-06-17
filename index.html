@@ -6,16 +6,14 @@
 <title>Candis Component Catalogue</title>
 <style>
   :root{
-    --bg:#FAF8F8; --surface:#fff; --text:#26241F; --muted:#6B6A65; --line:#E4E1D8;
-    --accent:#7A51C4;
-    --p-authority:#3F3A74; --p-thought:#75323B; --p-standard:#206062;
-    --p-trust:#314C39; --p-translation:#BE704C; --p-neutral:#5F5E5A;
+    --bg:#FAF8F8; --surface:#fff; --text:#26241F; --muted:#6B6A65; --line:#E4E1D8; --accent:#7A51C4;
+    --p-authority:#3F3A74; --p-thought:#75323B; --p-standard:#206062; --p-trust:#314C39; --p-translation:#BE704C; --p-neutral:#5F5E5A;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
-  .wrap{max-width:1180px;margin:0 auto;padding:36px 20px 72px}
+  .wrap{max-width:1100px;margin:0 auto;padding:36px 20px 72px}
   header h1{font-size:26px;font-weight:600;margin:0 0 6px}
-  header p{color:var(--muted);font-size:15px;margin:0;max-width:640px}
+  header p{color:var(--muted);font-size:15px;margin:0;max-width:660px}
   .ask{margin:26px 0 6px;display:flex;gap:8px}
   .ask input{flex:1;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:16px;background:var(--surface)}
   .ask input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px #7a51c422}
@@ -29,33 +27,51 @@
   .chips .lbl{font-size:12px;color:var(--muted);align-self:center;margin-right:2px}
   .chip{font-size:12px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);cursor:pointer;user-select:none}
   .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .interpret{font-size:13px;color:var(--muted);margin:18px 0 0;min-height:18px}
+  .interpret{font-size:13px;color:var(--muted);margin:18px 0 6px;min-height:18px}
   .interpret b{color:var(--text);font-weight:500}
-  .count{font-size:13px;color:var(--muted);margin:6px 0 14px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-  .empty{text-align:center;color:var(--muted);padding:60px 20px;border:1px dashed var(--line);border-radius:14px;margin-top:22px}
+  .empty{text-align:center;color:var(--muted);padding:64px 20px;border:1px dashed var(--line);border-radius:14px;margin-top:18px}
   .empty .big{font-size:16px;color:var(--text);margin-bottom:6px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-  .sk{background:#F6F4EE;border-bottom:1px solid var(--line);padding:8px}
-  .sk svg{display:block;width:100%;height:auto}
-  .body{padding:14px 16px}
-  .body h3{font-size:16px;font-weight:600;margin:0}
-  .toprow{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .cat{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 7px;white-space:nowrap}
-  .pills{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0}
+  /* slider */
+  .slider{margin-top:8px}
+  .nav{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .nav button{width:36px;height:36px;border:1px solid var(--line);background:var(--surface);border-radius:50%;cursor:pointer;font-size:16px}
+  .nav button:hover{border-color:var(--accent);color:var(--accent)}
+  .pos{font-size:13px;color:var(--muted);min-width:54px}
+  .tabs{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+  .tab{font-size:12px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);cursor:pointer;white-space:nowrap}
+  .tab.on{background:var(--text);color:#fff;border-color:var(--text)}
+  .stage{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+  .toprow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .stage h2{font-size:22px;font-weight:600;margin:0}
+  .cat{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+  .pills{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
   .pill{font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
-  .meta{font-size:12px;color:var(--muted);margin-bottom:8px}
-  .purpose{font-size:14px;margin:0 0 10px}
-  .more{font-size:13px;color:var(--accent);background:none;border:none;padding:0;cursor:pointer;font-weight:500}
-  .details{display:none;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
-  .details.open{display:block}
-  .details h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:14px 0 5px;font-weight:600}
-  .details h4:first-child{margin-top:0}
-  .details ul{margin:0;padding-left:18px;font-size:13px}
-  .details p{font-size:13px;margin:0}
-  .budget{width:100%;border-collapse:collapse;font-size:12px;margin-top:2px}
-  .budget td{border-top:1px solid var(--line);padding:4px 6px}
-  .budget td:last-child{text-align:right;color:var(--muted);white-space:nowrap}
+  .purpose{font-size:15px;margin:0 0 16px}
+  .two{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+  @media(max-width:780px){.two{grid-template-columns:1fr}}
+  .skbox{background:#F6F4EE;border:1px solid var(--line);border-radius:12px;padding:10px}
+  .skbox svg{display:block;width:100%;height:auto}
+  .needbox{background:#F8F6FF;border:1px solid #E0D8F5;border-radius:12px;padding:14px 16px}
+  .needbox h3{font-size:14px;margin:0 0 4px;font-weight:600}
+  .needbox .sub{font-size:12px;color:var(--muted);margin:0 0 10px}
+  .needbox h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:12px 0 5px;font-weight:600}
+  .budget{width:100%;border-collapse:collapse;font-size:13px}
+  .budget td{border-top:1px solid #E0D8F5;padding:5px 4px;vertical-align:top}
+  .budget td:last-child{text-align:right;color:var(--muted);white-space:nowrap;padding-left:10px}
+  .assets{font-size:13px;margin:0}
+  .create{display:inline-block;margin-top:14px;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;font-weight:500;padding:9px 14px;border-radius:9px}
+  .create:hover{filter:brightness(1.06)}
+  .findhint{font-size:12px;color:var(--muted);margin:8px 0 0}
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  @media(max-width:780px){.info{grid-template-columns:1fr}}
+  .box{border-radius:12px;padding:12px 14px;border:1px solid}
+  .box h4{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+  .box ul{margin:0;padding-left:18px;font-size:13px}
+  .box p{margin:0;font-size:13px}
+  .box.neutral{background:#F4F2EC;border-color:#E4E1D8;color:#3A3A36}
+  .box.good{background:#E7F5EF;border-color:#9FE1CB;color:#0F6E56}
+  .box.warn{background:#FBEFD9;border-color:#FAC775;color:#854F0B}
+  .box.bad{background:#FCEBEB;border-color:#F7C1C1;color:#A32D2D}
   .ph{fill:#E6E4DC}.lb{fill:#6B6A65;font-size:11px;font-family:inherit}
   .kard{fill:#F3F0E7;stroke:#B4B2A9;stroke-width:1}.fr{fill:#E6E4DC;stroke:#B4B2A9;stroke-width:1}
   .fld{fill:#ECEAE1;stroke:#9C9A90;stroke-width:1}.btn{fill:#C2BFB3}.tag{fill:#ECEAE1;stroke:#B4B2A9;stroke-width:1}
@@ -68,7 +84,7 @@
 <div class="wrap">
   <header>
     <h1>Candis Component Catalogue</h1>
-    <p>Tell me what you're building and I'll suggest the right building blocks — or filter by pillar and category. Each suggestion shows its skeleton, copy limits and how to find it in Contentful.</p>
+    <p>Tell me what you're building and I'll suggest the right building blocks — or filter by pillar and category. Each suggestion shows what copy and assets you need, plus a link to create it in Contentful.</p>
   </header>
   <div class="ask">
     <input id="ask" type="search" placeholder="e.g. “I need something to show Candis vs others” or “sections that build trust”" aria-label="Describe what you need">
@@ -80,11 +96,14 @@
     <div class="chips" id="catChips"><span class="lbl">Category:</span></div>
   </div>
   <div class="interpret" id="interpret"></div>
-  <div class="count" id="count"></div>
-  <div class="grid" id="grid"></div>
+  <div class="slider" id="slider" style="display:none">
+    <div class="nav"><button id="prev" aria-label="Previous">‹</button><span class="pos" id="pos"></span><div class="tabs" id="tabs"></div><button id="next" aria-label="Next">›</button></div>
+    <div class="stage" id="stage"></div>
+  </div>
   <div class="empty" id="empty"><div class="big">What are you building?</div>Describe it above (or pick a pillar / category) and matching components will appear here.</div>
 </div>
 <script>
+const SPACE="iszu9cg7w7tj", ENV="master";
 const PILLARS={standard_setter:["Standard Setter","--p-standard"],trust_anchor:["Trust Anchor","--p-trust"],translation_of_complexity:["Translation of Complexity","--p-translation"],thought_leader:["Thought Leader","--p-thought"],authority:["Authority","--p-authority"]};
 const CATS={feature_grids:"Feature Grids",content_single:"Content (single)",conversion:"Conversion",process:"Process"};
 const PT={
@@ -95,7 +114,6 @@ const PT={
  authority:["authority","system of record","restraint","credential","certified","gobd"]
 };
 const EXAMPLES=["show Candis vs others","sections that build trust","explain a process / before-after","drive sign-ups or demos","overview of features"];
-
 const SK={
 bentom:`<svg viewBox="0 0 680 400" aria-hidden="true"><rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text><rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text><rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text><rect x="24" y="140" width="196" height="220" rx="8" fill="none" stroke="#B4B2A9"/><rect x="38" y="154" width="168" height="105" rx="4" class="ph"/><text x="122" y="203" text-anchor="middle" class="lb">Image 16:10</text><text x="122" y="218" text-anchor="middle" class="lb">/ icon</text><rect x="38" y="273" width="110" height="13" rx="4" class="ph"/><text x="154" y="283" class="lb">≤80</text><rect x="38" y="294" width="168" height="8" rx="4" class="ph"/><rect x="38" y="308" width="140" height="8" rx="4" class="ph"/><rect x="38" y="326" width="76" height="15" rx="7" class="ph"/><text x="120" y="337" class="lb">Link (text/button)</text><rect x="242" y="140" width="196" height="220" rx="8" fill="none" stroke="#B4B2A9"/><rect x="256" y="154" width="168" height="105" rx="4" class="ph"/><rect x="256" y="273" width="110" height="13" rx="4" class="ph"/><rect x="256" y="294" width="168" height="8" rx="4" class="ph"/><rect x="256" y="308" width="140" height="8" rx="4" class="ph"/><rect x="256" y="326" width="76" height="15" rx="7" class="ph"/><rect x="460" y="140" width="196" height="220" rx="8" fill="none" stroke="#B4B2A9"/><rect x="474" y="154" width="168" height="105" rx="4" class="ph"/><rect x="474" y="273" width="110" height="13" rx="4" class="ph"/><rect x="474" y="294" width="168" height="8" rx="4" class="ph"/><rect x="474" y="308" width="140" height="8" rx="4" class="ph"/><rect x="474" y="326" width="76" height="15" rx="7" class="ph"/><text x="340" y="386" text-anchor="middle" class="lb">2–9 cards (ideal 3 or 6)</text></svg>`,
 video:`<svg viewBox="0 0 680 432" aria-hidden="true"><rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow</text><rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading (serif/sans)</text><rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text><rect x="110" y="130" width="460" height="259" rx="8" class="fr"/><circle cx="340" cy="252" r="30" fill="#D3D1C7" stroke="#B4B2A9"/><polygon points="331,237 331,267 359,252" fill="#6B6A65"/><text x="340" y="372" text-anchor="middle" class="lb">Video 16:9 · thumbnail + play button</text><rect x="302" y="405" width="76" height="15" rx="7" class="ph"/><text x="386" y="416" class="lb">Link (optional)</text></svg>`,
@@ -105,139 +123,152 @@ decision:`<svg viewBox="0 0 680 360" aria-hidden="true"><rect x="40" y="20" widt
 cta:`<svg viewBox="0 0 680 300" aria-hidden="true"><rect x="40" y="50" width="600" height="230" rx="12" class="kard"/><rect x="70" y="80" width="100" height="14" rx="7" class="ph"/><text x="178" y="91" class="lb">eyebrow</text><rect x="70" y="104" width="210" height="18" rx="4" class="ph"/><text x="288" y="118" class="lb">heading</text><rect x="70" y="138" width="210" height="8" rx="4" class="ph"/><rect x="70" y="152" width="190" height="8" rx="4" class="ph"/><text x="288" y="147" class="lb">paragraph</text><rect x="70" y="184" width="160" height="30" rx="6" class="fld"/><text x="82" y="203" class="lb">email field</text><rect x="240" y="184" width="90" height="30" rx="6" class="btn"/><text x="285" y="203" text-anchor="middle" class="lb">submit</text><rect x="350" y="80" width="260" height="170" rx="8" class="fr"/><text x="480" y="162" text-anchor="middle" class="lb">image</text><text x="480" y="176" text-anchor="middle" class="lb">(optional)</text></svg>`,
 beforeafter:`<svg viewBox="0 0 680 380" aria-hidden="true"><rect x="290" y="18" width="100" height="12" rx="6" class="ph"/><text x="402" y="28" class="lb">eyebrow</text><rect x="250" y="36" width="180" height="18" rx="4" class="ph"/><text x="440" y="50" class="lb">heading</text><rect x="255" y="62" width="170" height="7" rx="3" class="ph"/><rect x="285" y="73" width="110" height="7" rx="3" class="ph"/><text x="440" y="72" class="lb">paragraph</text><rect x="40" y="94" width="600" height="270" rx="12" class="kard"/><rect x="250" y="110" width="180" height="14" rx="4" class="ph"/><text x="438" y="121" class="lb">before / after headline</text><rect x="56" y="144" width="133" height="120" rx="6" class="ph"/><rect x="56" y="276" width="105" height="12" rx="4" class="ph"/><rect x="56" y="294" width="120" height="7" rx="3" class="ph"/><rect x="56" y="306" width="92" height="7" rx="3" class="ph"/><rect x="201" y="144" width="133" height="120" rx="6" class="ph"/><rect x="201" y="276" width="105" height="12" rx="4" class="ph"/><rect x="201" y="294" width="120" height="7" rx="3" class="ph"/><rect x="201" y="306" width="92" height="7" rx="3" class="ph"/><rect x="346" y="144" width="133" height="120" rx="6" class="ph"/><rect x="346" y="276" width="105" height="12" rx="4" class="ph"/><rect x="346" y="294" width="120" height="7" rx="3" class="ph"/><rect x="346" y="306" width="92" height="7" rx="3" class="ph"/><rect x="491" y="144" width="133" height="120" rx="6" class="ph"/><rect x="491" y="276" width="105" height="12" rx="4" class="ph"/><rect x="491" y="294" width="120" height="7" rx="3" class="ph"/><rect x="491" y="306" width="92" height="7" rx="3" class="ph"/><line x1="170" y1="94" x2="170" y2="364" class="hl"/><circle cx="170" cy="229" r="15" class="hc"/><text x="170" y="233" text-anchor="middle" class="lb">‹ ›</text><rect x="62" y="236" width="48" height="16" rx="3" class="tag"/><text x="86" y="248" text-anchor="middle" class="lb">Vorher</text></svg>`
 };
-
 const DATA=[
-{id:"bentom",name:"Grid Section — Bento M",cat:"feature_grids",pillars:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"],chips:["standard_setter","translation_of_complexity","thought_leader"],cd:false,density:"medium",media:"image, icon",
+{id:"bentom",name:"Grid Section — Bento M",cat:"feature_grids",ct:"gridSection",cthint:"Then set Variant = bento_M",pillars:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"],chips:["standard_setter","translation_of_complexity","thought_leader"],cd:false,density:"medium",media:"image, icon",
 kw:["overview","grid","bento","feature","features","benefit","benefits","cards","capabilities"],
 purpose:"Mainly an overview grid for a group of related points; can also show a light numbered flow or a link collection.",
+assets:"Per card: 1 image (16:10) OR 1 icon · 2–9 cards (ideal 3 or 6)",
+budget:[["Section eyebrow","32"],["Card heading (each)","80, required"],["Cards","2–9 (ideal 3/6)"]],
 uses:["Overview / feature or benefit grid (main purpose)","Light numbered flow (numbers in image/icon/heading)","Link collection (e.g. to blog posts) → Thought-Leader character"],
 str:["Flexible — carries many content types and almost any pillar","Image OR icon per card + short text","Optional link per card","2–9 items, ideal 3 or 6"],
 lim:["Card heading hard-capped at 80 chars","For pure trust-building, others fit better","With >6 items the grid gets busy"],
-anti:"For a real step-by-step process the Steps Section is better. Not as a primary trust element.",
-budget:[["Section eyebrow","32"],["Card heading (each)","80, required"],["Cards","2–9 (ideal 3/6)"],["Card image","16:10 (or icon)"]],
-find:"Add entry → Grid Section → Variant = bento_M → add 2–9 Bento M under Bento Boxes M."},
+anti:"For a real step-by-step process the Steps Section is better. Not as a primary trust element."},
 
-{id:"video",name:"1-Column Section — Video",cat:"content_single",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"low",media:"video",
+{id:"video",name:"1-Column Section — Video",cat:"content_single",ct:"oneColumnSection",cthint:"Then set Media = Video",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"low",media:"video",
 kw:["video","explainer","demo","testimonial","pov","watch","play","film","clip"],
 purpose:"Gives one statement room and backs it with a video — explainer, demo, testimonial or POV.",
+assets:"1 video (file, YouTube or Wistia) + 1 thumbnail image (16:9)",
+budget:[["Section eyebrow","~32"],["Section heading","~60"],["Video display title","~60"],["Video meta description","~150–160"]],
 uses:["Product explainer / demo video","Testimonial / customer story as video","Founder / vision POV video","One video center stage with framing copy"],
 str:["A single focal point — no competition","Video shows instead of tells","Three hosting options: file, YouTube, Wistia","Lots of real estate — for especially important videos"],
 lim:["Can't carry multiple parallel points (use Grid/Bento)","Video adds load weight (esp. mobile)"],
-anti:"Not for multiple parallel features. Not for step-by-step with proof per step. Don't bury the video under heavy copy.",
-budget:[["Section eyebrow","~32"],["Section heading","~60"],["Video display title","~60"],["Video meta description","~150–160"]],
-find:"Add entry → 1-Column Section → Media = Video entry (thumbnail, duration, alt; host via file/YouTube/Wistia)."},
+anti:"Not for multiple parallel features. Not for step-by-step with proof per step. Don't bury the video under heavy copy."},
 
-{id:"image",name:"1-Column Section — Image",cat:"content_single",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"low",media:"image",
+{id:"image",name:"1-Column Section — Image",cat:"content_single",ct:"oneColumnSection",cthint:"Then set Media = Image",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"low",media:"image",
 kw:["image","photo","picture","screenshot","visual","editorial","brand","diagram","illustration"],
 purpose:"Gives one statement room and supports it with a single strong image — editorial, brand or explanatory.",
+assets:"1 image (+ optional separate mobile image) · provide alt text",
+budget:[["Section eyebrow","~32"],["Section heading","~60"],["Image alt text","~125"],["Image title","~60"]],
 uses:["Editorial / brand image moment","Diagram or before/after visual","Product screenshot as a focal proof","One important image center stage with framing copy"],
 str:["A single focal point","Lots of real estate for one important image","Lighter than video — faster load","Built-in alt text (accessibility + SEO)"],
 lim:["A static image shows less than a video","Can't carry multiple parallel points","Strongly image-dependent"],
-anti:"Not for multiple parallel features. Not for step-by-step. Don't use a purely decorative image where proof/explanation is needed.",
-budget:[["Section eyebrow","~32"],["Section heading","~60"],["Image alt text","~125"],["Image title","~60"]],
-find:"Add entry → 1-Column Section → Media = Image entry (needs the file and, recommended, alt text)."},
+anti:"Not for multiple parallel features. Not for step-by-step. Don't use a purely decorative image where proof/explanation is needed."},
 
-{id:"toolcmp",name:"1-Column Section — Table (Tool Comparison)",cat:"content_single",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"medium",media:"table",
+{id:"toolcmp",name:"1-Column Section — Table (Tool Comparison)",cat:"content_single",ct:"oneColumnSection",cthint:"Then set Media = Table, Variant = tool_comparison",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"medium",media:"table",
 kw:["compare","comparison","versus","vs","candis vs","competitor","competitors","alternative","alternatives","others","checkmark","feature by feature","table","tool comparison"],
 purpose:"A comparison table that pits Candis against other tools, feature by feature, with green checkmarks and red crosses.",
+assets:"No images required (optional: integration logos)",
+budget:[["Section eyebrow","~32"],["Column headers","short, ~15–20"],["Feature labels","concise, ~60"]],
 uses:["Whenever the messaging wants a “Candis vs …” angle","Candis vs competitor tools, feature by feature","Candis features vs the market standard","A long matrix that needs collapsing / accordion"],
 str:["Side-by-side reads as “we measure up”","Honest red crosses build credibility","Accordion + collapse-by-default keep it compact","Checks / crosses scan fast"],
 lim:["Needs accurate, maintained competitive data","Dense — too many rows/columns overwhelm","2–4 comparison columns max (+ label column)"],
-anti:"Not for non-comparative content. Don't make claims you can't back up. Don't overload with columns/rows.",
-budget:[["Section eyebrow","~32"],["Column headers","short, ~15–20"],["Feature labels","concise, ~60"]],
-find:"Add entry → 1-Column Section → Media = Table, Variant = tool_comparison. Build in Rich Text Table."},
+anti:"Not for non-comparative content. Don't make claims you can't back up. Don't overload with columns/rows."},
 
-{id:"decision",name:"1-Column Section — Table (Decision Overview)",cat:"content_single",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"high",media:"table",
+{id:"decision",name:"1-Column Section — Table (Decision Overview)",cat:"content_single",ct:"oneColumnSection",cthint:"Then set Media = Table, Variant = decision_overview",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"high",media:"table",
 kw:["compare","comparison","versus","vs","candis vs","competitor","alternative","others","nuanced","context","decision","it depends","trade-off","tradeoff","table","fit"],
 purpose:"A text-based comparison table for nuanced, not-black-and-white comparisons; leaves the “right fit” call to the reader.",
+assets:"No images required (optional: integration logos)",
+budget:[["Section eyebrow","~32"],["Column headers","short, ~15–20"],["Cell text","a sentence or two"]],
 uses:["Whenever the messaging wants a “Candis vs …” angle (nuanced)","Nuanced comparison where “it depends”","Explaining trade-offs / fit by use case","A multi-category decision overview (selectable categories)"],
 str:["Free text per cell → room for nuance","Reads as honest → builds trust","Selectable categories keep it navigable","Sets the criteria that matter"],
 lim:["Text-heavy → can get long","Needs accurate, maintained context","Less instantly scannable than a checkmark table"],
-anti:"Not when a simple yes/no comparison is enough (use Tool Comparison). Don't let cells become walls of text.",
-budget:[["Section eyebrow","~32"],["Column headers","short, ~15–20"],["Cell text","a sentence or two"]],
-find:"Add entry → 1-Column Section → Media = Table, Variant = decision_overview. For categories use the section's Decision Overview Tables + each table's Category."},
+anti:"Not when a simple yes/no comparison is enough (use Tool Comparison). Don't let cells become walls of text."},
 
-{id:"cta",name:"CTA Section",cat:"conversion",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:["trust_anchor"],cd:true,density:"low",media:"image (optional)",
+{id:"cta",name:"CTA Section",cat:"conversion",ct:"ctaSection",cthint:"Then link a CTA Button (click) or a Form (sign-up)",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:["trust_anchor"],cd:true,density:"low",media:"image (optional)",
 kw:["cta","call to action","sign up","signup","sign-up","email","newsletter","consultation","demo","book","convert","conversion","download","button","form","waitlist","lead","contact"],
 purpose:"A conversion section that drives one action — click a button (e.g. book a consultation) or sign up via a form (e.g. email).",
+assets:"Optional: 1 image",
+budget:[["Section heading","~50 (punchy)"],["Button text","~25"],["Success/error msgs","short, 1 line"]],
 uses:["“Book a consultation / demo” button (or Demodesk form)","Newsletter / waitlist email sign-up","Gated content download (PDF on submit)","End-of-page conversion ask"],
 str:["Two modes: button click OR inline form","Form covers consultation booking, email, gated PDF","Optional image + background colours","Focused, single ask"],
 lim:["Should carry one clear ask","Form mode needs a linked form entry","Keep CTA copy tight"],
-anti:"Don't stack multiple competing CTAs. Don't use it as a content section. Don't bury the action under long copy.",
-budget:[["Section heading","~50 (punchy)"],["Button text","~25"],["Success/error msgs","short"]],
-find:"Add entry → CTA Section. Link a CTA Button (click) or a Form (sign-up). Set backgrounds, optional image."},
+anti:"Don't stack multiple competing CTAs. Don't use it as a content section. Don't bury the action under long copy."},
 
-{id:"beforeafter",name:"Before / After Slider",cat:"process",pillars:["translation_of_complexity","trust_anchor","standard_setter"],chips:["translation_of_complexity"],cd:false,density:"medium",media:"image",
+{id:"beforeafter",name:"Before / After Slider",cat:"process",ct:"customComponent",cthint:"Then set Component variant = before_after_slider",pillars:["translation_of_complexity","trust_anchor","standard_setter"],chips:["translation_of_complexity"],cd:false,density:"medium",media:"image",
 kw:["before","after","before/after","transformation","workflow","ohne und mit","slider","reveal","drag","change","pain","relief","process"],
 purpose:"An interactive before/after comparison across 3–4 paired Bento M cards — drag to reveal on desktop, toggle on mobile.",
+assets:"Before: 3–4 images (16:10) + After: 3–4 images (16:10) — one per Bento M card",
+budget:[["Section eyebrow","~32"],["Before / after headings","short, ~24"],["Card heading (each)","80 (from Bento M)"]],
 uses:["“Ohne und mit Candis” workflow comparison","Showing pain (before) → relief (after) across steps","Any before/after transformation story"],
 str:["Interactive reveal makes the contrast memorable","3–4 paired cards cover a multi-step transformation","Shows, not tells","Before = recognisable pain, after = Candis relief"],
 lim:["Needs paired before/after content per card","Interaction differs desktop (drag) vs mobile (toggle)","Lives inside customComponent — less discoverable"],
-anti:"Not for non-transformation content. Don't mismatch the before/after card counts.",
-budget:[["Section eyebrow","~32"],["Before/after headings","short, ~24"],["Card heading (each)","80 (from Bento M)"]],
-find:"Add entry → Custom Component → Component variant = before_after_slider. Fill Before/After State (3–4 Bento M each) + toggle fields."}
+anti:"Not for non-transformation content. Don't mismatch the before/after card counts."}
 ];
 
 function cssvar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
 function pill(key){const [label,v]=PILLARS[key];const c=cssvar(v);return `<span class="pill" style="background:${c}1f;color:${c}">${label}</span>`;}
 function li(a){return a.map(x=>`<li>${x}</li>`).join("");}
-function budget(b){return `<table class="budget">${b.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table>`;}
-
-const grid=document.getElementById("grid"), cardEls={};
-DATA.forEach(d=>{
-  const chips=d.cd?`<span class="pill" style="background:var(--p-neutral)1f;color:var(--p-neutral)">Depends on content</span>`:d.chips.map(pill).join("");
-  const el=document.createElement("article");el.className="card";
-  el.innerHTML=`<div class="sk">${SK[d.id]}</div><div class="body">
-    <div class="toprow"><h3>${d.name}</h3><span class="cat">${CATS[d.cat]}</span></div>
-    <div class="pills">${chips}</div>
-    <div class="meta">density: ${d.density} · media: ${d.media}</div>
-    <p class="purpose">${d.purpose}</p>
-    <button class="more">Details ▾</button>
-    <div class="details"><h4>Usecase examples</h4><ul>${li(d.uses)}</ul><h4>Strengths</h4><ul>${li(d.str)}</ul><h4>Limitations</h4><ul>${li(d.lim)}</ul><h4>Anti-pattern</h4><p>${d.anti}</p><h4>Copy budget</h4>${budget(d.budget)}<h4>Find in Contentful</h4><p>${d.find}</p></div>
-  </div>`;
-  el.querySelector(".more").addEventListener("click",e=>{const det=el.querySelector(".details");const o=det.classList.toggle("open");e.target.textContent=o?"Details ▴":"Details ▾";});
-  d._text=(d.name+" "+d.purpose+" "+d.uses.join(" ")+" "+d.kw.join(" ")).toLowerCase();
-  cardEls[d.id]=el;
-});
+DATA.forEach(d=>{d._text=(d.name+" "+d.purpose+" "+d.uses.join(" ")+" "+d.kw.join(" ")).toLowerCase();});
 
 function detectPillars(q){const s=new Set();for(const p in PT){if(PT[p].some(t=>q.includes(t)))s.add(p);}return s;}
-function score(d,q,qp){
-  let sc=0;
-  for(const k of d.kw){if(q.includes(k))sc+=3;}
-  for(const p of qp){ if(d.chips.includes(p))sc+=3; else if(d.cd)sc+=1.5; else if(d.pillars.includes(p))sc+=1; }
-  q.split(/[^a-zäöü]+/).forEach(t=>{if(t.length>=4&&d._text.includes(t))sc+=0.4;});
-  return sc;
+function score(d,q,qp){let sc=0;for(const k of d.kw){if(q.includes(k))sc+=3;}for(const p of qp){if(d.chips.includes(p))sc+=3;else if(d.cd)sc+=1.5;else if(d.pillars.includes(p))sc+=1;}q.split(/[^a-zäöü]+/).forEach(t=>{if(t.length>=4&&d._text.includes(t))sc+=0.4;});return sc;}
+
+function cardHTML(d){
+ const chips=d.cd?`<span class="pill" style="background:var(--p-neutral)1f;color:var(--p-neutral)">Depends on content</span>`:d.chips.map(pill).join("");
+ const create=`https://app.contentful.com/spaces/${SPACE}/environments/${ENV}/entries/new/${d.ct}`;
+ const budget=`<table class="budget">${d.budget.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table>`;
+ return `<div class="toprow"><h2>${d.name}</h2><span class="cat">${CATS[d.cat]}</span></div>
+ <div class="pills">${chips}</div>
+ <p class="purpose">${d.purpose}</p>
+ <div class="two">
+   <div class="skbox">${SK[d.id]}</div>
+   <div>
+     <div class="needbox">
+       <h3>What you need to build this</h3><p class="sub">density: ${d.density} · media: ${d.media}</p>
+       <h4>Copy budget</h4>${budget}
+       <h4>Assets / graphics</h4><p class="assets">${d.assets}</p>
+       <a class="create" href="${create}" target="_blank" rel="noopener">Create in Contentful →</a>
+       <p class="findhint">Opens a new ${d.ct} entry. ${d.cthint}.</p>
+     </div>
+   </div>
+ </div>
+ <div class="info">
+   <div class="box neutral"><h4>Usecase examples</h4><ul>${li(d.uses)}</ul></div>
+   <div class="box good"><h4>Strengths</h4><ul>${li(d.str)}</ul></div>
+   <div class="box warn"><h4>Limitations</h4><ul>${li(d.lim)}</ul></div>
+   <div class="box bad"><h4>Anti-pattern</h4><p>${d.anti}</p></div>
+ </div>`;
 }
 
+let results=[], cur=0;
 const selP=new Set(),selC=new Set();
-function applyState(){
-  const raw=document.getElementById("ask").value.trim();
-  const q=raw.toLowerCase();
-  const interp=document.getElementById("interpret"), count=document.getElementById("count"), empty=document.getElementById("empty");
-  const active = q || selP.size || selC.size;
-  Object.values(cardEls).forEach(el=>el.style.display="none");
-  if(!active){ empty.style.display="block"; interp.innerHTML=""; count.textContent=""; return; }
-  empty.style.display="none";
-  let order, qp=new Set();
-  if(q){ qp=detectPillars(q); let sc=DATA.map(d=>({d,s:score(d,q,qp)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s); const top=sc.length?sc[0].s:0; sc=sc.filter(x=>x.s>=Math.max(2,top*0.4)); order=sc.map(x=>x.d); }
-  else { order=DATA.slice(); }
-  order=order.filter(d=>(selP.size===0||[...selP].some(p=>d.pillars.includes(p)))&&(selC.size===0||selC.has(d.cat)));
-  order.forEach(d=>{cardEls[d.id].style.display="";grid.appendChild(cardEls[d.id]);});
-  count.textContent=order.length+" suggestion"+(order.length===1?"":"s");
-  const bits=[...qp].map(p=>PILLARS[p][0]);
-  if(q&&order.length) interp.innerHTML=`Suggesting for <b>“${raw}”</b>${bits.length?" · pillar signal: "+bits.join(", "):""}`;
-  else if(!order.length) interp.innerHTML="No components match — try fewer filters or different wording.";
-  else interp.innerHTML="";
-}
+const $=id=>document.getElementById(id);
 
-const exHost=document.getElementById("examples");
-EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.textContent=t;b.addEventListener("click",()=>{document.getElementById("ask").value=t;applyState();});exHost.appendChild(b);});
-function chip(text,set,key,host){const b=document.createElement("span");b.className="chip";b.textContent=text;b.addEventListener("click",()=>{b.classList.toggle("on");if(set.has(key))set.delete(key);else set.add(key);applyState();});host.appendChild(b);}
-Object.keys(PILLARS).forEach(k=>chip(PILLARS[k][0],selP,k,document.getElementById("pillarChips")));
-Object.keys(CATS).forEach(k=>chip(CATS[k],selC,k,document.getElementById("catChips")));
-document.getElementById("ask").addEventListener("input",applyState);
-document.getElementById("askBtn").addEventListener("click",applyState);
-applyState();
+function compute(){
+ const q=$("ask").value.trim().toLowerCase();
+ let order, qp=new Set();
+ if(q){qp=detectPillars(q);let sc=DATA.map(d=>({d,s:score(d,q,qp)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s);const top=sc.length?sc[0].s:0;sc=sc.filter(x=>x.s>=Math.max(2,top*0.4));order=sc.map(x=>x.d);}
+ else order=DATA.slice();
+ order=order.filter(d=>(selP.size===0||[...selP].some(p=>d.pillars.includes(p)))&&(selC.size===0||selC.has(d.cat)));
+ return {order,qp,q};
+}
+function render(){
+ const raw=$("ask").value.trim();
+ const active = raw||selP.size||selC.size;
+ if(!active){$("slider").style.display="none";$("empty").style.display="block";$("interpret").innerHTML="";return;}
+ $("empty").style.display="none";
+ const {order,qp,q}=compute();
+ results=order; if(cur>=results.length)cur=0;
+ const bits=[...qp].map(p=>PILLARS[p][0]);
+ if(!results.length){$("slider").style.display="none";$("interpret").innerHTML="No components match — try fewer filters or different wording.";return;}
+ $("interpret").innerHTML = q ? `Suggesting for <b>“${raw}”</b>${bits.length?" · pillar signal: "+bits.join(", "):""} — ${results.length} match${results.length===1?"":"es"}` : `${results.length} component${results.length===1?"":"s"}`;
+ $("slider").style.display="block";
+ $("stage").innerHTML=cardHTML(results[cur]);
+ $("pos").textContent=(cur+1)+" / "+results.length;
+ $("tabs").innerHTML=results.map((d,i)=>`<span class="tab${i===cur?" on":""}" data-i="${i}">${d.name.replace("1-Column Section — ","").replace("Grid Section — ","")}</span>`).join("");
+ [...$("tabs").children].forEach(t=>t.addEventListener("click",()=>{cur=+t.dataset.i;render();}));
+}
+$("prev").addEventListener("click",()=>{if(results.length){cur=(cur-1+results.length)%results.length;render();}});
+$("next").addEventListener("click",()=>{if(results.length){cur=(cur+1)%results.length;render();}});
+
+const exHost=$("examples");
+EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.textContent=t;b.addEventListener("click",()=>{$("ask").value=t;cur=0;render();});exHost.appendChild(b);});
+function chip(text,set,key,host){const b=document.createElement("span");b.className="chip";b.textContent=text;b.addEventListener("click",()=>{b.classList.toggle("on");if(set.has(key))set.delete(key);else set.add(key);cur=0;render();});host.appendChild(b);}
+Object.keys(PILLARS).forEach(k=>chip(PILLARS[k][0],selP,k,$("pillarChips")));
+Object.keys(CATS).forEach(k=>chip(CATS[k],selC,k,$("catChips")));
+$("ask").addEventListener("input",()=>{cur=0;render();});
+$("askBtn").addEventListener("click",()=>{cur=0;render();});
+render();
 </script>
 </body>
 </html>
