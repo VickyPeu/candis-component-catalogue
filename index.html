@@ -122,7 +122,7 @@
 </div>
 <script>
 const SPACE="iszu9cg7w7tj", ENV="master";
-const AI_ENDPOINT=""; // ← Emin: set to the deployed /api/suggest URL to switch on smart (LLM) suggestions. Empty = keyword fallback.
+const AI_ENDPOINT="/api/suggest"; // smart (LLM) suggestions via the Vercel serverless function (same origin). Falls back to keyword search if the call fails.
 const PILLARS={standard_setter:["Standard Setter","--p-standard"],trust_anchor:["Trust Anchor","--p-trust"],translation_of_complexity:["Translation of Complexity","--p-translation"],thought_leader:["Thought Leader","--p-thought"],authority:["Authority","--p-authority"]};
 const CATS={feature_grids:"Feature Grids",content_single:"Content (single)",conversion:"Conversion",process:"Process"};
 const PT={
