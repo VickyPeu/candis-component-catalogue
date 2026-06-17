@@ -36,6 +36,11 @@
   .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
   .interpret{font-size:14px;color:var(--muted);margin:22px 0 10px;min-height:18px}
   .interpret b{color:var(--ink);font-weight:600}
+  #wire{background:var(--surface);border:1px solid #D9D2E6;border-radius:16px;padding:18px 20px;margin-bottom:16px}
+  .wire-h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .wire-list{margin:0;padding-left:20px}
+  .wire-list li{margin-bottom:9px;font-size:14px}
+  .wire-why{font-size:13px;color:var(--muted)}
   .empty{text-align:center;color:var(--muted);padding:72px 20px;border:1px dashed var(--line);border-radius:16px;margin-top:18px;background:var(--surface)}
   .empty .big{font-family:var(--serif);font-size:21px;color:var(--ink);margin-bottom:6px}
   /* slider nav */
@@ -108,6 +113,7 @@
     <div class="chips" id="catChips"><span class="lbl">Category</span></div>
   </div>
   <div class="interpret" id="interpret"></div>
+  <div id="wire" style="display:none"></div>
   <div id="slider" style="display:none">
     <div class="nav"><button id="prev" aria-label="Previous">‹</button><span class="pos" id="pos"></span><div class="tabs" id="tabs"></div><button id="next" aria-label="Next">›</button></div>
     <div class="stage" id="stage"></div>
@@ -116,6 +122,7 @@
 </div>
 <script>
 const SPACE="iszu9cg7w7tj", ENV="master";
+const AI_ENDPOINT=""; // ← Emin: set to the deployed /api/suggest URL to switch on smart (LLM) suggestions. Empty = keyword fallback.
 const PILLARS={standard_setter:["Standard Setter","--p-standard"],trust_anchor:["Trust Anchor","--p-trust"],translation_of_complexity:["Translation of Complexity","--p-translation"],thought_leader:["Thought Leader","--p-thought"],authority:["Authority","--p-authority"]};
 const CATS={feature_grids:"Feature Grids",content_single:"Content (single)",conversion:"Conversion",process:"Process"};
 const PT={
@@ -228,7 +235,7 @@ function cardHTML(d){
  return `<div class="meta-top"><span class="cat">${CATS[d.cat]}</span><div class="pills">${chips}</div></div>
  <h2 class="cname">${d.name}</h2>
  <p class="purpose">${d.purpose}</p>
- <div class="shout"><span class="tagk">How it can work</span><p>${d.tip}</p></div>
+ <div class="shout"><span class="tagk">${aiNotes[d.id]?"For your brief":"How it can work"}</span><p>${aiNotes[d.id]||d.tip}</p></div>
  <figure class="visual"><div class="vlabel">Structure · wireframe (no copy)</div>${SK[d.id]}</figure>
  <div class="grid-2">
    <section class="panel spec">
@@ -249,40 +256,63 @@ function cardHTML(d){
  </div>`;
 }
 
-let results=[], cur=0;
+let results=[], cur=0, aiNotes={}, aiWire=[];
 const selP=new Set(),selC=new Set();
 const $=id=>document.getElementById(id);
-function compute(){
+function heuristic(){
  const q=$("ask").value.trim().toLowerCase();let order,qp=new Set();
  if(q){qp=detectPillars(q);let sc=DATA.map(d=>({d,s:score(d,q,qp)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s);const top=sc.length?sc[0].s:0;sc=sc.filter(x=>x.s>=Math.max(2,top*0.4));order=sc.map(x=>x.d);}
  else order=DATA.slice();
  order=order.filter(d=>(selP.size===0||[...selP].some(p=>d.pillars.includes(p)))&&(selC.size===0||selC.has(d.cat)));
  return {order,qp,q};
 }
-function render(){
- const raw=$("ask").value.trim();const active=raw||selP.size||selC.size;
- if(!active){$("slider").style.display="none";$("empty").style.display="block";$("interpret").innerHTML="";return;}
- $("empty").style.display="none";
- const {order,qp,q}=compute();results=order;if(cur>=results.length)cur=0;
- const bits=[...qp].map(p=>PILLARS[p][0]);
- if(!results.length){$("slider").style.display="none";$("interpret").innerHTML="No components match — try fewer filters or different wording.";return;}
- $("interpret").innerHTML=q?`Suggesting for <b>“${raw}”</b>${bits.length?" · pillar signal: "+bits.join(", "):""} — ${results.length} match${results.length===1?"":"es"}`:`${results.length} component${results.length===1?"":"s"}`;
- $("slider").style.display="block";
- $("stage").innerHTML=cardHTML(results[cur]);
- $("pos").textContent=(cur+1)+" / "+results.length;
- $("tabs").innerHTML=results.map((d,i)=>`<span class="tab${i===cur?" on":""}" data-i="${i}">${d.name.replace("1-Column Section — ","").replace("Grid Section — ","")}</span>`).join("");
- [...$("tabs").children].forEach(t=>t.addEventListener("click",()=>{cur=+t.dataset.i;render();}));
+function repaintActive(){$("stage").innerHTML=cardHTML(results[cur]);$("pos").textContent=(cur+1)+" / "+results.length;[...$("tabs").children].forEach(x=>x.classList.toggle("on",+x.dataset.i===cur));}
+function paintWire(){const w=$("wire");if(!aiWire.length){w.style.display="none";w.innerHTML="";return;}w.style.display="block";w.innerHTML='<div class="wire-h">Suggested wireframe — top to bottom</div><ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;const pl=(s.pillar&&PILLARS[s.pillar])?' · <span style="color:'+cssvar(PILLARS[s.pillar][1])+'">'+PILLARS[s.pillar][0]+'</span>':'';return '<li><b>'+nm+'</b>'+pl+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol>';}
+function paint(list,interpHTML){
+ paintWire();
+ if(!list.length){$("slider").style.display="none";$("empty").style.display="none";$("interpret").innerHTML=interpHTML||"No good-fit components.";return;}
+ $("empty").style.display="none";$("slider").style.display="block";
+ results=list;if(cur>=results.length)cur=0;
+ $("interpret").innerHTML=interpHTML;
+ $("tabs").innerHTML=results.map((d,i)=>'<span class="tab'+(i===cur?" on":"")+'" data-i="'+i+'">'+d.name.replace("1-Column Section — ","").replace("Grid Section — ","")+'</span>').join("");
+ [...$("tabs").children].forEach(t=>t.addEventListener("click",()=>{cur=+t.dataset.i;repaintActive();}));
+ repaintActive();
 }
-$("prev").addEventListener("click",()=>{if(results.length){cur=(cur-1+results.length)%results.length;render();}});
-$("next").addEventListener("click",()=>{if(results.length){cur=(cur+1)%results.length;render();}});
+function renderHeuristic(){
+ const raw=$("ask").value.trim();const active=raw||selP.size||selC.size;
+ aiNotes={};aiWire=[];
+ if(!active){$("slider").style.display="none";$("empty").style.display="block";$("interpret").innerHTML="";paintWire();return;}
+ const {order,qp,q}=heuristic();const bits=[...qp].map(p=>PILLARS[p][0]);
+ paint(order, q?'Suggesting for <b>“'+raw+'”</b>'+(bits.length?" · pillar signal: "+bits.join(", "):"")+' — '+order.length+' match'+(order.length===1?"":"es"):order.length+' component'+(order.length===1?"":"s"));
+}
+async function aiSuggest(){
+ const raw=$("ask").value.trim();if(!raw){renderHeuristic();return;}
+ aiNotes={};aiWire=[];$("empty").style.display="none";$("slider").style.display="none";paintWire();
+ $("interpret").innerHTML='Thinking — evaluating each component for <b>“'+raw+'”</b>…';
+ try{
+  const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({brief:raw,pillars:[...selP]})});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  const data=await r.json();
+  (data.suggestions||[]).forEach(s=>{if(s&&s.id&&s.why)aiNotes[s.id]=s.why;});
+  aiWire=Array.isArray(data.wireframe)?data.wireframe:[];
+  let list=(data.suggestions||[]).map(s=>DATA.find(d=>d.id===s.id)).filter(Boolean);
+  if(selC.size)list=list.filter(d=>selC.has(d.cat));
+  cur=0;
+  paint(list, list.length?('Smart suggestions for <b>“'+raw+'”</b> — '+list.length+' good fit'+(list.length===1?"":"s")):('No component is a strong fit for <b>“'+raw+'”</b>.'));
+ }catch(e){$("interpret").innerHTML="(AI unavailable — showing keyword matches)";renderHeuristic();}
+}
+function go(){cur=0;if(AI_ENDPOINT && $("ask").value.trim())aiSuggest();else renderHeuristic();}
+$("prev").addEventListener("click",()=>{if(results.length){cur=(cur-1+results.length)%results.length;repaintActive();}});
+$("next").addEventListener("click",()=>{if(results.length){cur=(cur+1)%results.length;repaintActive();}});
 const exHost=$("examples");
-EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.textContent=t;b.addEventListener("click",()=>{$("ask").value=t;cur=0;render();});exHost.appendChild(b);});
-function chip(text,set,key,host){const b=document.createElement("span");b.className="chip";b.textContent=text;b.addEventListener("click",()=>{b.classList.toggle("on");if(set.has(key))set.delete(key);else set.add(key);cur=0;render();});host.appendChild(b);}
+EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.textContent=t;b.addEventListener("click",()=>{$("ask").value=t;go();});exHost.appendChild(b);});
+function chip(text,set,key,host){const b=document.createElement("span");b.className="chip";b.textContent=text;b.addEventListener("click",()=>{b.classList.toggle("on");if(set.has(key))set.delete(key);else set.add(key);cur=0;renderHeuristic();});host.appendChild(b);}
 Object.keys(PILLARS).forEach(k=>chip(PILLARS[k][0],selP,k,$("pillarChips")));
 Object.keys(CATS).forEach(k=>chip(CATS[k],selC,k,$("catChips")));
-$("ask").addEventListener("input",()=>{cur=0;render();});
-$("askBtn").addEventListener("click",()=>{cur=0;render();});
-render();
+$("ask").addEventListener("input",()=>{cur=0;renderHeuristic();});
+$("askBtn").addEventListener("click",go);
+$("ask").addEventListener("keydown",e=>{if(e.key==="Enter")go();});
+renderHeuristic();
 </script>
 </body>
 </html>
