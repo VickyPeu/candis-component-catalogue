@@ -17,10 +17,9 @@ their own; every response lands in Slack (#website-feedback-form-submit).
 _Category: Conversion (engagement / capture)._
 
 ## Tags (for search & the AI recommender)
-- 🟡 **Pillars:** at its core a `foundation` engagement utility (a form). When it carries a messaging
-  lean it's **Thought Leader** — editorial community dialogue ("the best topics come from practice…
-  maybe part of the next episode") — with a **Trust Anchor** undertone (you listen / are approachable).
-  _(Vicky to confirm.)_
+- **Pillars:** **Thought Leader** (primary) — editorial community dialogue ("the best topics come from
+  practice… maybe part of the next episode") · **Trust Anchor** (secondary) — you listen / are
+  approachable. At its core a `foundation` engagement utility.
 - **Content density:** medium
 - **Media:** none (UI only — no images)
 
