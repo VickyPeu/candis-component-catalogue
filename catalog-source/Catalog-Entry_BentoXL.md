@@ -78,8 +78,8 @@ Content type `bentoXL`.
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Limit / recommended |
 |---|---|
-| Eyebrow | 270 characters |
-| Heading | 620 characters |
+| Eyebrow | ~40 recommended (270 max) |
+| Heading | ~60 recommended (620 max) |
 | Paragraph | 1–3 sentences |
 | Button text | ~25 characters |
 | Text link | ~25 characters (optional) |
