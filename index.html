@@ -25,7 +25,7 @@
   /* AI console card — the hero */
   .console{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 22px 20px;margin-top:14px;box-shadow:0 6px 24px -16px rgba(43,26,46,.25)}
   .greeting{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px}
-  .greeting .avatar{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;font-size:19px}
+  .greeting .avatar{flex:none;width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:50% 14%;border:1px solid var(--accent-line);background:var(--accent-soft)}
   .greeting p{margin:0;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:14px;border-top-left-radius:4px;padding:11px 15px;font-size:14.5px;color:var(--ink)}
   .ask{display:flex;gap:10px}
   .ask input{flex:1;padding:16px 18px;border:1px solid var(--line);border-radius:13px;font-size:15px;font-family:var(--sans);background:var(--bg);color:var(--ink)}
@@ -64,16 +64,24 @@
   .wire-why{font-size:13px;color:var(--muted)}
   .empty{text-align:center;color:var(--muted);padding:72px 20px;border:1px dashed var(--line);border-radius:16px;margin-top:18px;background:var(--surface)}
   .empty .big{font-family:var(--serif);font-size:21px;color:var(--ink);margin-bottom:6px}
-  /* slider nav */
-  .nav{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .nav button{width:38px;height:38px;border:1px solid var(--line);background:var(--surface);border-radius:50%;cursor:pointer;font-size:17px;color:var(--ink)}
-  .nav button:hover{border-color:var(--accent);color:var(--accent)}
-  .pos{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:46px}
-  .tabs{display:flex;flex-wrap:wrap;gap:6px;flex:1}
-  .tab{font-size:12px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);cursor:pointer;white-space:nowrap}
-  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  /* stage */
-  .stage{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 32px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+  /* peek slider — active card centred, neighbours lean in */
+  .peekport{position:relative;overflow:hidden;margin-bottom:14px}
+  .peektrack{display:flex;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+  .peektrack .slot{flex:0 0 80%;padding:0 9px;transition:opacity .3s,transform .3s}
+  .peektrack .slot:not(.active){opacity:.4;transform:scale(.96)}
+  .scard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 32px;box-shadow:0 1px 0 rgba(0,0,0,.02);height:100%}
+  .arrow{position:absolute;top:150px;transform:translateY(-50%);z-index:3;width:44px;height:44px;border:1px solid var(--line);background:var(--surface);border-radius:50%;cursor:pointer;font-size:19px;color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px -8px rgba(43,26,46,.45)}
+  .arrow:hover{border-color:var(--accent);color:var(--accent)}
+  .arrow.l{left:4px}.arrow.r{right:4px}
+  .sliderbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  .pos{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:96px}
+  .pos b{color:var(--ink);font-weight:600}
+  .dots{display:flex;gap:7px;align-items:center;flex:1;flex-wrap:wrap}
+  .dots i{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:all .2s}
+  .dots i.on{background:var(--accent);width:22px;border-radius:4px}
+  .dots .ell{color:var(--muted);font-size:11px}
+  .jump{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .jump select{font-family:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);max-width:240px}
   .meta-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
   .cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
   .pills{display:flex;flex-wrap:wrap;gap:5px}
@@ -121,14 +129,13 @@
 <body>
 <div class="wrap">
   <div class="topbar">
-    <p class="eyebrow">Website building blocks</p>
-    <h1>Component Catalogue</h1>
-    <p class="lede">Tell me what you're building and I'll suggest the right components — what copy and assets each needs, how it fits our pillars, and a link straight into Contentful.</p>
+    <p class="eyebrow">Component Catalogue</p>
+    <h1>What do you want to say?</h1>
   </div>
   <div class="console">
     <div class="greeting">
-      <div class="avatar" aria-hidden="true">📚</div>
-      <p>Hi there! 👋 I'm your component AI assistant — tell me what you're building and I'll pull the right building blocks for your messaging.</p>
+      <img class="avatar" src="assets/compony.png" alt="Compony — your component librarian">
+      <p>Hi, I'm <b>Compony</b> 🐴 — I'll trot off and fetch the right building blocks for your message: <b>copy limits</b>, <b>assets</b>, <b>pillar fit</b>, and a link straight into Contentful.</p>
     </div>
     <div class="examples" id="examples"><span class="lbl">Try</span></div>
     <div class="ask">
@@ -141,8 +148,16 @@
   <div id="loader" style="display:none"><span class="spinner"></span><span class="loader-msg" id="loaderMsg"></span></div>
   <div id="wire" style="display:none"></div>
   <div id="slider" style="display:none">
-    <div class="nav"><button id="prev" aria-label="Previous">‹</button><span class="pos" id="pos"></span><div class="tabs" id="tabs"></div><button id="next" aria-label="Next">›</button></div>
-    <div class="stage" id="stage"></div>
+    <div class="peekport">
+      <button class="arrow l" id="prev" aria-label="Previous component">‹</button>
+      <div class="peektrack" id="track"></div>
+      <button class="arrow r" id="next" aria-label="Next component">›</button>
+    </div>
+    <div class="sliderbar">
+      <span class="pos" id="pos"></span>
+      <div class="dots" id="dots"></div>
+      <label class="jump">Jump to <select id="jump" aria-label="Jump to component"></select></label>
+    </div>
   </div>
   <div class="empty" id="empty" style="display:none"></div>
 </div>
@@ -305,7 +320,15 @@ function heuristic(){
  order=order.filter(d=>(selP.size===0||[...selP].some(p=>d.pillars.includes(p)))&&(selC.size===0||selC.has(d.cat)));
  return {order,qp,q};
 }
-function repaintActive(){$("stage").innerHTML=cardHTML(results[cur]);$("pos").textContent=(cur+1)+" / "+results.length;[...$("tabs").children].forEach(x=>x.classList.toggle("on",+x.dataset.i===cur));}
+function repaintActive(){
+ const n=results.length;
+ $("track").style.transform="translateX(calc("+(-cur*80)+"% + 10%))";
+ [...$("track").children].forEach(s=>s.classList.toggle("active",+s.dataset.i===cur));
+ $("pos").innerHTML="Component <b>"+(cur+1)+"</b> of "+n;
+ let h="";for(let i=0;i<n;i++){const near=Math.abs(i-cur)<=2||i===0||i===n-1;if(n<=12||near)h+='<i class="'+(i===cur?"on":"")+'" data-i="'+i+'"></i>';else if(Math.abs(i-cur)===3)h+='<span class="ell">…</span>';}
+ $("dots").innerHTML=h;[...$("dots").querySelectorAll("i")].forEach(d=>d.addEventListener("click",()=>{cur=+d.dataset.i;repaintActive();}));
+ $("jump").value=cur;
+}
 function paintWire(){const w=$("wire");if(!aiWire.length){w.style.display="none";w.innerHTML="";return;}w.style.display="block";w.innerHTML='<div class="wire-h">Suggested wireframe — top to bottom</div><ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;const pl=(s.pillar&&PILLARS[s.pillar])?' · <span style="color:'+cssvar(PILLARS[s.pillar][1])+'">'+PILLARS[s.pillar][0]+'</span>':'';return '<li><b>'+nm+'</b>'+pl+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol>';}
 function paint(list,interpHTML){
  paintWire();
@@ -313,14 +336,15 @@ function paint(list,interpHTML){
  $("empty").style.display="none";$("slider").style.display="block";
  results=list;if(cur>=results.length)cur=0;
  $("interpret").innerHTML=interpHTML;
- $("tabs").innerHTML=results.map((d,i)=>'<span class="tab'+(i===cur?" on":"")+'" data-i="'+i+'">'+d.name.replace("1-Column Section — ","").replace("Grid Section — ","")+'</span>').join("");
- [...$("tabs").children].forEach(t=>t.addEventListener("click",()=>{cur=+t.dataset.i;repaintActive();}));
+ $("track").innerHTML=results.map((d,i)=>'<div class="slot" data-i="'+i+'"><div class="scard">'+cardHTML(d)+'</div></div>').join("");
+ [...$("track").children].forEach(s=>s.addEventListener("click",()=>{const i=+s.dataset.i;if(i!==cur){cur=i;repaintActive();}}));
+ $("jump").innerHTML=results.map((d,i)=>'<option value="'+i+'">'+d.name+'</option>').join("");
  repaintActive();
 }
 // ---- engaging loader (themed status lines, min display so it never flashes) ----
 let loaderTimer=null, loaderStart=0, runId=0;
-const SEARCH_MSGS=["Pulling open the component drawers…","Matching your brief against every building block…","Checking which pillars each one serves…","Weighing the best-fit components…","Dusting off the top matches…","Laying out the sections…"];
-function pillarMsgs(){const n=[...selP].map(p=>PILLARS[p][0]).join(" + ");return ["Pulling the "+n+" shelf…","Gathering every matching block…","Tailoring each block to "+n+"…","Noting how each one works for "+n+"…"];}
+const SEARCH_MSGS=["Compony's trotting to the shelves…","Sniffing out the right building blocks…","Checking which pillars each one serves…","Trotting back with the best matches…","Laying out the sections…"];
+function pillarMsgs(){const n=[...selP].map(p=>PILLARS[p][0]).join(" + ");return ["Compony's trotting to the "+n+" shelf…","Gathering every matching block…","Tailoring each block to "+n+"…","Noting how each one works for "+n+"…"];}
 function startLoader(msgs){
  $("slider").style.display="none";$("empty").style.display="none";$("wire").style.display="none";$("interpret").innerHTML="";
  $("loaderMsg").textContent=msgs[0];$("loader").style.display="flex";let i=0;
@@ -364,6 +388,7 @@ async function runPillar(my){
 }
 $("prev").addEventListener("click",()=>{if(results.length){cur=(cur-1+results.length)%results.length;repaintActive();}});
 $("next").addEventListener("click",()=>{if(results.length){cur=(cur+1)%results.length;repaintActive();}});
+$("jump").addEventListener("change",e=>{cur=+e.target.value;repaintActive();});
 const exHost=$("examples");
 const SEARCH_ICO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/></svg>';
 EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.innerHTML=SEARCH_ICO;b.appendChild(document.createTextNode(t));b.addEventListener("click",()=>{$("ask").value=t;go();});exHost.appendChild(b);});
