@@ -1,0 +1,34 @@
+<svg viewBox="0 0 300 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Before / After Slider — mobile</title>
+<desc id="sk-d">Low-fidelity wireframe: centered section eyebrow, heading and paragraph, then a single Bento M card (image, heading, paragraph) with a before/after toggle switch below it.</desc>
+<style>
+  .card { fill: #ffffff; stroke: #c1babe; stroke-width: 1; }
+  .ph { fill: #ded8d8; }
+  .lb { fill: #716571; font-size: 11px; }
+  .tag { fill: #ede8e8; stroke: #c1babe; stroke-width: 1; }
+  .sep { stroke: #c1babe; stroke-width: 1; }
+  .sw { fill: #ded8d8; stroke: #c1babe; stroke-width: 1; }
+  .kn { fill: #ede8e8; stroke: #9e959c; stroke-width: 1; }
+</style>
+<rect x="100" y="18" width="100" height="10" rx="5" class="ph"/>
+<text x="206" y="27" class="lb">eyebrow</text>
+<rect x="70" y="50" width="160" height="16" rx="4" class="ph"/>
+<text x="236" y="62" class="lb">heading</text>
+<rect x="80" y="80" width="140" height="7" rx="3" class="ph"/>
+<rect x="100" y="92" width="100" height="7" rx="3" class="ph"/>
+<text x="226" y="87" class="lb">paragraph</text>
+<rect x="20" y="118" width="260" height="300" rx="12" class="card"/>
+<rect x="36" y="134" width="228" height="120" rx="6" class="ph"/>
+<rect x="44" y="228" width="44" height="15" rx="3" class="tag"/>
+<text x="66" y="240" text-anchor="middle" class="lb">Vorher</text>
+<rect x="36" y="268" width="150" height="14" rx="4" class="ph"/>
+<text x="244" y="279" text-anchor="end" class="lb">heading</text>
+<rect x="36" y="292" width="160" height="7" rx="3" class="ph"/>
+<rect x="36" y="304" width="120" height="7" rx="3" class="ph"/>
+<text x="244" y="299" text-anchor="end" class="lb">paragraph</text>
+<line x1="36" y1="328" x2="264" y2="328" class="sep"/>
+<rect x="36" y="346" width="150" height="8" rx="3" class="ph"/>
+<rect x="212" y="342" width="44" height="22" rx="11" class="sw"/>
+<circle cx="223" cy="353" r="8" class="kn"/>
+<text x="150" y="396" text-anchor="middle" class="lb">before / after toggle</text>
+</svg>

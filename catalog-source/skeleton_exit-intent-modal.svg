@@ -1,0 +1,26 @@
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Exit Intent Modal</title>
+<desc id="sk-d">Low-fidelity wireframe: a wide modal card over a dimmed page. Left half has eyebrow, heading, an action (a button or an email field) and a short note; right half is an image.</desc>
+<style>
+  .dim { fill: #2b1a2e; opacity: 0.08; }
+  .card { fill: #ffffff; stroke: #c1babe; stroke-width: 1; }
+  .ph { fill: #ded8d8; }
+  .btn { fill: #9e959c; }
+  .fld { fill: #ede8e8; stroke: #9e959c; stroke-width: 1; }
+  .fr { fill: #ded8d8; stroke: #c1babe; stroke-width: 1; }
+  .x { fill: none; stroke: #716571; stroke-width: 1.5; }
+  .lb { fill: #716571; font-size: 11px; }
+</style>
+<rect x="0" y="0" width="680" height="360" rx="8" class="dim"/>
+<line x1="640" y1="20" x2="652" y2="32" class="x"/><line x1="652" y1="20" x2="640" y2="32" class="x"/>
+<text x="628" y="30" text-anchor="end" class="lb">close ×</text>
+<rect x="40" y="50" width="600" height="270" rx="14" class="card"/>
+<rect x="70" y="84" width="150" height="13" rx="6" class="ph"/><text x="228" y="95" class="lb">eyebrow</text>
+<rect x="70" y="108" width="220" height="22" rx="4" class="ph"/><text x="298" y="124" class="lb">heading</text>
+<rect x="70" y="162" width="158" height="32" rx="6" class="fld"/><text x="84" y="182" class="lb">email field</text>
+<rect x="238" y="162" width="80" height="32" rx="6" class="btn"/><text x="278" y="182" text-anchor="middle" class="lb">button</text>
+<text x="70" y="214" class="lb">button or email field</text>
+<rect x="70" y="232" width="240" height="7" rx="3" class="ph"/><rect x="70" y="244" width="200" height="7" rx="3" class="ph"/>
+<text x="70" y="270" class="lb">paragraph / privacy note</text>
+<rect x="414" y="87" width="196" height="196" rx="10" class="fr"/><text x="512" y="189" text-anchor="middle" class="lb">image · 1:1</text>
+</svg>

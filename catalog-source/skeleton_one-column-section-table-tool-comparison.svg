@@ -1,0 +1,49 @@
+<svg viewBox="0 0 680 348" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: 1-Column Section with Tool-Comparison Table</title>
+<desc id="sk-d">Low-fidelity wireframe: centered eyebrow, heading and paragraph, then a comparison table with a first label column and three tool columns, cells shown as green checkmarks and red crosses.</desc>
+<style>
+  .ph { fill: #ded8d8; }
+  .lb { fill: #716571; font-size: 11px; }
+  .tbl { fill: none; stroke: #c1babe; stroke-width: 1; }
+  .sep { stroke: #c1babe; stroke-width: 1; }
+  .chk { fill: none; stroke: #1D9E75; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .crs { stroke: #E24B4A; stroke-width: 2.4; stroke-linecap: round; }
+</style>
+<rect x="280" y="20" width="120" height="14" rx="7" class="ph"/>
+<text x="410" y="31" class="lb">eyebrow</text>
+<rect x="190" y="46" width="300" height="18" rx="4" class="ph"/>
+<text x="500" y="60" class="lb">heading</text>
+<rect x="200" y="78" width="280" height="8" rx="4" class="ph"/>
+<text x="490" y="90" class="lb">paragraph</text>
+<rect x="40" y="110" width="600" height="216" rx="8" class="tbl"/>
+<line x1="280" y1="110" x2="280" y2="326" class="sep"/>
+<line x1="400" y1="110" x2="400" y2="326" class="sep"/>
+<line x1="520" y1="110" x2="520" y2="326" class="sep"/>
+<line x1="40" y1="158" x2="640" y2="158" class="sep"/>
+<line x1="40" y1="200" x2="640" y2="200" class="sep"/>
+<line x1="40" y1="242" x2="640" y2="242" class="sep"/>
+<line x1="40" y1="284" x2="640" y2="284" class="sep"/>
+<rect x="56" y="128" width="180" height="10" rx="3" class="ph"/>
+<rect x="305" y="124" width="70" height="14" rx="3" class="ph"/>
+<text x="340" y="152" text-anchor="middle" class="lb">Candis</text>
+<rect x="425" y="124" width="70" height="14" rx="3" class="ph"/>
+<text x="460" y="152" text-anchor="middle" class="lb">Tool</text>
+<rect x="545" y="124" width="70" height="14" rx="3" class="ph"/>
+<text x="580" y="152" text-anchor="middle" class="lb">Tool</text>
+<rect x="56" y="174" width="180" height="10" rx="3" class="ph"/>
+<rect x="56" y="216" width="180" height="10" rx="3" class="ph"/>
+<rect x="56" y="258" width="180" height="10" rx="3" class="ph"/>
+<rect x="56" y="300" width="180" height="10" rx="3" class="ph"/>
+<polyline points="333,180 337,185 348,172" class="chk"/>
+<polyline points="453,180 457,185 468,172" class="chk"/>
+<line x1="574" y1="173" x2="586" y2="185" class="crs"/><line x1="574" y1="185" x2="586" y2="173" class="crs"/>
+<polyline points="333,222 337,227 348,214" class="chk"/>
+<line x1="454" y1="215" x2="466" y2="227" class="crs"/><line x1="454" y1="227" x2="466" y2="215" class="crs"/>
+<line x1="574" y1="215" x2="586" y2="227" class="crs"/><line x1="574" y1="227" x2="586" y2="215" class="crs"/>
+<polyline points="333,264 337,269 348,256" class="chk"/>
+<polyline points="453,264 457,269 468,256" class="chk"/>
+<polyline points="573,264 577,269 588,256" class="chk"/>
+<line x1="334" y1="299" x2="346" y2="311" class="crs"/><line x1="334" y1="311" x2="346" y2="299" class="crs"/>
+<polyline points="453,306 457,311 468,298" class="chk"/>
+<line x1="574" y1="299" x2="586" y2="311" class="crs"/><line x1="574" y1="311" x2="586" y2="299" class="crs"/>
+</svg>

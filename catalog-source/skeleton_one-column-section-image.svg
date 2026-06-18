@@ -1,0 +1,23 @@
+<svg viewBox="0 0 680 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: 1-Column Section with Image</title>
+<desc id="sk-d">Low-fidelity wireframe: a centered single column with eyebrow, heading, paragraph, one large image block, and an optional link.</desc>
+<style>
+  .ph { fill: #ded8d8; }
+  .lb { fill: #716571; font-size: 11px; }
+  .fr { fill: #ded8d8; stroke: #c1babe; stroke-width: 1; }
+</style>
+<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/>
+<text x="410" y="35" class="lb">eyebrow</text>
+<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/>
+<text x="500" y="67" class="lb">heading (serif/sans)</text>
+<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/>
+<rect x="210" y="100" width="260" height="8" rx="4" class="ph"/>
+<text x="520" y="98" class="lb">paragraph</text>
+<rect x="110" y="130" width="460" height="259" rx="8" class="fr"/>
+<circle cx="295" cy="215" r="16" fill="#c1babe"/>
+<polygon points="240,300 330,220 420,300" fill="#c1babe"/>
+<polygon points="360,300 425,250 490,300" fill="#c1babe"/>
+<text x="340" y="345" text-anchor="middle" class="lb">Image · alt text</text>
+<rect x="302" y="405" width="76" height="15" rx="7" class="ph"/>
+<text x="386" y="416" class="lb">Link (optional)</text>
+</svg>

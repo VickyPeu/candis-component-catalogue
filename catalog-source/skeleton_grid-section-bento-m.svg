@@ -1,0 +1,39 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Grid Section, Bento M variant</title>
+<desc id="sk-d">Low-fidelity wireframe: centered eyebrow, heading and paragraph, then a row of three Bento M cards, each with an image-or-icon block, a heading, a paragraph and an optional link.</desc>
+<style>
+  .ph { fill: #ded8d8; }
+  .lb { fill: #716571; font-size: 11px; }
+  .card { fill: none; stroke: #c1babe; stroke-width: 1; }
+</style>
+<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/>
+<text x="410" y="35" class="lb">eyebrow · max 32</text>
+<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/>
+<text x="500" y="67" class="lb">heading</text>
+<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/>
+<rect x="210" y="100" width="260" height="8" rx="4" class="ph"/>
+<text x="520" y="98" class="lb">paragraph</text>
+<rect x="24" y="140" width="196" height="220" rx="8" class="card"/>
+<rect x="38" y="154" width="168" height="105" rx="4" class="ph"/>
+<text x="122" y="203" text-anchor="middle" class="lb">Image 16:10</text>
+<text x="122" y="218" text-anchor="middle" class="lb">/ icon</text>
+<rect x="38" y="273" width="110" height="13" rx="4" class="ph"/>
+<text x="154" y="283" class="lb">≤80</text>
+<rect x="38" y="294" width="168" height="8" rx="4" class="ph"/>
+<rect x="38" y="308" width="140" height="8" rx="4" class="ph"/>
+<rect x="38" y="326" width="76" height="15" rx="7" class="ph"/>
+<text x="120" y="337" class="lb">Link (text/button)</text>
+<rect x="242" y="140" width="196" height="220" rx="8" class="card"/>
+<rect x="256" y="154" width="168" height="105" rx="4" class="ph"/>
+<rect x="256" y="273" width="110" height="13" rx="4" class="ph"/>
+<rect x="256" y="294" width="168" height="8" rx="4" class="ph"/>
+<rect x="256" y="308" width="140" height="8" rx="4" class="ph"/>
+<rect x="256" y="326" width="76" height="15" rx="7" class="ph"/>
+<rect x="460" y="140" width="196" height="220" rx="8" class="card"/>
+<rect x="474" y="154" width="168" height="105" rx="4" class="ph"/>
+<rect x="474" y="273" width="110" height="13" rx="4" class="ph"/>
+<rect x="474" y="294" width="168" height="8" rx="4" class="ph"/>
+<rect x="474" y="308" width="140" height="8" rx="4" class="ph"/>
+<rect x="474" y="326" width="76" height="15" rx="7" class="ph"/>
+<text x="340" y="386" text-anchor="middle" class="lb">2–9 cards (ideal 3 or 6) · image or icon per card · numbers in image/icon/heading = light flow</text>
+</svg>
