@@ -90,7 +90,16 @@ const CATALOG = [
   useCases:["'which topics should we cover next?' on a blog/podcast page","gather pain points or feature wishes","a lightweight idea box / mini survey","source editorial ideas directly from readers"],
   strengths:["two ways to answer — pick a chip or write your own","responses flow straight to Slack","signals you listen → builds rapport","low-friction, one focused ask"],
   limitations:["links a Common Text Set for all UI microcopy","free-text answer is short (~150 chars)","needs the Slack endpoint wired (backend)","not a lead/contact form — no email capture"],
-  antiPattern:"Don't use it as a contact/lead-capture form (no email field). Don't overload with too many chips. Don't ask for feedback you won't act on."}
+  antiPattern:"Don't use it as a contact/lead-capture form (no email field). Don't overload with too many chips. Don't ask for feedback you won't act on."},
+
+ {id:"banner", name:"Page Bottom Banner", category:"conversion", contentType:"customComponent",
+  pillarsServe:["trust_anchor","standard_setter"], contentDependent:true,
+  architecture:"customComponent, variant page_bottom_banner: a slim bar pinned (sticky) to the bottom of the screen, dismissible (×). Heading + short paragraph (date/time + one line), a LIVE countdown (days:hours:minutes:seconds) driven by pageBottomBannerExpiryDate, and a CTA button (link). Placement is flexible: global by page type (showOnCommon/Landing/BlogPost) or pinned to specific pages (displayOnPages). It's a date-driven announcement/conversion mechanism — less interruptive than a modal since it doesn't block the page.",
+  copyBudget:"heading ~50 characters (punchy) · paragraph 1 short sentence (date/time + line) · CTA button ~25 characters", assets:"none (text + countdown + button)",
+  useCases:["webinar / event registration with a countdown to the start","limited-time deal counting down to the deadline","any date-driven announcement that stays visible while scrolling"],
+  strengths:["stays visible while scrolling without blocking the page","built-in live countdown creates urgency","dismissible","flexible placement: global by page type or specific pages","one clear ask (heading + countdown + CTA)"],
+  limitations:["needs an expiry date to count down to","persistent footer uses a little screen space until dismissed","one message at a time"],
+  antiPattern:"Not for evergreen content (no date = no countdown). Don't stack multiple persistent banners. Don't keep it running past the deadline."}
 ];
 
 const SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and on Candis's messaging pillars.

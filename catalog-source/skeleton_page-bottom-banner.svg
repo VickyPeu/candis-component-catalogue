@@ -1,0 +1,24 @@
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Page Bottom Banner</title>
+<desc id="sk-d">Low-fidelity wireframe: a slim banner pinned to the bottom of the page, with a heading, date and paragraph on the left, a countdown (days : hours : minutes : seconds) in the middle, a CTA button on the right, and a close control.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .page{fill:none;stroke:#ded8d8;stroke-width:1}
+  .bar{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+  .btn{fill:#9e959c}
+  .x{fill:none;stroke:#716571;stroke-width:1.5}
+</style>
+<rect x="20" y="14" width="640" height="300" rx="12" class="page"/>
+<text x="36" y="32" class="lb">page · banner stays pinned to the bottom (sticky, dismissible)</text>
+<rect x="30" y="266" width="620" height="84" rx="12" class="bar"/>
+<line x1="626" y1="280" x2="636" y2="290" class="x"/><line x1="636" y1="280" x2="626" y2="290" class="x"/>
+<text x="616" y="286" text-anchor="end" class="lb">close ×</text>
+<rect x="50" y="284" width="190" height="12" rx="6" class="ph"/><text x="248" y="294" class="lb">heading</text>
+<rect x="50" y="303" width="80" height="8" rx="4" class="ph"/><text x="138" y="310" class="lb">date</text>
+<rect x="50" y="319" width="200" height="7" rx="3" class="ph"/><rect x="50" y="330" width="160" height="7" rx="3" class="ph"/><text x="258" y="335" class="lb">paragraph</text>
+<rect x="300" y="288" width="34" height="34" rx="5" class="ph"/><rect x="340" y="288" width="34" height="34" rx="5" class="ph"/><rect x="380" y="288" width="34" height="34" rx="5" class="ph"/><rect x="420" y="288" width="34" height="34" rx="5" class="ph"/>
+<text x="337" y="310" text-anchor="middle" class="lb">:</text><text x="377" y="310" text-anchor="middle" class="lb">:</text><text x="417" y="310" text-anchor="middle" class="lb">:</text>
+<text x="300" y="338" class="lb">countdown · to the expiry date</text>
+<rect x="500" y="300" width="120" height="32" rx="6" class="btn"/><text x="560" y="320" text-anchor="middle" class="lb">button</text>
+</svg>
