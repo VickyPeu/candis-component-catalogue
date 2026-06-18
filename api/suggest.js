@@ -81,7 +81,16 @@ const CATALOG = [
   useCases:["limited-time deal (summer / end-of-year) with a countdown","short survey or feedback prompt","'book a consultation' prompt (→ Demodesk)","time-limited announcement on exit or after X seconds"],
   strengths:["appears over any page without touching its layout","placement control: globally by page type or specific pages","timing control — on exit and/or after X seconds","built-in countdown banner for genuine urgency"],
   limitations:["two-level setup — wrapper customComponent plus a linked modal entry","interruptive — overuse trains visitors to dismiss it","no character limits set in Contentful"],
-  antiPattern:"Don't run it everywhere all the time or stack multiple modals on one page — one clear, worth-interrupting ask. Not a regular content section."}
+  antiPattern:"Don't run it everywhere all the time or stack multiple modals on one page — one clear, worth-interrupting ask. Not a regular content section."},
+
+ {id:"feedback", name:"Feedback Section", category:"conversion", contentType:"customComponent",
+  pillarsServe:["thought_leader","trust_anchor"], contentDependent:false,
+  architecture:"customComponent, variant feedback_section: a two-part section. Left = eyebrow + heading + paragraph (the invitation). Right = a form panel where the visitor taps one of a few suggestion chips OR writes their own free-text idea (~150 chars) and submits. All UI microcopy (labels, placeholder, submit button, success message, character counter) comes from a linked Common Text Set; the chip options come from the feedbackSectionSuggestions array. Submissions are posted to Slack (#website-feedback-form-submit). Fundamentally an engagement/listening utility, not a lead form (no email capture).",
+  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 2–3 sentences · suggestion chips short ~25 characters each · UI labels short · submit button ~25 characters · visitor free-text ~150 characters · success message short", assets:"none (UI only)",
+  useCases:["'which topics should we cover next?' on a blog/podcast page","gather pain points or feature wishes","a lightweight idea box / mini survey","source editorial ideas directly from readers"],
+  strengths:["two ways to answer — pick a chip or write your own","responses flow straight to Slack","signals you listen → builds rapport","low-friction, one focused ask"],
+  limitations:["links a Common Text Set for all UI microcopy","free-text answer is short (~150 chars)","needs the Slack endpoint wired (backend)","not a lead/contact form — no email capture"],
+  antiPattern:"Don't use it as a contact/lead-capture form (no email field). Don't overload with too many chips. Don't ask for feedback you won't act on."}
 ];
 
 const SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and on Candis's messaging pillars.

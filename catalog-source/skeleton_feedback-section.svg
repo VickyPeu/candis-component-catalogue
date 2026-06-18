@@ -1,0 +1,32 @@
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Feedback Section</title>
+<desc id="sk-d">Low-fidelity wireframe: two columns. Left has an eyebrow, heading and paragraph (the invitation). Right is a form panel with a "choose one" label, suggestion chips, an "or your own" label, a free-text field with a character counter, and a submit button.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .panel{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+  .chip{fill:#ded8d8}
+  .fld{fill:#ffffff;stroke:#9e959c;stroke-width:1}
+  .btn{fill:#9e959c}
+</style>
+<!-- left: invitation -->
+<rect x="30" y="42" width="150" height="12" rx="6" class="ph"/><text x="188" y="52" class="lb">eyebrow</text>
+<rect x="30" y="66" width="240" height="22" rx="4" class="ph"/><text x="278" y="82" class="lb">heading</text>
+<rect x="30" y="110" width="290" height="8" rx="4" class="ph"/>
+<rect x="30" y="124" width="280" height="8" rx="4" class="ph"/>
+<rect x="30" y="138" width="250" height="8" rx="4" class="ph"/>
+<text x="30" y="166" class="lb">paragraph</text>
+<!-- right: form panel -->
+<rect x="358" y="28" width="294" height="304" rx="12" class="panel"/>
+<text x="376" y="56" class="lb">choose one:</text>
+<rect x="376" y="64" width="104" height="26" rx="13" class="chip"/>
+<rect x="488" y="64" width="70" height="26" rx="13" class="chip"/>
+<rect x="376" y="98" width="88" height="26" rx="13" class="chip"/>
+<rect x="472" y="98" width="78" height="26" rx="13" class="chip"/>
+<rect x="376" y="132" width="122" height="26" rx="13" class="chip"/>
+<text x="376" y="182" class="lb">suggestion chips</text>
+<text x="376" y="206" class="lb">or your own:</text>
+<rect x="376" y="214" width="258" height="70" rx="8" class="fld"/><text x="388" y="232" class="lb">free text · ~150 chars</text>
+<text x="626" y="276" text-anchor="end" class="lb">0/150</text>
+<rect x="514" y="296" width="120" height="30" rx="6" class="btn"/><text x="574" y="315" text-anchor="middle" class="lb">submit</text>
+</svg>
