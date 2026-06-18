@@ -1,0 +1,21 @@
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Bento XL</title>
+<desc id="sk-d">Low-fidelity wireframe: a large two-part block — a square 1:1 visual on one side and eyebrow, heading, paragraph plus a button and text link on the other.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .sec{fill:#fff;stroke:#ded8d8;stroke-width:1}
+  .img{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+  .btn{fill:#9e959c}
+</style>
+<rect x="20" y="28" width="640" height="304" rx="16" class="sec"/>
+<rect x="48" y="62" width="236" height="236" rx="10" class="img"/>
+<text x="166" y="176" text-anchor="middle" class="lb">image · 1:1</text>
+<text x="166" y="192" text-anchor="middle" class="lb">(transparent bg)</text>
+<rect x="320" y="70" width="120" height="12" rx="6" class="ph"/><text x="448" y="80" class="lb">eyebrow</text>
+<rect x="320" y="94" width="300" height="20" rx="4" class="ph"/><rect x="320" y="120" width="230" height="20" rx="4" class="ph"/><text x="320" y="160" class="lb">heading</text>
+<rect x="320" y="170" width="318" height="8" rx="4" class="ph"/><rect x="320" y="184" width="306" height="8" rx="4" class="ph"/><rect x="320" y="198" width="280" height="8" rx="4" class="ph"/><text x="320" y="224" class="lb">paragraph</text>
+<rect x="320" y="238" width="110" height="32" rx="6" class="btn"/><text x="375" y="258" text-anchor="middle" class="lb">button</text>
+<rect x="448" y="246" width="96" height="14" rx="7" class="ph"/><text x="554" y="257" class="lb">text link</text>
+<text x="48" y="320" class="lb">background variants (white / gray / black …) · image left or right · or video / custom HTML</text>
+</svg>

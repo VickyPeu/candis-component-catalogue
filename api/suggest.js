@@ -108,7 +108,16 @@ const CATALOG = [
   useCases:["onboarding / rollout timeline ('So läuft die Implementierung')","a 3-phase how-it-works","before → during → after of a workflow as discrete steps"],
   strengths:["reads instantly as a time-ordered process","each step gets an image + heading + scannable checklist","optional closing CTA","turns a process into three digestible beats"],
   limitations:["exactly 3 steps — fewer/more breaks the design","images required — icon variant doesn't work","each step is a Bento M, inheriting its card limits"],
-  antiPattern:"Not for non-sequential content (use a Grid Section). Don't fit 4+ steps. Don't leave out the images."}
+  antiPattern:"Not for non-sequential content (use a Grid Section). Don't fit 4+ steps. Don't leave out the images."},
+
+ {id:"bentoxl", name:"Bento XL", category:"content_single", contentType:"bentoXL",
+  pillarsServe:["trust_anchor","standard_setter","translation_of_complexity","thought_leader","authority"], contentDependent:true,
+  architecture:"bentoXL: a large two-part block — a 1:1 visual on one side (image, video, or a customHtmlSection embed e.g. Navattic) and text on the other (eyebrow, heading, paragraph) plus up to two links (a button and/or text link). The image should be square (1:1) with a transparent background; the background behind it is set in Contentful. Several background variants (white, gray, gray_on_white, black, white_on_gray, white_on_black) and image position left/right. Stands alone OR nested in a Grid Section. The icon field is only used inside a Bento Tab Section (irrelevant standalone). Content-dependent — the content sets the pillar.",
+  copyBudget:"eyebrow 270 characters · heading 620 characters · paragraph 1–3 sentences · button text ~25 characters · text link ~25 characters (optional)", assets:"1 image — 1:1 (square), transparent background (bg set in Contentful); or a video, or a custom HTML embed",
+  useCases:["a standalone feature/story section (image + text + CTA)","showcase an integration or capability (e.g. Sesam + DATEV export)","embed an interactive product demo via custom HTML (Navattic)","a bento placed inside a larger Grid Section"],
+  strengths:["flexible media: 1:1 image, video, or custom HTML embed","six background styles + image left/right","generous heading room; button + text link","works standalone or inside a Grid Section"],
+  limitations:["image must be 1:1 with a transparent background","media is required","the icon field does nothing here (it's for the Bento Tab Section)"],
+  antiPattern:"Don't use a non-square or non-transparent image. Don't rely on the Icon field for the standalone Bento XL."}
 ];
 
 const SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and on Candis's messaging pillars.
