@@ -1,0 +1,46 @@
+<svg viewBox="0 0 680 444" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Steps Section</title>
+<desc id="sk-d">Low-fidelity wireframe: centered eyebrow and heading, a timeline of three step labels, then three cards each with an image, a heading and a short checklist, and an optional button below.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .card{fill:none;stroke:#c1babe;stroke-width:1}
+  .img{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+  .pill{fill:#ded8d8}
+  .conn{stroke:#ded8d8;stroke-width:2}
+  .btn{fill:#9e959c}
+  .chk{fill:none;stroke:#1D9E75;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<rect x="275" y="18" width="130" height="12" rx="6" class="ph"/><text x="415" y="28" class="lb">eyebrow</text>
+<rect x="200" y="42" width="280" height="18" rx="4" class="ph"/><text x="490" y="56" class="lb">heading</text>
+<!-- timeline of step labels -->
+<line x1="146" y1="94" x2="300" y2="94" class="conn"/><line x1="380" y1="94" x2="534" y2="94" class="conn"/>
+<rect x="66" y="82" width="80" height="24" rx="6" class="pill"/>
+<rect x="300" y="82" width="80" height="24" rx="6" class="pill"/>
+<rect x="534" y="82" width="80" height="24" rx="6" class="pill"/>
+<text x="66" y="126" class="lb">step labels (timeline)</text>
+<!-- three step cards -->
+<g>
+  <rect x="24" y="140" width="196" height="262" rx="10" class="card"/>
+  <rect x="38" y="156" width="168" height="86" rx="6" class="img"/><text x="122" y="203" text-anchor="middle" class="lb">image 16:10</text>
+  <rect x="38" y="260" width="150" height="12" rx="4" class="ph"/><text x="38" y="292" class="lb">heading</text>
+  <polyline points="40,306 44,310 51,301" class="chk"/><rect x="60" y="302" width="140" height="7" rx="3" class="ph"/>
+  <polyline points="40,328 44,332 51,323" class="chk"/><rect x="60" y="324" width="140" height="7" rx="3" class="ph"/>
+  <polyline points="40,350 44,354 51,345" class="chk"/><rect x="60" y="346" width="120" height="7" rx="3" class="ph"/>
+  <text x="38" y="384" class="lb">checklist</text>
+</g>
+<rect x="242" y="140" width="196" height="262" rx="10" class="card"/>
+<rect x="256" y="156" width="168" height="86" rx="6" class="img"/>
+<rect x="256" y="260" width="150" height="12" rx="4" class="ph"/>
+<polyline points="258,306 262,310 269,301" class="chk"/><rect x="278" y="302" width="140" height="7" rx="3" class="ph"/>
+<polyline points="258,328 262,332 269,323" class="chk"/><rect x="278" y="324" width="140" height="7" rx="3" class="ph"/>
+<polyline points="258,350 262,354 269,345" class="chk"/><rect x="278" y="346" width="120" height="7" rx="3" class="ph"/>
+<rect x="460" y="140" width="196" height="262" rx="10" class="card"/>
+<rect x="474" y="156" width="168" height="86" rx="6" class="img"/>
+<rect x="474" y="260" width="150" height="12" rx="4" class="ph"/>
+<polyline points="476,306 480,310 487,301" class="chk"/><rect x="496" y="302" width="140" height="7" rx="3" class="ph"/>
+<polyline points="476,328 480,332 487,323" class="chk"/><rect x="496" y="324" width="140" height="7" rx="3" class="ph"/>
+<polyline points="476,350 480,354 487,345" class="chk"/><rect x="496" y="346" width="120" height="7" rx="3" class="ph"/>
+<!-- optional button -->
+<rect x="270" y="408" width="140" height="28" rx="6" class="btn"/><text x="340" y="427" text-anchor="middle" class="lb">button (optional)</text>
+</svg>

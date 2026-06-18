@@ -99,7 +99,16 @@ const CATALOG = [
   useCases:["webinar / event registration with a countdown to the start","limited-time deal counting down to the deadline","any date-driven announcement that stays visible while scrolling"],
   strengths:["stays visible while scrolling without blocking the page","built-in live countdown creates urgency","dismissible","flexible placement: global by page type or specific pages","one clear ask (heading + countdown + CTA)"],
   limitations:["needs an expiry date to count down to","persistent footer uses a little screen space until dismissed","one message at a time"],
-  antiPattern:"Not for evergreen content (no date = no countdown). Don't stack multiple persistent banners. Don't keep it running past the deadline."}
+  antiPattern:"Not for evergreen content (no date = no countdown). Don't stack multiple persistent banners. Don't keep it running past the deadline."},
+
+ {id:"steps", name:"Steps Section", category:"process", contentType:"customComponent",
+  pillarsServe:["translation_of_complexity","standard_setter"], contentDependent:false,
+  architecture:"customComponent, variant steps_section: a row of EXACTLY 3 Bento M cards (the steps field) presented as a timeline. Each card has a step label (the timeline marker — e.g. Heute / Tag 14 / Tag 30; the bentoM stepLabel field IS used here, unlike in gridSection), a required image (icon variant does NOT work), a heading (max 80 chars), and a short checklist (the card paragraph). Section eyebrow + heading above; optional CTA button below. Fewer or more than 3 steps breaks the design.",
+  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences (optional) · step label short ~12 characters · card heading 80 characters (enforced) · card checklist short bullet lines · button ~25 characters · exactly 3 steps", assets:"3 images (16:10), one per step (icon variant doesn't work)",
+  useCases:["onboarding / rollout timeline ('So läuft die Implementierung')","a 3-phase how-it-works","before → during → after of a workflow as discrete steps"],
+  strengths:["reads instantly as a time-ordered process","each step gets an image + heading + scannable checklist","optional closing CTA","turns a process into three digestible beats"],
+  limitations:["exactly 3 steps — fewer/more breaks the design","images required — icon variant doesn't work","each step is a Bento M, inheriting its card limits"],
+  antiPattern:"Not for non-sequential content (use a Grid Section). Don't fit 4+ steps. Don't leave out the images."}
 ];
 
 const SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and on Candis's messaging pillars.
