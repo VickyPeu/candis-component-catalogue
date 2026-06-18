@@ -22,11 +22,25 @@
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
   h1{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:40px;line-height:1.05;letter-spacing:-.02em;margin:0 0 10px}
   .lede{color:var(--muted);font-size:15.5px;margin:0;max-width:640px}
-  .ask{margin:26px 0 8px;display:flex;gap:8px}
-  .ask input{flex:1;padding:15px 17px;border:1px solid var(--line);border-radius:13px;font-size:16px;font-family:var(--sans);background:var(--surface)}
-  .ask input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px #895fd526}
-  .ask button{padding:0 20px;border:none;background:var(--ink);color:#fff;border-radius:13px;font-size:14px;font-family:var(--mono);letter-spacing:.04em;cursor:pointer}
-  .examples{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:11px}
+  /* AI console card — the hero */
+  .console{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 22px 20px;margin-top:14px;box-shadow:0 6px 24px -16px rgba(43,26,46,.25)}
+  .greeting{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px}
+  .greeting .avatar{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;font-size:19px}
+  .greeting p{margin:0;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:14px;border-top-left-radius:4px;padding:11px 15px;font-size:14.5px;color:var(--ink)}
+  .ask{display:flex;gap:10px}
+  .ask input{flex:1;padding:16px 18px;border:1px solid var(--line);border-radius:13px;font-size:15px;font-family:var(--sans);background:var(--bg);color:var(--ink)}
+  .ask input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px #895fd526;background:var(--surface)}
+  .ask button{flex:none;width:54px;border:none;background:var(--ink);color:#fff;border-radius:13px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+  .ask button:hover{background:var(--accent)}
+  /* browse-by-pillar row (secondary) */
+  .browse{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:16px}
+  .browse .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  /* engaging loader */
+  #loader{display:flex;align-items:center;gap:13px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:16px;padding:20px 22px;margin:18px 0}
+  .spinner{flex:none;width:20px;height:20px;border:2.5px solid var(--accent-line);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loader-msg{font-size:14.5px;color:var(--ink);font-weight:600}
+  .examples{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:13px}
   .examples .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .ex{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:5px 12px;border:1px dashed var(--line);border-radius:999px;background:transparent;cursor:pointer;color:var(--body)}
   .ex:hover{border-style:solid;border-color:var(--accent);color:var(--accent)}
@@ -111,21 +125,26 @@
     <h1>Component Catalogue</h1>
     <p class="lede">Tell me what you're building and I'll suggest the right components — what copy and assets each needs, how it fits our pillars, and a link straight into Contentful.</p>
   </div>
-  <div class="ask">
-    <input id="ask" type="search" placeholder="e.g. “show a process through our product” or “sections that build trust”" aria-label="Describe what you need">
-    <button id="askBtn">Suggest</button>
+  <div class="console">
+    <div class="greeting">
+      <div class="avatar" aria-hidden="true">📚</div>
+      <p>Hi there! 👋 I'm your component AI assistant — tell me what you're building and I'll pull the right building blocks for your messaging.</p>
+    </div>
+    <div class="examples" id="examples"><span class="lbl">Try</span></div>
+    <div class="ask">
+      <input id="ask" type="search" placeholder="e.g. “show a process through our product” · “sections that build trust” · “a health-industry page, heavy on Standard Setter + Trust”" aria-label="Describe what you're building">
+      <button id="askBtn" aria-label="Suggest">→</button>
+    </div>
   </div>
-  <div class="examples" id="examples"><span class="lbl">Try</span></div>
-  <div class="filters">
-    <div class="chips" id="pillarChips"><span class="lbl">Browse by pillar</span></div>
-  </div>
+  <div class="browse"><span class="lbl">Or browse by pillar</span><div class="chips" id="pillarChips"></div></div>
   <div class="interpret" id="interpret"></div>
+  <div id="loader" style="display:none"><span class="spinner"></span><span class="loader-msg" id="loaderMsg"></span></div>
   <div id="wire" style="display:none"></div>
   <div id="slider" style="display:none">
     <div class="nav"><button id="prev" aria-label="Previous">‹</button><span class="pos" id="pos"></span><div class="tabs" id="tabs"></div><button id="next" aria-label="Next">›</button></div>
     <div class="stage" id="stage"></div>
   </div>
-  <div class="empty" id="empty"><div class="big">What are you building?</div>Describe it above (or pick a pillar / category) and matching components will appear here.</div>
+  <div class="empty" id="empty" style="display:none"></div>
 </div>
 <script>
 const SPACE="iszu9cg7w7tj", ENV="master";
@@ -298,58 +317,62 @@ function paint(list,interpHTML){
  [...$("tabs").children].forEach(t=>t.addEventListener("click",()=>{cur=+t.dataset.i;repaintActive();}));
  repaintActive();
 }
-function renderHeuristic(){
- const raw=$("ask").value.trim();const active=raw||selP.size||selC.size;
- aiNotes={};aiWire=[];
- const willAnnotate=!raw && selP.size>0 && !!AI_ENDPOINT;
- annotating=willAnnotate;
- if(willAnnotate) noteLabel="For "+[...selP].map(p=>PILLARS[p][0]).join(" + ");
- if(!active){annotating=false;$("slider").style.display="none";$("empty").style.display="block";$("interpret").innerHTML="";paintWire();return;}
- const {order,qp,q}=heuristic();const bits=[...qp].map(p=>PILLARS[p][0]);
- paint(order, q?'Suggesting for <b>“'+raw+'”</b>'+(bits.length?" · pillar signal: "+bits.join(", "):"")+' — '+order.length+' match'+(order.length===1?"":"es"):order.length+' component'+(order.length===1?"":"s"));
- if(willAnnotate) annotatePillars(order);
+// ---- engaging loader (themed status lines, min display so it never flashes) ----
+let loaderTimer=null, loaderStart=0, runId=0;
+const SEARCH_MSGS=["Pulling open the component drawers…","Matching your brief against every building block…","Checking which pillars each one serves…","Weighing the best-fit components…","Dusting off the top matches…","Laying out the sections…"];
+function pillarMsgs(){const n=[...selP].map(p=>PILLARS[p][0]).join(" + ");return ["Pulling the "+n+" shelf…","Gathering every matching block…","Tailoring each block to "+n+"…","Noting how each one works for "+n+"…"];}
+function startLoader(msgs){
+ $("slider").style.display="none";$("empty").style.display="none";$("wire").style.display="none";$("interpret").innerHTML="";
+ $("loaderMsg").textContent=msgs[0];$("loader").style.display="flex";let i=0;
+ clearInterval(loaderTimer);loaderTimer=setInterval(()=>{i=(i+1)%msgs.length;$("loaderMsg").textContent=msgs[i];},1600);
+ loaderStart=performance.now();
 }
-// Browse-by-pillar: ask the LLM for a pillar-tailored "how it can work" per shown component (no filtering, no wireframe).
-async function annotatePillars(list){
- if(!AI_ENDPOINT || !selP.size || !list.length){annotating=false;return;}
- const ids=list.map(d=>d.id), reqP=[...selP];
- const stillCurrent=()=>reqP.length===selP.size && reqP.every(p=>selP.has(p));
- try{
-  const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pillars:reqP,annotate:ids})});
-  const data=r.ok?await r.json():null;
-  if(data&&data.notes&&Object.keys(data.notes).length&&stillCurrent()) aiNotes=data.notes;
- }catch(e){}
- if(stillCurrent()){annotating=false;repaintActive();} // clear the loading label + show AI note (or fall back to static tip)
+function stopLoader(my,done){
+ const wait=Math.max(0,800-(performance.now()-loaderStart));
+ setTimeout(()=>{if(my!==runId)return;clearInterval(loaderTimer);$("loader").style.display="none";done();},wait);
 }
-async function aiSuggest(){
- const raw=$("ask").value.trim();if(!raw){renderHeuristic();return;}
- aiNotes={};aiWire=[];noteLabel="For your brief";$("empty").style.display="none";$("slider").style.display="none";paintWire();
- $("interpret").innerHTML='Thinking — evaluating each component for <b>“'+raw+'”</b>…';
- try{
-  const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({brief:raw,pillars:[...selP]})});
-  if(!r.ok)throw new Error("HTTP "+r.status);
-  const data=await r.json();
-  (data.suggestions||[]).forEach(s=>{if(s&&s.id&&s.why)aiNotes[s.id]=s.why;});
-  aiWire=Array.isArray(data.wireframe)?data.wireframe:[];
-  let list=(data.suggestions||[]).map(s=>DATA.find(d=>d.id===s.id)).filter(Boolean);
-  if(selC.size)list=list.filter(d=>selC.has(d.cat));
-  cur=0;
-  paint(list, list.length?('Smart suggestions for <b>“'+raw+'”</b> — '+list.length+' good fit'+(list.length===1?"":"s")):('No component is a strong fit for <b>“'+raw+'”</b>.'));
- }catch(e){$("interpret").innerHTML="(AI unavailable — showing keyword matches)";renderHeuristic();}
+function showStart(){clearInterval(loaderTimer);["loader","slider","wire","empty"].forEach(id=>$(id).style.display="none");$("interpret").innerHTML="";aiNotes={};aiWire=[];}
+
+// ---- main entry: only fires on Suggest / Enter / chip click (never on live typing) ----
+function go(){
+ const raw=$("ask").value.trim();const my=++runId;cur=0;aiNotes={};aiWire=[];
+ if(raw) return runSearch(raw,my);
+ if(selP.size) return runPillar(my);
+ showStart();
 }
-function go(){cur=0;if(AI_ENDPOINT && $("ask").value.trim())aiSuggest();else renderHeuristic();}
+// Search (brief): full AI — only genuine fits, tailored "why", wireframe (page briefs only)
+async function runSearch(raw,my){
+ noteLabel="For your brief";aiWire=[];
+ if(!AI_ENDPOINT){const {order,qp}=heuristic();const bits=[...qp].map(p=>PILLARS[p][0]);paint(order,'Suggesting for <b>“'+raw+'”</b>'+(bits.length?" · pillar signal: "+bits.join(", "):"")+' — '+order.length+' match'+(order.length===1?"":"es"));return;}
+ startLoader(SEARCH_MSGS);let payload=null;
+ try{const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({brief:raw,pillars:[...selP]})});if(r.ok)payload=await r.json();}catch(e){}
+ stopLoader(my,()=>{
+  if(!payload){const {order}=heuristic();paint(order,'AI unavailable — '+order.length+' keyword match'+(order.length===1?"":"es")+' for <b>“'+raw+'”</b>');return;}
+  aiNotes={};(payload.suggestions||[]).forEach(s=>{if(s&&s.id&&s.why)aiNotes[s.id]=s.why;});
+  aiWire=Array.isArray(payload.wireframe)?payload.wireframe:[];
+  const list=(payload.suggestions||[]).map(s=>DATA.find(d=>d.id===s.id)).filter(Boolean);
+  paint(list, list.length?('Smart suggestions for <b>“'+raw+'”</b> — '+list.length+' good fit'+(list.length===1?"":"s")):('No component is a strong fit for <b>“'+raw+'”</b> — try rephrasing.'));
+ });
+}
+// Browse by pillar: list the pillar's components + a pillar-tailored note per card, shown together
+async function runPillar(my){
+ const {order}=heuristic();const reqP=[...selP];const n=reqP.map(p=>PILLARS[p][0]).join(" + ");noteLabel="For "+n;aiWire=[];
+ if(!AI_ENDPOINT){paint(order,order.length+' component'+(order.length===1?"":"s")+' for <b>'+n+'</b>');return;}
+ startLoader(pillarMsgs());let notes=null;
+ try{const r=await fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pillars:reqP,annotate:order.map(d=>d.id)})});if(r.ok){const data=await r.json();notes=data&&data.notes?data.notes:null;}}catch(e){}
+ stopLoader(my,()=>{aiNotes=notes||{};paint(order, order.length+' component'+(order.length===1?"":"s")+' for <b>'+n+'</b>');});
+}
 $("prev").addEventListener("click",()=>{if(results.length){cur=(cur-1+results.length)%results.length;repaintActive();}});
 $("next").addEventListener("click",()=>{if(results.length){cur=(cur+1)%results.length;repaintActive();}});
 const exHost=$("examples");
 const SEARCH_ICO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/></svg>';
 EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.innerHTML=SEARCH_ICO;b.appendChild(document.createTextNode(t));b.addEventListener("click",()=>{$("ask").value=t;go();});exHost.appendChild(b);});
-// Pillar chips — coloured by swimlane · SINGLE-select (pick one pillar to browse)
-Object.keys(PILLARS).forEach(k=>{const b=document.createElement("span");b.className="pchip";b.style.setProperty("--pc","var("+PILLARS[k][1]+")");b.innerHTML='<span class="dot"></span>';b.appendChild(document.createTextNode(PILLARS[k][0]));b.addEventListener("click",()=>{const wasOn=selP.has(k);selP.clear();document.querySelectorAll("#pillarChips .pchip").forEach(x=>x.classList.remove("on"));if(!wasOn){selP.add(k);b.classList.add("on");}cur=0;renderHeuristic();});$("pillarChips").appendChild(b);});
-// Category filter removed — discovery happens via the LLM search; CATS still labels each card.
-$("ask").addEventListener("input",()=>{cur=0;renderHeuristic();});
+// Pillar chips — coloured by swimlane · SINGLE-select; clicking routes through the loader (go)
+Object.keys(PILLARS).forEach(k=>{const b=document.createElement("span");b.className="pchip";b.style.setProperty("--pc","var("+PILLARS[k][1]+")");b.innerHTML='<span class="dot"></span>';b.appendChild(document.createTextNode(PILLARS[k][0]));b.addEventListener("click",()=>{const wasOn=selP.has(k);selP.clear();document.querySelectorAll("#pillarChips .pchip").forEach(x=>x.classList.remove("on"));if(!wasOn){selP.add(k);b.classList.add("on");}$("ask").value="";go();});$("pillarChips").appendChild(b);});
+// Triggers only on Suggest / Enter — NOT on live typing
 $("askBtn").addEventListener("click",go);
 $("ask").addEventListener("keydown",e=>{if(e.key==="Enter")go();});
-renderHeuristic();
+showStart();
 </script>
 </body>
 </html>
