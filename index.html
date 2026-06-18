@@ -343,8 +343,8 @@ $("next").addEventListener("click",()=>{if(results.length){cur=(cur+1)%results.l
 const exHost=$("examples");
 const SEARCH_ICO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/></svg>';
 EXAMPLES.forEach(t=>{const b=document.createElement("span");b.className="ex";b.innerHTML=SEARCH_ICO;b.appendChild(document.createTextNode(t));b.addEventListener("click",()=>{$("ask").value=t;go();});exHost.appendChild(b);});
-// Pillar chips — coloured by swimlane
-Object.keys(PILLARS).forEach(k=>{const b=document.createElement("span");b.className="pchip";b.style.setProperty("--pc","var("+PILLARS[k][1]+")");b.innerHTML='<span class="dot"></span>';b.appendChild(document.createTextNode(PILLARS[k][0]));b.addEventListener("click",()=>{b.classList.toggle("on");if(selP.has(k))selP.delete(k);else selP.add(k);cur=0;renderHeuristic();});$("pillarChips").appendChild(b);});
+// Pillar chips — coloured by swimlane · SINGLE-select (pick one pillar to browse)
+Object.keys(PILLARS).forEach(k=>{const b=document.createElement("span");b.className="pchip";b.style.setProperty("--pc","var("+PILLARS[k][1]+")");b.innerHTML='<span class="dot"></span>';b.appendChild(document.createTextNode(PILLARS[k][0]));b.addEventListener("click",()=>{const wasOn=selP.has(k);selP.clear();document.querySelectorAll("#pillarChips .pchip").forEach(x=>x.classList.remove("on"));if(!wasOn){selP.add(k);b.classList.add("on");}cur=0;renderHeuristic();});$("pillarChips").appendChild(b);});
 // Category filter removed — discovery happens via the LLM search; CATS still labels each card.
 $("ask").addEventListener("input",()=>{cur=0;renderHeuristic();});
 $("askBtn").addEventListener("click",go);
