@@ -81,7 +81,7 @@ Content type `oneColumnSection`, selected via `media = video`.
 | contentTags | Array → contentTag | |
 | isYoutubeShort / shouldAutoplay / isDurationShownOnPlayButton | Boolean | behavior toggles |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Section eyebrow | ~32 characters |
@@ -89,6 +89,7 @@ Content type `oneColumnSection`, selected via `media = video`.
 | Section paragraph | 1–2 sentences |
 | Video display title | ~60 characters |
 | Video meta description | ~150–160 characters |
+| Video duration | 5 characters (e.g. “5 min”) |
 | Play-button alt text | short |
 | Link text | ~25 characters (optional) |
 

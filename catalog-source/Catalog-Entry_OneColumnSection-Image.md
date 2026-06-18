@@ -77,7 +77,7 @@ Content type `oneColumnSection`, selected via `media = image`.
 | size | Symbol | size variant |
 | buttonImageWidth | Symbol | width when used as a button image |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Section eyebrow | ~32 characters |

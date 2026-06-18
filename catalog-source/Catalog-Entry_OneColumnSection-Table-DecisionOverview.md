@@ -82,7 +82,7 @@ _(The table type also has `isAccordionLayout` and `tablesCollapsedByDefault`, bu
 | tableSectionHeaderTag | Symbol (localized) | header tag for grouping table sections |
 | category | Link → category | drives the selectable-category switching |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Section eyebrow | ~32 characters |

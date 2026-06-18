@@ -83,13 +83,10 @@ Content type `customComponent`, **Component variant = `steps_section`**.
 | Section heading | ~60 characters |
 | Section paragraph | 1–2 sentences (optional) |
 | Step label (each) | short, ~12 characters (e.g. "Tag 14") |
-| Card heading (each) | **80 characters** (enforced) |
+| Card heading (each) | 80 characters |
 | Card checklist (each) | short bullet lines |
 | Button | ~25 characters |
 | Steps | exactly 3 |
-
-_(Char limits across the whole catalogue are getting a precise re-audit via the CMA — exact numbers will
-replace "~" wherever Contentful enforces a limit.)_
 
 ## How to find it in Contentful
 Create a **Custom Component**, set **Component variant = `steps_section`**, write the section eyebrow +

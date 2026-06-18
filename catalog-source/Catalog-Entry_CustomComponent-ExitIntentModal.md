@@ -107,7 +107,7 @@ content section.
 | image / imageTwo / mobileImage / mobileImageTwo | Link → image | visuals (desktop + mobile) |
 | sliderImages | Array → image | image slider inside the modal |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Eyebrow | ~32 characters |

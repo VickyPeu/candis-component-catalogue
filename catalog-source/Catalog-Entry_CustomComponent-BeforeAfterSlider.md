@@ -84,14 +84,14 @@ variant are listed. **No character limits on the section fields** (card limits c
 Each card is a **Bento M** (see the Grid Section — Bento M entry): image (16:10) or icon, heading
 (**max 80**), a short rich-text paragraph, optional link.
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Section eyebrow | ~32 characters |
 | Section heading | ~60 characters |
 | Section paragraph | 1–2 sentences |
 | Before / after headings | short, ~24 characters (desktop) |
-| Card heading (each) | ~80 characters |
+| Card heading (each) | 80 characters |
 | Card paragraph (each) | short, 1–2 sentences |
 | Mobile toggle labels | short |
 

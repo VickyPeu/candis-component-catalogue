@@ -77,13 +77,13 @@ Content type `gridSection`, selected via `variant = bento_M`.
 | additionalLink | Link → link | optional; text or button |
 | stepLabel | Symbol (localized) | ⚠ no effect in Grid context — belongs to Steps Section; ignore here |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
-| Section eyebrow | ~32 characters |
+| Section eyebrow | 32 characters |
 | Section heading | ~60 characters |
 | Section paragraph | 1–2 sentences |
-| Card heading (each) | ~80 characters, required |
+| Card heading (each) | 80 characters, required |
 | Card paragraph (each) | short, 1–2 sentences |
 | Card link text | ~25 characters (optional) |
 | Cards | 2–9 (ideal 3 or 6) |

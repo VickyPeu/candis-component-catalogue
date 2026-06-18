@@ -84,12 +84,12 @@ Use **either** `ctaButton` (click mode) **or** `form` (sign-up mode).
 | demodeskRoute | Symbol (localized) | Demodesk route — book a consultation/demo |
 | pdfOpenedOnSubmit | Link → Asset | gated PDF opened on submit |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~50 characters (punchy) |
-| Section paragraph | 1–2 sentences |
+| Section eyebrow | 32 characters |
+| Section heading | 52 characters (punchy) |
+| Section paragraph | 120 characters |
 | Button text | ~25 characters |
 | Form success / error messages | short, 1 line each |
 | Privacy policy | as needed (form mode) |

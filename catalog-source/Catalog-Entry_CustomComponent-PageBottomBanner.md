@@ -68,7 +68,7 @@ Content type `customComponent`, **Component variant = `page_bottom_banner`**. **
 | displayOnPages | Array → commonPage | pin to specific pages instead |
 | ~~toggleDisabledHeading~~ / ~~toggleDescriptionParagraph~~ | Symbol | ⚠️ inert — Before/After Section leftovers, Dusan to remove |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Heading | ~50 characters (punchy) |

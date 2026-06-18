@@ -80,7 +80,7 @@ Content type `customComponent`, **Component variant = `feedback_section`**. **No
 
 _Submissions are delivered to Slack **#website-feedback-form-submit** (backend wiring, not a Contentful field)._
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Section eyebrow | ~32 characters |

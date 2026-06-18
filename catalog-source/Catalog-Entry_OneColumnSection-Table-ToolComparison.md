@@ -82,7 +82,7 @@ Content type `oneColumnSection` (media = table) → table content type, `variant
 | tablesCollapsedByDefault | Symbol | collapse some tables by default (save space on long tables) |
 | category | Link → category | optional categorization |
 
-## Copy budget (for Alexander) — recommended (Contentful sets no limits)
+## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
 | Field | Recommended |
 |---|---|
 | Section eyebrow | ~32 characters |
