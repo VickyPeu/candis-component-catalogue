@@ -73,13 +73,9 @@
   .arrow{position:absolute;top:150px;transform:translateY(-50%);z-index:3;width:44px;height:44px;border:1px solid var(--line);background:var(--surface);border-radius:50%;cursor:pointer;font-size:19px;color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px -8px rgba(43,26,46,.45)}
   .arrow:hover{border-color:var(--accent);color:var(--accent)}
   .arrow.l{left:4px}.arrow.r{right:4px}
-  .sliderbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-  .pos{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:96px}
-  .pos b{color:var(--ink);font-weight:600}
-  .dots{display:flex;gap:7px;align-items:center;flex:1;flex-wrap:wrap}
-  .dots i{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:all .2s}
-  .dots i.on{background:var(--accent);width:22px;border-radius:4px}
-  .dots .ell{color:var(--muted);font-size:11px}
+  .resultbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  #rhead{font-size:14px;color:var(--muted)}
+  #rhead b{color:var(--ink);font-weight:600}
   .jump{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
   .jump select{font-family:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);max-width:240px}
   .meta-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
@@ -129,7 +125,7 @@
 <body>
 <div class="wrap">
   <div class="topbar">
-    <p class="eyebrow">Component Catalogue</p>
+    <p class="eyebrow">Website Component Catalogue</p>
     <h1>What do you want to say?</h1>
   </div>
   <div class="console">
@@ -139,7 +135,7 @@
     </div>
     <div class="examples" id="examples"><span class="lbl">Try</span></div>
     <div class="ask">
-      <input id="ask" type="search" placeholder="e.g. “show a process through our product” · “sections that build trust” · “a health-industry page, heavy on Standard Setter + Trust”" aria-label="Describe what you're building">
+      <input id="ask" type="search" placeholder="Describe your use case…" aria-label="Describe your use case">
       <button id="askBtn" aria-label="Suggest">→</button>
     </div>
   </div>
@@ -148,15 +144,14 @@
   <div id="loader" style="display:none"><span class="spinner"></span><span class="loader-msg" id="loaderMsg"></span></div>
   <div id="wire" style="display:none"></div>
   <div id="slider" style="display:none">
+    <div class="resultbar">
+      <span id="rhead"></span>
+      <label class="jump">Jump to <select id="jump" aria-label="Jump to component"></select></label>
+    </div>
     <div class="peekport">
       <button class="arrow l" id="prev" aria-label="Previous component">‹</button>
       <div class="peektrack" id="track"></div>
       <button class="arrow r" id="next" aria-label="Next component">›</button>
-    </div>
-    <div class="sliderbar">
-      <span class="pos" id="pos"></span>
-      <div class="dots" id="dots"></div>
-      <label class="jump">Jump to <select id="jump" aria-label="Jump to component"></select></label>
     </div>
   </div>
   <div class="empty" id="empty" style="display:none"></div>
@@ -173,7 +168,7 @@ const PT={
  thought_leader:["thought","editorial","opinion","pov","point of view","vision","leadership","perspective","magazine","article","blog"],
  authority:["authority","system of record","restraint","credential","certified","gobd"]
 };
-const EXAMPLES=["show a process through our product","show Candis vs others","sections that build trust","drive sign-ups or demos","overview of features"];
+const EXAMPLES=["show a process through our product","show Candis vs others","drive sign-ups or demos","overview of features"];
 const SK={
 bentom:`<svg viewBox="0 0 680 400" aria-hidden="true"><rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text><rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text><rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text><rect x="24" y="140" width="196" height="220" rx="8" fill="none" stroke="#c1babe"/><rect x="38" y="154" width="168" height="105" rx="4" class="ph"/><text x="122" y="203" text-anchor="middle" class="lb">Image 16:10</text><text x="122" y="218" text-anchor="middle" class="lb">/ icon</text><rect x="38" y="273" width="110" height="13" rx="4" class="ph"/><text x="154" y="283" class="lb">≤80</text><rect x="38" y="294" width="168" height="8" rx="4" class="ph"/><rect x="38" y="308" width="140" height="8" rx="4" class="ph"/><rect x="38" y="326" width="76" height="15" rx="7" class="ph"/><text x="120" y="337" class="lb">Link (text/button)</text><rect x="242" y="140" width="196" height="220" rx="8" fill="none" stroke="#c1babe"/><rect x="256" y="154" width="168" height="105" rx="4" class="ph"/><rect x="256" y="273" width="110" height="13" rx="4" class="ph"/><rect x="256" y="294" width="168" height="8" rx="4" class="ph"/><rect x="256" y="308" width="140" height="8" rx="4" class="ph"/><rect x="256" y="326" width="76" height="15" rx="7" class="ph"/><rect x="460" y="140" width="196" height="220" rx="8" fill="none" stroke="#c1babe"/><rect x="474" y="154" width="168" height="105" rx="4" class="ph"/><rect x="474" y="273" width="110" height="13" rx="4" class="ph"/><rect x="474" y="294" width="168" height="8" rx="4" class="ph"/><rect x="474" y="308" width="140" height="8" rx="4" class="ph"/><rect x="474" y="326" width="76" height="15" rx="7" class="ph"/><text x="340" y="386" text-anchor="middle" class="lb">2–9 cards (ideal 3 or 6)</text></svg>`,
 video:`<svg viewBox="0 0 680 432" aria-hidden="true"><rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow</text><rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading (serif/sans)</text><rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text><rect x="110" y="130" width="460" height="259" rx="8" class="fr"/><circle cx="340" cy="252" r="30" fill="#c1babe" stroke="#c1babe"/><polygon points="331,237 331,267 359,252" fill="#716571"/><text x="340" y="372" text-anchor="middle" class="lb">Video 16:9 · thumbnail + play button</text><rect x="302" y="405" width="76" height="15" rx="7" class="ph"/><text x="386" y="416" class="lb">Link (optional)</text></svg>`,
@@ -321,21 +316,17 @@ function heuristic(){
  return {order,qp,q};
 }
 function repaintActive(){
- const n=results.length;
  $("track").style.transform="translateX(calc("+(-cur*80)+"% + 10%))";
  [...$("track").children].forEach(s=>s.classList.toggle("active",+s.dataset.i===cur));
- $("pos").innerHTML="Component <b>"+(cur+1)+"</b> of "+n;
- let h="";for(let i=0;i<n;i++){const near=Math.abs(i-cur)<=2||i===0||i===n-1;if(n<=12||near)h+='<i class="'+(i===cur?"on":"")+'" data-i="'+i+'"></i>';else if(Math.abs(i-cur)===3)h+='<span class="ell">…</span>';}
- $("dots").innerHTML=h;[...$("dots").querySelectorAll("i")].forEach(d=>d.addEventListener("click",()=>{cur=+d.dataset.i;repaintActive();}));
  $("jump").value=cur;
 }
 function paintWire(){const w=$("wire");if(!aiWire.length){w.style.display="none";w.innerHTML="";return;}w.style.display="block";w.innerHTML='<div class="wire-h">Suggested wireframe — top to bottom</div><ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;const pl=(s.pillar&&PILLARS[s.pillar])?' · <span style="color:'+cssvar(PILLARS[s.pillar][1])+'">'+PILLARS[s.pillar][0]+'</span>':'';return '<li><b>'+nm+'</b>'+pl+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol>';}
 function paint(list,interpHTML){
  paintWire();
  if(!list.length){$("slider").style.display="none";$("empty").style.display="none";$("interpret").innerHTML=interpHTML||"No good-fit components.";return;}
- $("empty").style.display="none";$("slider").style.display="block";
+ $("interpret").innerHTML="";$("empty").style.display="none";$("slider").style.display="block";
  results=list;if(cur>=results.length)cur=0;
- $("interpret").innerHTML=interpHTML;
+ $("rhead").innerHTML=interpHTML;
  $("track").innerHTML=results.map((d,i)=>'<div class="slot" data-i="'+i+'"><div class="scard">'+cardHTML(d)+'</div></div>').join("");
  [...$("track").children].forEach(s=>s.addEventListener("click",()=>{const i=+s.dataset.i;if(i!==cur){cur=i;repaintActive();}}));
  $("jump").innerHTML=results.map((d,i)=>'<option value="'+i+'">'+d.name+'</option>').join("");
