@@ -106,6 +106,39 @@
   .bt{font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border-radius:5px;margin-left:6px;white-space:nowrap;vertical-align:middle}
   .bt.req{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line)}
   .bt.opt{color:var(--muted);border:1px solid var(--line)}
+  /* top row: skeleton + usecases side by side */
+  .top-row{display:flex;gap:20px;align-items:flex-start;margin:0 0 20px}
+  .top-row .visual{flex:1.5;margin:0}
+  .uses-top{flex:1}
+  .uses-top h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px}
+  .uses-top ul{margin:0;padding-left:18px;font-size:14px}.uses-top li{margin-bottom:7px}
+  @media(max-width:780px){.top-row{flex-direction:column}}
+  /* full-width build section, 3 columns */
+  .build{border:1px solid var(--accent-line);background:#fcfaff;border-radius:18px;padding:22px 24px;margin-bottom:18px}
+  .build-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .build-title{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .build-chips{display:flex;gap:7px}
+  .bchip{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:4px 10px;background:#fff}
+  .bchip b{color:var(--ink);font-weight:600}
+  .build-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+  @media(max-width:780px){.build-cols{grid-template-columns:1fr}}
+  .bcol h4{font-size:15.5px;color:var(--ink);font-weight:600;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .reqcard{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;padding:6px 14px 10px;margin-bottom:14px}
+  .rc-h{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:10px 0 4px}
+  .optblock .rc-h{color:var(--muted)}
+  .crow{padding:8px 0;border-top:1px dotted var(--line)}
+  .crow:first-of-type{border-top:none}
+  .crow .cl{display:block;font-size:13.5px;color:var(--ink)}
+  .crow .cv{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:2px}
+  .acard{border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:11px;background:#fff}
+  .acard-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+  .aico{width:30px;height:30px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:8px;padding:5px}
+  .aname{font-size:14px;font-weight:600;color:var(--ink)}
+  .aspec{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .noassets{font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:18px 14px;text-align:center}
+  .cf-steps{margin:0 0 16px;padding:0;list-style:none;counter-reset:s}
+  .cf-steps li{counter-increment:s;position:relative;padding-left:30px;margin-bottom:11px;font-size:13.5px;color:var(--ink);line-height:1.4}
+  .cf-steps li::before{content:counter(s);position:absolute;left:0;top:0;width:21px;height:21px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
   .spec-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px}
   .spec-assets{font-size:13.5px;color:var(--ink);background:var(--accent-soft);border-radius:8px;padding:8px 10px}
   .create{display:inline-block;margin-top:16px;background:var(--accent);color:#fff;text-decoration:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;padding:10px 15px;border-radius:10px}
@@ -198,28 +231,33 @@ DATA.forEach(d=>{d._text=(d.name+" "+d.purpose+" "+d.uses.join(" ")+" "+d.kw.joi
 function detectPillars(q){const s=new Set();for(const p in PT){if(PT[p].some(t=>q.includes(t)))s.add(p);}return s;}
 function score(d,q,qp){let sc=0;for(const k of d.kw){if(q.includes(k))sc+=3;}for(const p of qp){if(d.chips.includes(p))sc+=3;else if(d.cd)sc+=1.5;else if(d.pillars.includes(p))sc+=1;}q.split(/[^a-zäöü]+/).forEach(t=>{if(t.length>=4&&d._text.includes(t))sc+=0.4;});return sc;}
 
+function aicon(t){
+ if(t==="play")return '<svg viewBox="0 0 24 24" fill="currentColor" class="aico"><polygon points="8,5 19,12 8,19"/></svg>';
+ if(t==="code")return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="aico"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>';
+ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="aico"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>';
+}
 function cardHTML(d){
  const chips=d.cd?`<span class="pill" style="background:var(--p-neutral)1f;color:var(--p-neutral)">Depends on content</span>`:d.chips.map(pill).join("");
  const vf=d.variant?`&filters.0.key=${d.vfield}&filters.0.op=&filters.0.val=${d.variant}`:"";
  const create=`https://app.contentful.com/spaces/${SPACE}/views/entries?contentTypeId=${d.ct}&contentTypeIds=${d.ct}${vf}`;
- const budgetRows=d.budget.map(r=>`<div class="spec-row"><span class="spec-k">${r[0]}${r[2]?` <span class="bt ${r[2]}">${r[2]==="req"?"required":"optional"}</span>`:""}</span><span class="spec-v">${r[1]}</span></div>`).join("");
+ const crow=r=>`<div class="crow"><span class="cl">${r[0]}</span><span class="cv">${r[1]}</span></div>`;
+ const reqRows=d.budget.filter(r=>r[2]==="req"), optRows=d.budget.filter(r=>r[2]!=="req");
+ const copyCol=`<div class="bcol"><h4>Copy requirements</h4>`+(reqRows.length?`<div class="reqcard"><span class="rc-h req">Required</span>${reqRows.map(crow).join("")}</div>`:"")+(optRows.length?`<div class="optblock"><span class="rc-h">Optional</span>${optRows.map(crow).join("")}</div>`:"")+`</div>`;
+ const assetCol=`<div class="bcol"><h4>Assets</h4>`+((d.assetReqs&&d.assetReqs.length)?d.assetReqs.map(a=>`<div class="acard"><div class="acard-top">${aicon(a.ic)}<span class="bt ${a.req?"req":"opt"}">${a.req?"required":"optional"}</span></div><div class="aname">${a.l}</div><div class="aspec">${a.s}${a.note?` · ${a.note}`:""}</div></div>`).join(""):`<div class="noassets">No assets needed</div>`)+`</div>`;
+ const steps=["Create a "+(CTNAME[d.ct]||d.ct)].concat(d.cthint.split(/,\s*/));
+ const cfCol=`<div class="bcol"><h4>Contentful setup</h4><ol class="cf-steps">`+steps.map(st=>`<li>${st.charAt(0).toUpperCase()+st.slice(1)}</li>`).join("")+`</ol><a class="create" href="${create}" target="_blank" rel="noopener">View in Contentful →</a></div>`;
  return `<div class="meta-top"><span class="cat">${CATS[d.cat]}</span><div class="pills">${chips}</div></div>
  <h2 class="cname">${d.name}</h2>
  <p class="purpose">${d.purpose}</p>
  <div class="shout"><span class="tagk">${aiNotes[d.id]?noteLabel:(annotating?noteLabel.replace(/^For /,"Tailoring to ")+"…":"How it can work")}</span><p>${aiNotes[d.id]||d.tip}</p></div>
- <figure class="visual"><div class="vlabel">Structure · wireframe</div>${SK[d.id]}</figure>
- <div class="grid-2">
-   <section class="panel spec">
-     <h3>What you need to build this</h3>
-     <div class="spec-row"><span class="spec-k">Density</span><span class="spec-v">${d.density}</span></div>
-     <div class="spec-row"><span class="spec-k">Media</span><span class="spec-v">${d.media}</span></div>
-     <div class="spec-h">Copy budget</div>${budgetRows}
-     <div class="spec-h">Assets / graphics</div><div class="spec-assets">${d.assets}</div>
-     <a class="create" href="${create}" target="_blank" rel="noopener">Open in Contentful →</a>
-     <p class="hint">To build it: create a ${CTNAME[d.ct]||d.ct}, ${d.cthint}.</p>
-   </section>
-   <section class="panel uses"><h3>Usecase examples</h3><ul>${li(d.uses)}</ul></section>
+ <div class="top-row">
+   <figure class="visual"><div class="vlabel">Structure · wireframe</div>${SK[d.id]}</figure>
+   <section class="uses-top"><h3>Usecase examples</h3><ul>${li(d.uses)}</ul></section>
  </div>
+ <section class="build">
+   <div class="build-head"><span class="build-title">What you need to build this</span><div class="build-chips"><span class="bchip">Density <b>${d.density}</b></span><span class="bchip">Media <b>${d.media}</b></span></div></div>
+   <div class="build-cols">${copyCol}${assetCol}${cfCol}</div>
+ </section>
  <div class="grid-3">
    <section class="panel box good"><h3>Strengths</h3><ul>${li(d.str)}</ul></section>
    <section class="panel box warn"><h3>Limitations</h3><ul>${li(d.lim)}</ul></section>
