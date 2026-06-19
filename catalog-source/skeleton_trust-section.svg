@@ -1,0 +1,16 @@
+<svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Trust Section</title>
+<desc id="sk-d">Low-fidelity wireframe: an eyebrow and heading on the left, and a row of logo/badge tiles on the right that auto-loops as a slider when the items overflow the width.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .tile{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="30" y="58" width="120" height="11" rx="5" class="ph"/><text x="30" y="48" class="lb">eyebrow</text>
+<rect x="30" y="80" width="210" height="18" rx="4" class="ph"/><rect x="30" y="104" width="150" height="18" rx="4" class="ph"/><text x="30" y="140" class="lb">heading</text>
+<rect x="300" y="62" width="80" height="76" rx="10" class="tile"/><rect x="318" y="92" width="44" height="16" rx="4" class="ph"/>
+<rect x="392" y="62" width="80" height="76" rx="10" class="tile"/><rect x="410" y="92" width="44" height="16" rx="4" class="ph"/>
+<rect x="484" y="62" width="80" height="76" rx="10" class="tile"/><rect x="502" y="92" width="44" height="16" rx="4" class="ph"/>
+<rect x="576" y="62" width="80" height="76" rx="10" class="tile"/><rect x="594" y="92" width="44" height="16" rx="4" class="ph"/>
+<text x="300" y="158" class="lb">logos / badges (2–8) · auto-loops as a slider if they overflow</text>
+</svg>

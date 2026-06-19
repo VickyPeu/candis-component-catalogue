@@ -142,5 +142,17 @@ budget:[["Eyebrow","~40 · 270 max","opt"],["Heading","~60 · 620 max","req"],["
 uses:["A standalone feature/story section (image + text + CTA)","A video or product demo with explanatory copy beside it (alternative to the 1-Column Video when you want text next to the video)","Showcase an integration or capability (e.g. Sesam + DATEV export)","Embed an interactive product demo via custom HTML (Navattic)","A bento placed inside a larger Grid Section"],
 str:["Flexible media: a 1:1 image, a video, or a custom HTML embed","Six background styles + image left/right for visual variety","Generous heading/eyebrow room; supports a button + a text link","Works standalone or inside a Grid Section"],
 lim:["Image must be 1:1 with a transparent background (bg set in Contentful)","Media is required","The Icon field does nothing here (it's for the Bento Tab Section)"],
-anti:"Don't use a non-square or non-transparent image (the background won't show through correctly). Don't rely on the Icon field for the standalone Bento XL."}
+anti:"Don't use a non-square or non-transparent image (the background won't show through correctly). Don't rely on the Icon field for the standalone Bento XL."},
+
+{id:"trust",name:"Trust Section",cat:"content_single",ct:"customComponent",cthint:"set Component variant = trust_section, add trustSectionItems (logo/badge images) and/or platformRatings (rated platforms with stars + link)",vfield:"fields.componentVariant",variant:"trust_section",pillars:["trust_anchor","standard_setter"],chips:["trust_anchor"],cd:false,density:"low",media:"logos / badges (images) · or platform ratings",
+kw:["trust","proof","social proof","logos","logo","partner","partners","partnership","certification","certified","badge","badges","ratings","reviews","stars","capterra","google","app store","datev","credibility","awards","trusted by"],
+purpose:"A short proof strip — partner/certification logos, badges, or platform ratings (stars). 2–8 items; auto-loops as a slider if they overflow the width.",
+tip:"Drop in 2–8 partner/cert logos as image files, or use Platform Ratings for star scores with a link (Capterra, Google…). If every logo must be visible at once, a Grid Section “logos” variant fits better.",
+assets:"2–8 logo/badge image files (auto-loops as a slider if they overflow); or Platform Ratings (image + star + link)",
+assetReqs:[{l:"Logo / badge images",s:"2–8 image files · auto-loops as a slider on overflow",req:true,ic:"img"},{l:"Platform ratings",s:"alternative — image + star rating + link (Capterra, Google…)",req:false,ic:"img"}],
+budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Items","2–8 (more → auto-slider)"]],
+uses:["Partner / certification logos (“Candis als offizieller Partner von”)","Customer ratings with stars (Capterra, Google, App Store…)","Badges / trust marks / awards","A proof strip near a conversion point"],
+str:["Quick social-proof strip — partners, certs or ratings","Auto-loops as a slider when items overflow the width","Items can be plain logos OR rated platforms (stars + link)","Works with 2 to ~8 items"],
+lim:["If every item MUST be visible at once, a Grid Section “logos” variant fits better (not built yet)","Logos need clean, consistent image files","Ratings need Platform Ratings entries (image + rating + url)"],
+anti:"Don't cram so many logos that the auto-slider hides key ones (use a logos grid). Don't use unrelated or low-trust logos."}
 ];
