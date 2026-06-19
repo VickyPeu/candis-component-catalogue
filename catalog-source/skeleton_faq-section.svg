@@ -1,0 +1,18 @@
+<svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: FAQ Section</title>
+<desc id="sk-d">Low-fidelity wireframe: a heading on the left, and an accordion of up to 30 collapsible question/answer rows on the right, each with a plus toggle. Text only — built for SEO and AI crawlers.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+</style>
+<text x="24" y="48" class="lb">heading</text>
+<rect x="24" y="58" width="180" height="18" rx="4" class="ph"/><rect x="24" y="82" width="220" height="18" rx="4" class="ph"/>
+<text x="24" y="132" class="lb">accordion · up to 30 questions</text>
+<text x="24" y="150" class="lb">each: question + rich-text answer</text>
+<text x="24" y="168" class="lb">text only · built for SEO + AI crawlers</text>
+<rect x="320" y="50" width="340" height="270" rx="14" fill="#ffffff" stroke="#ded8d8" stroke-width="1"/>
+<rect x="344" y="94" width="250" height="13" rx="4" class="ph"/><line x1="617" y1="100" x2="631" y2="100" stroke="#716571" stroke-width="1.5"/><line x1="624" y1="93" x2="624" y2="107" stroke="#716571" stroke-width="1.5"/><line x1="344" y1="126" x2="636" y2="126" stroke="#ded8d8" stroke-width="1"/>
+<rect x="344" y="154" width="210" height="13" rx="4" class="ph"/><line x1="617" y1="160" x2="631" y2="160" stroke="#716571" stroke-width="1.5"/><line x1="624" y1="153" x2="624" y2="167" stroke="#716571" stroke-width="1.5"/><line x1="344" y1="186" x2="636" y2="186" stroke="#ded8d8" stroke-width="1"/>
+<rect x="344" y="214" width="240" height="13" rx="4" class="ph"/><line x1="617" y1="220" x2="631" y2="220" stroke="#716571" stroke-width="1.5"/><line x1="624" y1="213" x2="624" y2="227" stroke="#716571" stroke-width="1.5"/><line x1="344" y1="246" x2="636" y2="246" stroke="#ded8d8" stroke-width="1"/>
+<rect x="344" y="274" width="190" height="13" rx="4" class="ph"/><line x1="617" y1="280" x2="631" y2="280" stroke="#716571" stroke-width="1.5"/><line x1="624" y1="273" x2="624" y2="287" stroke="#716571" stroke-width="1.5"/>
+</svg>
