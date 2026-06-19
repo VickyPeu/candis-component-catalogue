@@ -1,13 +1,13 @@
 // Single source of truth for component data — loaded by index.html (frontend) AND api/suggest.js (AI).
 export const COMPONENTS=[
 {id:"bentom",name:"Grid Section — Bento M",cat:"feature_grids",ct:"gridSection",cthint:"set Variant = bento_M",vfield:"fields.variant",variant:"bento_M",pillars:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"],chips:["standard_setter","translation_of_complexity","thought_leader"],cd:false,density:"medium",media:"image, icon",
-kw:["overview","grid","bento","feature","features","benefit","benefits","cards","capabilities","process","steps","flow"],
+kw:["overview","grid","bento","feature","features","benefit","benefits","cards","capabilities","process","steps","flow","logo","logos","partner","partners","partnership","explanation","explain","describe","each with text"],
 purpose:"Mainly an overview grid for a group of related points; can also show a light numbered flow or a link collection.",
 tip:"Use product images or icons and explain each point in a Bento M card. Need step numbers for a flow? Put them in the image, icon or heading.",
 assets:"Per card: 1 image (16:10) OR 1 icon — optional · 2–9 cards",
 assetReqs:[{l:"Card image or icon",s:"image 16:10, or an icon",req:false,ic:"img"}],
 budget:[["Section eyebrow","32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Card heading (each)","80 characters, required","req"],["Card paragraph (each)","short, 1–2 sentences","opt"],["Card link text","~25 characters (optional)","opt"],["Cards","2–9 (ideal 3 or 6)"]],
-uses:["Overview / feature or benefit grid (main purpose)","Light numbered flow (numbers in image/icon/heading)","Link collection (e.g. to blog posts) → Thought-Leader character"],
+uses:["Overview / feature or benefit grid (main purpose)","Partner / certification logos each with a short explanation (logo image + heading + paragraph per card) — when a Trust Section's logo-only strip isn't enough","Light numbered flow (numbers in image/icon/heading)","Link collection (e.g. to blog posts) → Thought-Leader character"],
 str:["Flexible — carries many content types and almost any pillar","Image OR icon per card + short text","Optional link per card","2–9 items, ideal 3 or 6"],
 lim:["Card heading hard-capped at 80 chars","For pure trust-building, others fit better","With >6 items the grid gets busy"],
 anti:"For a real step-by-step process the Steps Section is better. Not as a primary trust element."},
@@ -153,6 +153,6 @@ assetReqs:[{l:"Logo / badge images",s:"2–8 image files · auto-loops as a slid
 budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Items","2–8 (more → auto-slider)"]],
 uses:["Partner / certification logos (“Candis als offizieller Partner von”)","Customer ratings with stars (Capterra, Google, App Store…)","Badges / trust marks / awards","A proof strip near a conversion point"],
 str:["Quick social-proof strip — partners, certs or ratings","Auto-loops as a slider when items overflow the width","Items can be plain logos OR rated platforms (stars + link)","Works with 2 to ~8 items"],
-lim:["If every item MUST be visible at once, a Grid Section “logos” variant fits better (not built yet)","Logos need clean, consistent image files","Ratings need Platform Ratings entries (image + rating + url)"],
-anti:"Don't cram so many logos that the auto-slider hides key ones (use a logos grid). Don't use unrelated or low-trust logos."}
+lim:["No copy per item — just ONE eyebrow + heading for the whole strip; the logos carry no text. If each partner/logo needs its own explanation, use a Grid Section — Bento M instead (logo/image + heading + paragraph per card).","If every item MUST be visible at once, a Grid Section “logos” variant fits better (not built yet)","Logos need clean, consistent image files","Ratings need Platform Ratings entries (image + rating + url)"],
+anti:"Don't reach for it when each logo needs an explanation — there's no per-item text, only logos under one shared heading; use a Bento M grid for logo + copy. Don't cram so many logos that the auto-slider hides key ones (use a logos grid). Don't use unrelated or low-trust logos."}
 ];
