@@ -78,7 +78,7 @@
   #rhead{font-size:14px;color:var(--muted)}
   #rhead b{color:var(--ink);font-weight:600}
   .jump{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
-  .jump select{font-family:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);max-width:240px}
+  .jump select{font-family:inherit;font-size:13px;padding:7px 30px 7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);max-width:240px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
   .meta-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
   .cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
   .pills{display:flex;flex-wrap:wrap;gap:5px}
@@ -300,7 +300,10 @@ function pillarMsgs(){const n=[...selP].map(p=>PILLARS[p][0]).join(" + ");return
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 function startLoader(msgs){
  $("slider").style.display="none";$("empty").style.display="none";$("wire").style.display="none";$("interpret").innerHTML="";
- const seq=shuffle(msgs);  // random order each run → feels fresh, rarely repeats within a wait
+ // always open with the "trotting to the shelves" line (msgs[0]); shuffle the middle; end on "laying out the sections" if present
+ const first=msgs[0];let rest=shuffle(msgs.slice(1));
+ const ei=rest.findIndex(m=>/^Laying out/.test(m));const end=ei>-1?rest.splice(ei,1):[];
+ const seq=[first,...rest,...end];
  $("loaderMsg").textContent=seq[0];$("loader").style.display="flex";let i=0;
  clearInterval(loaderTimer);loaderTimer=setInterval(()=>{i=(i+1)%seq.length;$("loaderMsg").textContent=seq[i];},1600);
  loaderStart=performance.now();
