@@ -9,6 +9,8 @@
 const MODEL = "claude-sonnet-4-6";
 const ANNOTATE_MODEL = "claude-haiku-4-5-20251001"; // browse-by-pillar notes are a simple task → use the faster/cheaper model
 
+import { COMPONENTS } from "../catalog.js";
+
 const PILLARS_DOC = `
 authority: Structured confidence, earned through restraint. Editorial, low density, footnoted.
 thought_leader: Editorial opinion with intent. Magazine spreads, pull-quotes, POV.
@@ -17,108 +19,30 @@ trust_anchor: Proof-dense, risk-removing. Logos, numbers, testimonials, badges, 
 translation_of_complexity: Progressive disclosure, high visual metaphor. Before/after shown not told; one concept at a time.`;
 
 // Component knowledge base. Keep in sync with the catalogue in index.html (DATA).
-const CATALOG = [
- {id:"bentom", name:"Grid Section — Bento M", category:"feature_grids", contentType:"gridSection",
-  pillarsServe:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"], contentDependent:false,
-  architecture:"Grid Section, variant bento_M: a grid of 2–9 'Bento M' cards (ideal 3 or 6). Each card has an image (16:10) OR an icon, a heading (max 80 chars), a short rich-text paragraph, and an optional link (text or button). Section has an eyebrow (max 32), heading, optional paragraph, background + icon-background options. A light numbered flow is possible by writing numbers into the image/icon/heading.",
-  copyBudget:"section eyebrow 32 characters · section heading ~60 characters · section paragraph 1–2 sentences · card heading (each) 80 characters, required · card paragraph (each) short, 1–2 sentences · card link text ~25 characters (optional) · cards 2–9 (ideal 3 or 6)", assets:"per card: 1 image (16:10) or 1 icon",
-  useCases:["overview / feature or benefit grid","light numbered flow","link collection (e.g. blog posts)"],
-  strengths:["flexible — many content types, almost any pillar","image or icon + short text per card"], limitations:["card heading capped at 80","weak as a primary trust element"],
-  antiPattern:"For a real step-by-step process the Steps Section is better. Not as a primary trust element."},
+const ARCH={
+ bentom:"Grid Section, variant bento_M: a grid of 2–9 'Bento M' cards (ideal 3 or 6). Each card has an image (16:10) OR an icon, a heading (max 80 chars), a short rich-text paragraph, and an optional link (text or button). Section has an eyebrow (max 32), heading, optional paragraph, background + icon-background options. A light numbered flow is possible by writing numbers into the image/icon/heading.",
+ video:"1-Column Section with media=Video. Centered single column: eyebrow, heading (serif or sans), paragraph, one large video (needs a thumbnail + duration + play-button alt; host via uploaded file, YouTube or Wistia), optional link. No character limits set. A screen-recording of the Candis product makes a process concrete.",
+ image:"1-Column Section with media=Image. Centered single column with one large image (alt text + title), eyebrow, heading, paragraph, optional link. Good for one editorial/brand image, a product screenshot, or a labelled diagram.",
+ toolcmp:"1-Column Section with media=Table, table variant tool_comparison. A comparison table: a first label column + 2–4 tool columns, cells shown as green checkmarks / red crosses. Optional accordion + collapse-by-default for long tables.",
+ decision:"1-Column Section with media=Table, table variant decision_overview. Like the tool comparison but cells hold free TEXT (not checks/crosses) for nuanced, not-black-and-white comparisons. Supports selectable categories that swap between tables. Leaves the 'right fit' decision to the reader.",
+ cta:"CTA Section: a conversion card with eyebrow, heading, paragraph, plus EITHER a button (link) OR a sign-up form. The form supports configurable fields (e.g. email), submit/success/error text, a Demodesk route (book a consultation/demo) and a PDF-on-submit (gated download). Optional image + background colours.",
+ beforeafter:"Before/After Slider (customComponent, variant before_after_slider). 3–4 paired 'before' Bento M cards and 3–4 'after' cards. Desktop: drag a full-height slider handle to reveal the 'after' state; mobile: a toggle. Section eyebrow/heading/paragraph + an internal before/after headline (desktop).",
+ exitintent:"Two-level. A customComponent (variant exit_intent_modal) is the wrapper — it only controls placement/frequency (showOnCommonPages / showOnLandingPages / showOnBlogPostPages, or displayOnPages for specific pages) and links a modal entry. The modal holds the content + a variant. Relevant variant here: exit_intent (opens when a visitor moves to leave, or after triggerAfterSeconds) and exit_intent_countdown (same, with a countdown banner using exitIntentCountdownEndDate). Modal has eyebrow/heading/paragraph, an optional image, and an action that is EITHER a button (ctaButton, up to two) OR an email-capture form. (The same modal type also powers a 'common' button-triggered booking modal and gated downloads — factsheet/pricing_summary/info_packages/implementation_guide — but those are out of scope for this catalogue entry.)",
+ feedback:"customComponent, variant feedback_section: a two-part section. Left = eyebrow + heading + paragraph (the invitation). Right = a form panel where the visitor taps one of a few suggestion chips OR writes their own free-text idea (~150 chars) and submits. All UI microcopy (labels, placeholder, submit button, success message, character counter) comes from a linked Common Text Set; the chip options come from the feedbackSectionSuggestions array. Submissions are posted to Slack (#website-feedback-form-submit). Fundamentally an engagement/listening utility, not a lead form (no email capture).",
+ banner:"customComponent, variant page_bottom_banner: a slim bar pinned (sticky) to the bottom of the screen, dismissible (×). Heading + short paragraph (date/time + one line), a LIVE countdown (days:hours:minutes:seconds) driven by pageBottomBannerExpiryDate, and a CTA button (link). Placement is flexible: global by page type (showOnCommon/Landing/BlogPost) or pinned to specific pages (displayOnPages). It's a date-driven announcement/conversion mechanism — less interruptive than a modal since it doesn't block the page.",
+ steps:"customComponent, variant steps_section: a row of EXACTLY 3 Bento M cards (the steps field) presented as a timeline. Each card has a step label (the timeline marker — e.g. Heute / Tag 14 / Tag 30; the bentoM stepLabel field IS used here, unlike in gridSection), a required image (icon variant does NOT work), a heading (max 80 chars), and a short checklist (the card paragraph). Section eyebrow + heading above; optional CTA button below. Fewer or more than 3 steps breaks the design.",
+ bentoxl:"bentoXL: a large two-part block — a 1:1 visual on one side (image, video, or a customHtmlSection embed e.g. Navattic) and text on the other (eyebrow, heading, paragraph) plus up to two links (a button and/or text link). The image should be square (1:1) with a transparent background; the background behind it is set in Contentful. Several background variants (white, gray, gray_on_white, black, white_on_gray, white_on_black) and image position left/right. Stands alone OR nested in a Grid Section. The icon field is only used inside a Bento Tab Section (irrelevant standalone). Content-dependent — the content sets the pillar."
+};
 
- {id:"video", name:"1-Column Section — Video", category:"content_single", contentType:"oneColumnSection",
-  pillarsServe:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"], contentDependent:true,
-  architecture:"1-Column Section with media=Video. Centered single column: eyebrow, heading (serif or sans), paragraph, one large video (needs a thumbnail + duration + play-button alt; host via uploaded file, YouTube or Wistia), optional link. No character limits set. A screen-recording of the Candis product makes a process concrete.",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences · video display title ~60 characters · video meta description ~150–160 characters · video duration 5 characters · play-button alt text short · link text ~25 characters (optional)", assets:"1 video + 1 thumbnail image (16:9)",
-  useCases:["product explainer / demo","testimonial video","founder/vision POV","screen-record a flow through the product"],
-  strengths:["single focal point","video shows instead of tells","lots of real estate for one important video"], limitations:["can't carry multiple parallel points","load weight on mobile"],
-  antiPattern:"Not for multiple parallel features. Don't bury the video under heavy copy."},
+// Derive the AI knowledge base from the single source (catalog.js). Only the architecture prose is AI-specific.
+const CATALOG = COMPONENTS.map(c => ({
+  id:c.id, name:c.name, category:c.cat, contentType:c.ct,
+  pillarsServe:c.pillars, contentDependent:c.cd,
+  architecture:ARCH[c.id]||"",
+  copyBudget:c.budget.map(r=>r[0]+" "+r[1]).join(" · "),
+  assets:c.assets, useCases:c.uses, strengths:c.str, limitations:c.lim, antiPattern:c.anti
+}));
 
- {id:"image", name:"1-Column Section — Image", category:"content_single", contentType:"oneColumnSection",
-  pillarsServe:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"], contentDependent:true,
-  architecture:"1-Column Section with media=Image. Centered single column with one large image (alt text + title), eyebrow, heading, paragraph, optional link. Good for one editorial/brand image, a product screenshot, or a labelled diagram.",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences · image alt text ~125 characters · image title ~60 characters · link text ~25 characters (optional)", assets:"1 image — ratio is free choice, but it always spans the full width of the component (+ optional mobile image)",
-  useCases:["editorial/brand image","diagram or before/after visual","product screenshot as proof"],
-  strengths:["single focal point","lighter than video","built-in alt text"], limitations:["static — shows less than video","strongly image-dependent"],
-  antiPattern:"Not for multiple parallel features. Don't use a purely decorative image where proof is needed."},
-
- {id:"toolcmp", name:"1-Column Section — Table (Tool Comparison)", category:"content_single", contentType:"oneColumnSection",
-  pillarsServe:["standard_setter","trust_anchor"], contentDependent:false,
-  architecture:"1-Column Section with media=Table, table variant tool_comparison. A comparison table: a first label column + 2–4 tool columns, cells shown as green checkmarks / red crosses. Optional accordion + collapse-by-default for long tables.",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences · column headers short, ~15–20 characters · feature labels concise, ~60 characters · section header tag short (optional)", assets:"none required",
-  useCases:["Candis vs competitors feature-by-feature","Candis vs market standard","whenever messaging wants a 'Candis vs …' angle"],
-  strengths:["reads as 'we measure up'","honest red crosses build credibility","fast to scan"], limitations:["needs accurate, maintained competitive data","2–4 columns max"],
-  antiPattern:"Not for non-comparative content. Don't make claims you can't back up."},
-
- {id:"decision", name:"1-Column Section — Table (Decision Overview)", category:"content_single", contentType:"oneColumnSection",
-  pillarsServe:["standard_setter","trust_anchor"], contentDependent:false,
-  architecture:"1-Column Section with media=Table, table variant decision_overview. Like the tool comparison but cells hold free TEXT (not checks/crosses) for nuanced, not-black-and-white comparisons. Supports selectable categories that swap between tables. Leaves the 'right fit' decision to the reader.",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences · column headers short, ~15–20 characters · cell text a sentence or two · category labels short (selectable categories)", assets:"none required",
-  useCases:["nuanced comparison where 'it depends'","trade-offs / fit by use case","multi-category decision overview"],
-  strengths:["room for nuance per cell","reads as honest → builds trust"], limitations:["text-heavy, can get long","less scannable than checkmark table"],
-  antiPattern:"Not when a simple yes/no comparison is enough (use Tool Comparison)."},
-
- {id:"cta", name:"CTA Section", category:"conversion", contentType:"ctaSection",
-  pillarsServe:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"], contentDependent:true,
-  architecture:"CTA Section: a conversion card with eyebrow, heading, paragraph, plus EITHER a button (link) OR a sign-up form. The form supports configurable fields (e.g. email), submit/success/error text, a Demodesk route (book a consultation/demo) and a PDF-on-submit (gated download). Optional image + background colours.",
-  copyBudget:"section eyebrow 32 characters · section heading 52 characters (punchy) · section paragraph 120 characters · button text ~25 characters · form success / error messages short, 1 line each · privacy policy as needed (form mode)", assets:"optional: 1 image — upload 16:10, but the copy sets the component height so the image is stretched/cropped to a different ratio; copy & graphic must be briefed together",
-  useCases:["book a consultation/demo","newsletter/waitlist email sign-up","gated content download","end-of-page conversion ask"],
-  strengths:["button OR form mode","covers consultation booking, email capture, gated PDF","focused single ask"], limitations:["should carry one clear ask"],
-  antiPattern:"Don't stack multiple competing CTAs. Don't use it as a content section."},
-
- {id:"beforeafter", name:"Before / After Slider", category:"process", contentType:"customComponent",
-  pillarsServe:["translation_of_complexity","trust_anchor","standard_setter"], contentDependent:false,
-  architecture:"Before/After Slider (customComponent, variant before_after_slider). 3–4 paired 'before' Bento M cards and 3–4 'after' cards. Desktop: drag a full-height slider handle to reveal the 'after' state; mobile: a toggle. Section eyebrow/heading/paragraph + an internal before/after headline (desktop).",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences · before / after headings short, ~24 characters (desktop) · card heading (each) 80 characters · card paragraph (each) short, 1–2 sentences · mobile toggle labels short", assets:"before 3–4 images (16:10) + after 3–4 images (16:10)",
-  useCases:["'Ohne und mit Candis' workflow comparison","pain (before) → relief (after) across steps","any before/after transformation"],
-  strengths:["interactive reveal makes the contrast memorable","shows not tells"], limitations:["needs paired before/after content per card","lives inside customComponent"],
-  antiPattern:"Not for non-transformation content. Don't mismatch the before/after counts."},
-
- {id:"exitintent", name:"Exit Intent Modal", category:"conversion", contentType:"customComponent",
-  pillarsServe:["trust_anchor","standard_setter"], contentDependent:true,
-  architecture:"Two-level. A customComponent (variant exit_intent_modal) is the wrapper — it only controls placement/frequency (showOnCommonPages / showOnLandingPages / showOnBlogPostPages, or displayOnPages for specific pages) and links a modal entry. The modal holds the content + a variant. Relevant variant here: exit_intent (opens when a visitor moves to leave, or after triggerAfterSeconds) and exit_intent_countdown (same, with a countdown banner using exitIntentCountdownEndDate). Modal has eyebrow/heading/paragraph, an optional image, and an action that is EITHER a button (ctaButton, up to two) OR an email-capture form. (The same modal type also powers a 'common' button-triggered booking modal and gated downloads — factsheet/pricing_summary/info_packages/implementation_guide — but those are out of scope for this catalogue entry.)",
-  copyBudget:"eyebrow ~32 characters · heading ~50 characters · title ~50 characters, required · close label short, required · paragraph 1–2 sentences · button text ~25 characters · reassurance text short line", assets:"optional: 1 image, 1:1 (square) ratio, shown beside the text",
-  useCases:["limited-time deal (summer / end-of-year) with a countdown","short survey or feedback prompt","'book a consultation' prompt (→ Demodesk)","time-limited announcement on exit or after X seconds"],
-  strengths:["appears over any page without touching its layout","placement control: globally by page type or specific pages","timing control — on exit and/or after X seconds","built-in countdown banner for genuine urgency"],
-  limitations:["two-level setup — wrapper customComponent plus a linked modal entry","interruptive — overuse trains visitors to dismiss it","no character limits set in Contentful"],
-  antiPattern:"Don't run it everywhere all the time or stack multiple modals on one page — one clear, worth-interrupting ask. Not a regular content section."},
-
- {id:"feedback", name:"Feedback Section", category:"conversion", contentType:"customComponent",
-  pillarsServe:["thought_leader","trust_anchor"], contentDependent:false,
-  architecture:"customComponent, variant feedback_section: a two-part section. Left = eyebrow + heading + paragraph (the invitation). Right = a form panel where the visitor taps one of a few suggestion chips OR writes their own free-text idea (~150 chars) and submits. All UI microcopy (labels, placeholder, submit button, success message, character counter) comes from a linked Common Text Set; the chip options come from the feedbackSectionSuggestions array. Submissions are posted to Slack (#website-feedback-form-submit). Fundamentally an engagement/listening utility, not a lead form (no email capture).",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 2–3 sentences · suggestion chips short ~25 characters each · UI labels short · submit button ~25 characters · visitor free-text ~150 characters · success message short", assets:"none (UI only)",
-  useCases:["'which topics should we cover next?' on a blog/podcast page","gather pain points or feature wishes","a lightweight idea box / mini survey","source editorial ideas directly from readers"],
-  strengths:["two ways to answer — pick a chip or write your own","responses flow straight to Slack","signals you listen → builds rapport","low-friction, one focused ask"],
-  limitations:["links a Common Text Set for all UI microcopy","free-text answer is short (~150 chars)","needs the Slack endpoint wired (backend)","not a lead/contact form — no email capture"],
-  antiPattern:"Don't use it as a contact/lead-capture form (no email field). Don't overload with too many chips. Don't ask for feedback you won't act on."},
-
- {id:"banner", name:"Page Bottom Banner", category:"conversion", contentType:"customComponent",
-  pillarsServe:["trust_anchor","standard_setter"], contentDependent:true,
-  architecture:"customComponent, variant page_bottom_banner: a slim bar pinned (sticky) to the bottom of the screen, dismissible (×). Heading + short paragraph (date/time + one line), a LIVE countdown (days:hours:minutes:seconds) driven by pageBottomBannerExpiryDate, and a CTA button (link). Placement is flexible: global by page type (showOnCommon/Landing/BlogPost) or pinned to specific pages (displayOnPages). It's a date-driven announcement/conversion mechanism — less interruptive than a modal since it doesn't block the page.",
-  copyBudget:"heading ~50 characters (punchy) · paragraph 1 short sentence (date/time + line) · CTA button ~25 characters", assets:"none (text + countdown + button)",
-  useCases:["webinar / event registration with a countdown to the start","limited-time deal counting down to the deadline","any date-driven announcement that stays visible while scrolling"],
-  strengths:["stays visible while scrolling without blocking the page","built-in live countdown creates urgency","dismissible","flexible placement: global by page type or specific pages","one clear ask (heading + countdown + CTA)"],
-  limitations:["needs an expiry date to count down to","persistent footer uses a little screen space until dismissed","one message at a time"],
-  antiPattern:"Not for evergreen content (no date = no countdown). Don't stack multiple persistent banners. Don't keep it running past the deadline."},
-
- {id:"steps", name:"Steps Section", category:"process", contentType:"customComponent",
-  pillarsServe:["translation_of_complexity","standard_setter"], contentDependent:false,
-  architecture:"customComponent, variant steps_section: a row of EXACTLY 3 Bento M cards (the steps field) presented as a timeline. Each card has a step label (the timeline marker — e.g. Heute / Tag 14 / Tag 30; the bentoM stepLabel field IS used here, unlike in gridSection), a required image (icon variant does NOT work), a heading (max 80 chars), and a short checklist (the card paragraph). Section eyebrow + heading above; optional CTA button below. Fewer or more than 3 steps breaks the design.",
-  copyBudget:"section eyebrow ~32 characters · section heading ~60 characters · section paragraph 1–2 sentences (optional) · step label short ~12 characters · card heading 80 characters · card checklist short bullet lines · button ~25 characters · exactly 3 steps", assets:"3 images (16:10), one per step (icon variant doesn't work)",
-  useCases:["onboarding / rollout timeline ('So läuft die Implementierung')","a 3-phase how-it-works","before → during → after of a workflow as discrete steps"],
-  strengths:["reads instantly as a time-ordered process","each step gets an image + heading + scannable checklist","optional closing CTA","turns a process into three digestible beats"],
-  limitations:["exactly 3 steps — fewer/more breaks the design","images required — icon variant doesn't work","each step is a Bento M, inheriting its card limits"],
-  antiPattern:"Not for non-sequential content (use a Grid Section). Don't fit 4+ steps. Don't leave out the images."},
-
- {id:"bentoxl", name:"Bento XL", category:"content_single", contentType:"bentoXL",
-  pillarsServe:["trust_anchor","standard_setter","translation_of_complexity","thought_leader","authority"], contentDependent:true,
-  architecture:"bentoXL: a large two-part block — a 1:1 visual on one side (image, video, or a customHtmlSection embed e.g. Navattic) and text on the other (eyebrow, heading, paragraph) plus up to two links (a button and/or text link). The image should be square (1:1) with a transparent background; the background behind it is set in Contentful. Several background variants (white, gray, gray_on_white, black, white_on_gray, white_on_black) and image position left/right. Stands alone OR nested in a Grid Section. The icon field is only used inside a Bento Tab Section (irrelevant standalone). Content-dependent — the content sets the pillar.",
-  copyBudget:"eyebrow ~40 recommended (270 max) · heading ~60 recommended (620 max) · paragraph 1–3 sentences · button text ~25 characters · text link ~25 characters (optional)", assets:"1 image — 1:1 (square), transparent background (bg set in Contentful); or a video, or a custom HTML embed",
-  useCases:["a standalone feature/story section (image + text + CTA)","showcase an integration or capability (e.g. Sesam + DATEV export)","embed an interactive product demo via custom HTML (Navattic)","a bento placed inside a larger Grid Section"],
-  strengths:["flexible media: 1:1 image, video, or custom HTML embed","six background styles + image left/right","generous heading room; button + text link","works standalone or inside a Grid Section"],
-  limitations:["image must be 1:1 with a transparent background","media is required","the icon field does nothing here (it's for the Bento Tab Section)"],
-  antiPattern:"Don't use a non-square or non-transparent image. Don't rely on the Icon field for the standalone Bento XL."}
-];
 
 const SYSTEM = `You are an expert on Candis's website component library (Contentful building blocks) and on Candis's messaging pillars.
 You receive a BRIEF describing what someone wants on a web page, and optionally DESIRED PILLARS.

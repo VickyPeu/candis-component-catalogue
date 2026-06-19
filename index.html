@@ -160,7 +160,8 @@
   </div>
   <div class="empty" id="empty" style="display:none"></div>
 </div>
-<script>
+<script type="module">
+import { COMPONENTS } from "./catalog.js";
 const SPACE="iszu9cg7w7tj", ENV="master";
 const AI_ENDPOINT="/api/suggest"; // smart (LLM) suggestions via the Vercel serverless function (same origin). Falls back to keyword search if the call fails.
 const PILLARS={standard_setter:["Standard Setter","--p-standard"],trust_anchor:["Trust Anchor","--p-trust"],translation_of_complexity:["Translation of Complexity","--p-translation"],thought_leader:["Thought Leader","--p-thought"],authority:["Authority","--p-authority"]};
@@ -188,139 +189,7 @@ banner:`<svg viewBox="0 0 680 360" aria-hidden="true"><rect x="20" y="14" width=
 steps:`<svg viewBox="0 0 680 444" aria-hidden="true"><rect x="275" y="18" width="130" height="12" rx="6" class="ph"/><text x="415" y="28" class="lb">eyebrow</text><rect x="200" y="42" width="280" height="18" rx="4" class="ph"/><text x="490" y="56" class="lb">heading</text><line x1="146" y1="94" x2="300" y2="94" stroke="#ded8d8" stroke-width="2"/><line x1="380" y1="94" x2="534" y2="94" stroke="#ded8d8" stroke-width="2"/><rect x="66" y="82" width="80" height="24" rx="6" class="ph"/><rect x="300" y="82" width="80" height="24" rx="6" class="ph"/><rect x="534" y="82" width="80" height="24" rx="6" class="ph"/><text x="66" y="126" class="lb">step labels (timeline)</text><rect x="24" y="140" width="196" height="262" rx="10" fill="none" stroke="#c1babe"/><rect x="38" y="156" width="168" height="86" rx="6" class="fr"/><text x="122" y="203" text-anchor="middle" class="lb">image 16:10</text><rect x="38" y="260" width="150" height="12" rx="4" class="ph"/><text x="38" y="292" class="lb">heading</text><polyline points="40,306 44,310 51,301" class="chk"/><rect x="60" y="302" width="140" height="7" rx="3" class="ph"/><polyline points="40,328 44,332 51,323" class="chk"/><rect x="60" y="324" width="140" height="7" rx="3" class="ph"/><polyline points="40,350 44,354 51,345" class="chk"/><rect x="60" y="346" width="120" height="7" rx="3" class="ph"/><text x="38" y="384" class="lb">checklist</text><rect x="242" y="140" width="196" height="262" rx="10" fill="none" stroke="#c1babe"/><rect x="256" y="156" width="168" height="86" rx="6" class="fr"/><rect x="256" y="260" width="150" height="12" rx="4" class="ph"/><polyline points="258,306 262,310 269,301" class="chk"/><rect x="278" y="302" width="140" height="7" rx="3" class="ph"/><polyline points="258,328 262,332 269,323" class="chk"/><rect x="278" y="324" width="140" height="7" rx="3" class="ph"/><polyline points="258,350 262,354 269,345" class="chk"/><rect x="278" y="346" width="120" height="7" rx="3" class="ph"/><rect x="460" y="140" width="196" height="262" rx="10" fill="none" stroke="#c1babe"/><rect x="474" y="156" width="168" height="86" rx="6" class="fr"/><rect x="474" y="260" width="150" height="12" rx="4" class="ph"/><polyline points="476,306 480,310 487,301" class="chk"/><rect x="496" y="302" width="140" height="7" rx="3" class="ph"/><polyline points="476,328 480,332 487,323" class="chk"/><rect x="496" y="324" width="140" height="7" rx="3" class="ph"/><polyline points="476,350 480,354 487,345" class="chk"/><rect x="496" y="346" width="120" height="7" rx="3" class="ph"/><rect x="270" y="408" width="140" height="28" rx="6" class="btn"/><text x="340" y="427" text-anchor="middle" class="lb">button (optional)</text></svg>`,
 bentoxl:`<svg viewBox="0 0 680 360" aria-hidden="true"><rect x="20" y="28" width="640" height="304" rx="16" class="kard"/><rect x="48" y="62" width="236" height="236" rx="10" class="fr"/><text x="166" y="176" text-anchor="middle" class="lb">image · 1:1</text><text x="166" y="192" text-anchor="middle" class="lb">(transparent bg)</text><rect x="320" y="70" width="120" height="12" rx="6" class="ph"/><text x="448" y="80" class="lb">eyebrow</text><rect x="320" y="94" width="300" height="20" rx="4" class="ph"/><rect x="320" y="120" width="230" height="20" rx="4" class="ph"/><text x="320" y="160" class="lb">heading</text><rect x="320" y="170" width="318" height="8" rx="4" class="ph"/><rect x="320" y="184" width="306" height="8" rx="4" class="ph"/><rect x="320" y="198" width="280" height="8" rx="4" class="ph"/><text x="320" y="224" class="lb">paragraph</text><rect x="320" y="238" width="110" height="32" rx="6" class="btn"/><text x="375" y="258" text-anchor="middle" class="lb">button</text><rect x="448" y="246" width="96" height="14" rx="7" class="ph"/><text x="554" y="257" class="lb">text link</text><text x="48" y="320" class="lb">background variants · image left or right · or video / custom HTML</text></svg>`
 };
-const DATA=[
-{id:"bentom",name:"Grid Section — Bento M",cat:"feature_grids",ct:"gridSection",cthint:"set Variant = bento_M",vfield:"fields.variant",variant:"bento_M",pillars:["standard_setter","translation_of_complexity","thought_leader","authority","trust_anchor"],chips:["standard_setter","translation_of_complexity","thought_leader"],cd:false,density:"medium",media:"image, icon",
-kw:["overview","grid","bento","feature","features","benefit","benefits","cards","capabilities","process","steps","flow"],
-purpose:"Mainly an overview grid for a group of related points; can also show a light numbered flow or a link collection.",
-tip:"Use product images or icons and explain each point in a Bento M card. Need step numbers for a flow? Put them in the image, icon or heading.",
-assets:"Per card: 1 image (16:10) OR 1 icon — optional · 2–9 cards",
-budget:[["Section eyebrow","32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Card heading (each)","80 characters, required","req"],["Card paragraph (each)","short, 1–2 sentences","opt"],["Card link text","~25 characters (optional)","opt"],["Cards","2–9 (ideal 3 or 6)"]],
-uses:["Overview / feature or benefit grid (main purpose)","Light numbered flow (numbers in image/icon/heading)","Link collection (e.g. to blog posts) → Thought-Leader character"],
-str:["Flexible — carries many content types and almost any pillar","Image OR icon per card + short text","Optional link per card","2–9 items, ideal 3 or 6"],
-lim:["Card heading hard-capped at 80 chars","For pure trust-building, others fit better","With >6 items the grid gets busy"],
-anti:"For a real step-by-step process the Steps Section is better. Not as a primary trust element."},
-
-{id:"video",name:"1-Column Section — Video",cat:"content_single",ct:"oneColumnSection",cthint:"set Media = Video",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"low",media:"video",
-kw:["video","explainer","demo","testimonial","pov","watch","play","film","clip","process","product","flow","screen","screen recording","walkthrough","how it works","in-product"],
-purpose:"Gives one statement room and backs it with a video — explainer, demo, testimonial or POV.",
-tip:"Screen-record the flow in Candis and show it as a video — the moving product makes a process concrete and proves it works.",
-assets:"1 video (file, YouTube or Wistia) + 1 thumbnail image (16:9) — both required",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Video display title","~60 characters","opt"],["Video meta description","~150–160 characters","req"],["Video duration","5 characters (e.g. “5 min”)","req"],["Play-button alt text","short","req"],["Link text","~25 characters (optional)","opt"]],
-uses:["Product explainer / demo video","Testimonial / customer story as video","Founder / vision POV video","One video center stage with framing copy"],
-str:["A single focal point — no competition","Video shows instead of tells","Three hosting options: file, YouTube, Wistia","Lots of real estate — for especially important videos"],
-lim:["Can't carry multiple parallel points (use Grid/Bento)","Video adds load weight (esp. mobile)"],
-anti:"Not for multiple parallel features. Not for step-by-step with proof per step. Don't bury the video under heavy copy."},
-
-{id:"image",name:"1-Column Section — Image",cat:"content_single",ct:"oneColumnSection",cthint:"set Media = Image",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"low",media:"image",
-kw:["image","photo","picture","screenshot","visual","editorial","brand","diagram","illustration","product"],
-purpose:"Gives one statement room and supports it with a single strong image — editorial, brand or explanatory.",
-tip:"Use one strong product screenshot or brand image and let the heading + paragraph carry the point. A labelled diagram works great here too.",
-assets:"1 image — required (ratio free, always full component width) · optional separate mobile image · provide alt text",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Image alt text","~125 characters","opt"],["Image title","~60 characters","opt"],["Link text","~25 characters (optional)","opt"]],
-uses:["Editorial / brand image moment","Diagram or before/after visual","Product screenshot as a focal proof","One important image center stage with framing copy"],
-str:["A single focal point","Lots of real estate for one important image","Lighter than video — faster load","Built-in alt text (accessibility + SEO)"],
-lim:["A static image shows less than a video","Can't carry multiple parallel points","Strongly image-dependent"],
-anti:"Not for multiple parallel features. Not for step-by-step. Don't use a purely decorative image where proof/explanation is needed."},
-
-{id:"toolcmp",name:"1-Column Section — Table (Tool Comparison)",cat:"content_single",ct:"oneColumnSection",cthint:"set Media = Table, Variant = tool_comparison",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"medium",media:"table",
-kw:["compare","comparison","versus","vs","candis vs","competitor","competitors","alternative","alternatives","others","checkmark","feature by feature","table","tool comparison"],
-purpose:"A comparison table that pits Candis against other tools, feature by feature, with green checkmarks and red crosses.",
-tip:"List the features that matter, check Candis, and be honest with a red cross where a competitor leads — it makes the whole table more believable.",
-assets:"No images required",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Column headers","short, ~15–20 characters","req"],["Feature labels","concise, ~60 characters","req"],["Section header tag","short (optional)","opt"]],
-uses:["Whenever the messaging wants a “Candis vs …” angle","Candis vs competitor tools, feature by feature","Candis features vs the market standard","A long matrix that needs collapsing / accordion"],
-str:["Side-by-side reads as “we measure up”","Honest red crosses build credibility","Accordion + collapse-by-default keep it compact","Checks / crosses scan fast"],
-lim:["Needs accurate, maintained competitive data","Dense — too many rows/columns overwhelm","2–4 comparison columns max (+ label column)"],
-anti:"Not for non-comparative content. Don't make claims you can't back up. Don't overload with columns/rows."},
-
-{id:"decision",name:"1-Column Section — Table (Decision Overview)",cat:"content_single",ct:"oneColumnSection",cthint:"set Media = Table, Variant = decision_overview",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"high",media:"table",
-kw:["compare","comparison","versus","vs","candis vs","competitor","alternative","others","nuanced","context","decision","it depends","trade-off","tradeoff","table","fit"],
-purpose:"A text-based comparison table for nuanced, not-black-and-white comparisons; leaves the “right fit” call to the reader.",
-tip:"When it's not black-and-white, write a sentence per cell on what each option really offers and let the reader decide — that reads as honest.",
-assets:"No images required",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Column headers","short, ~15–20 characters","req"],["Cell text","a sentence or two","req"],["Category labels","short (selectable categories)","opt"]],
-uses:["Whenever the messaging wants a “Candis vs …” angle (nuanced)","Nuanced comparison where “it depends”","Explaining trade-offs / fit by use case","A multi-category decision overview (selectable categories)"],
-str:["Free text per cell → room for nuance","Reads as honest → builds trust","Selectable categories keep it navigable","Sets the criteria that matter"],
-lim:["Text-heavy → can get long","Needs accurate, maintained context","Less instantly scannable than a checkmark table"],
-anti:"Not when a simple yes/no comparison is enough (use Tool Comparison). Don't let cells become walls of text."},
-
-{id:"cta",name:"CTA Section",cat:"conversion",ct:"ctaSection",cthint:"link a CTA Button (click) or a Form (sign-up)",pillars:["standard_setter","trust_anchor","translation_of_complexity","thought_leader","authority"],chips:["trust_anchor"],cd:true,density:"low",media:"image (optional)",
-kw:["cta","call to action","sign up","signup","sign-up","email","newsletter","consultation","demo","book","convert","conversion","download","button","form","waitlist","lead","contact"],
-purpose:"A conversion section that drives one action — click a button (e.g. book a consultation) or sign up via a form (e.g. email).",
-tip:"Pick one action. For a low-friction ask use a button (“book a free consultation”); to capture leads use the email form.",
-assets:"Optional: 1 image — upload 16:10, but the copy sets the component height, so the image is stretched/cropped to a different ratio · copy & graphic must be briefed together",
-budget:[["Section eyebrow","32 characters","opt"],["Section heading","52 characters (punchy)","opt"],["Section paragraph","120 characters","opt"],["Button text","~25 characters","req"],["Form success / error msgs","short, 1 line each","req"],["Privacy policy","as needed (form mode)","opt"]],
-uses:["“Book a consultation / demo” button (or Demodesk form)","Newsletter / waitlist email sign-up","Gated content download (PDF on submit)","End-of-page conversion ask"],
-str:["Two modes: button click OR inline form","Form covers consultation booking, email, gated PDF","Optional image + background colours","Focused, single ask"],
-lim:["Should carry one clear ask","Form mode needs a linked form entry","Keep CTA copy tight"],
-anti:"Don't stack multiple competing CTAs. Don't use it as a content section. Don't bury the action under long copy."},
-
-{id:"beforeafter",name:"Before / After Slider",cat:"process",ct:"customComponent",cthint:"set Component variant = before_after_slider",vfield:"fields.componentVariant",variant:"before_after_slider",pillars:["translation_of_complexity","trust_anchor","standard_setter"],chips:["translation_of_complexity"],cd:false,density:"medium",media:"image",
-kw:["before","after","before/after","transformation","workflow","ohne und mit","slider","reveal","drag","change","pain","relief","process","product"],
-purpose:"An interactive before/after comparison across 3–4 paired Bento M cards — drag to reveal on desktop, toggle on mobile.",
-tip:"Pair each “before” pain with its “after” relief across 3–4 cards; visitors drag (or toggle on mobile) to feel the change.",
-assets:"Before: 3–4 images (16:10) + After: 3–4 images (16:10) — required, one per Bento M card",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences","opt"],["Before / after headings","short, ~24 characters (desktop)","opt"],["Card heading (each)","80 characters","req"],["Card paragraph (each)","short, 1–2 sentences","opt"],["Mobile toggle labels","short","opt"]],
-uses:["“Ohne und mit Candis” workflow comparison","Showing pain (before) → relief (after) across steps","Any before/after transformation story"],
-str:["Interactive reveal makes the contrast memorable","3–4 paired cards cover a multi-step transformation","Shows, not tells","Before = recognisable pain, after = Candis relief"],
-lim:["Needs paired before/after content per card","Interaction differs desktop (drag) vs mobile (toggle)","Lives inside customComponent — less discoverable"],
-anti:"Not for non-transformation content. Don't mismatch the before/after card counts."},
-
-{id:"exitintent",name:"Exit Intent Modal",cat:"conversion",ct:"customComponent",cthint:"set Component variant = exit_intent_modal, then link a Modal and pick its variant",vfield:"fields.componentVariant",variant:"exit_intent_modal",pillars:["trust_anchor","standard_setter"],chips:[],cd:true,density:"low",media:"image (optional)",
-kw:["exit intent","exit-intent","modal","popup","pop-up","overlay","deal","offer","summer deal","end of year","end-of-year","urgency","urgent","countdown","timer","survey","limited time","banner","leave","exit","promo"],
-purpose:"An overlay that surfaces one urgent or high-value ask over the page — a limited-time deal, a survey, or a booking prompt. Pops up on exit or after X seconds, globally or on chosen pages.",
-tip:"Use it for time-sensitive asks — e.g. a deal with a live countdown that pops up when a visitor moves to leave (or after a set number of seconds). The action can be a button or an email capture.",
-assets:"Optional: 1 image — 1:1 (square) ratio; shown beside the text",
-budget:[["Eyebrow","~32 characters","opt"],["Heading","~50 characters","opt"],["Title","~50 characters, required","req"],["Close label","short, required","req"],["Paragraph","1–2 sentences","opt"],["Button text","~25 characters","opt"],["Reassurance text","short line","opt"]],
-uses:["Summer / end-of-year deal with a countdown","Short survey or feedback prompt","“Book a consultation” prompt (→ Demodesk)","Time-limited announcement on exit or after X seconds"],
-str:["Appears over any page without touching its layout","Placement control: globally by page type, or specific pages","Timing control — on exit and/or after X seconds","Built-in countdown banner for genuine urgency"],
-lim:["Two-level setup — wrapper customComponent plus a linked Modal entry","Interruptive — overuse trains visitors to dismiss it","No character limits set in Contentful"],
-anti:"Don't run it everywhere all the time or stack multiple modals on one page — keep it to one clear, worth-interrupting ask. Don't use it as a regular content section."},
-
-{id:"feedback",name:"Feedback Section",cat:"conversion",ct:"customComponent",cthint:"set Component variant = feedback_section, link a Common Text Set + fill Suggestions",vfield:"fields.componentVariant",variant:"feedback_section",pillars:["thought_leader","trust_anchor"],chips:["thought_leader"],cd:false,density:"medium",media:"none",
-kw:["feedback","survey","poll","topic","topics","ideas","idea box","suggestion","suggestions","ask visitors","engagement","input","vote","what do you want","community","podcast topics","blog ideas"],
-purpose:"Ask visitors for input — which topics interest them or what challenges them. They pick a suggested topic chip or write their own (~150 chars); responses land in Slack (#website-feedback-form-submit).",
-tip:"Use it to ask your audience what they want next — seed a few topic chips and let them add their own. Great on blog/podcast pages to source editorial ideas straight from readers.",
-assets:"None (UI only — no images)",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","2–3 sentences","opt"],["Suggestion chips","short, ~25 characters each (a few)","opt"],["UI labels (choose one / or your own)","short","opt"],["Textarea placeholder","short","opt"],["Submit button","~25 characters","opt"],["Visitor free-text","~150 characters (their input)"],["Success message","short, 1 line","opt"]],
-uses:["“Which topics should we cover next?” on a blog / podcast page","Gather pain points or feature wishes","A lightweight idea box / mini survey","Source editorial ideas directly from readers"],
-str:["Two ways to answer — pick a suggested chip OR write your own","Responses flow straight to Slack (#website-feedback-form-submit)","Signals you listen → builds rapport","Low-friction, one focused ask"],
-lim:["Links a Common Text Set for all UI microcopy","Free-text answer is short (~150 characters)","Needs the Slack submission endpoint wired (backend)","Not a lead/contact form — no email capture"],
-anti:"Don't use it as a contact / lead-capture form (no email field). Don't overload it with too many suggestion chips. Don't ask for feedback you won't act on."},
-
-{id:"banner",name:"Page Bottom Banner",cat:"conversion",ct:"customComponent",cthint:"set Component variant = page_bottom_banner, set the expiry date (drives the countdown), link a CTA button, and choose global or specific pages",vfield:"fields.componentVariant",variant:"page_bottom_banner",pillars:["trust_anchor","standard_setter"],chips:[],cd:true,density:"low",media:"none",
-kw:["banner","bottom banner","sticky","countdown","timer","deal","offer","event","webinar","registration","sign up","limited time","end of year","date","deadline","urgency","announcement","footer"],
-purpose:"A sticky countdown banner pinned to the bottom of the screen (dismissible) for anything tied to a date — a deal, webinar or event — with a live countdown + CTA. Shows globally or on selected pages.",
-tip:"Use it for a date-driven push (webinar / event / deal) that follows the visitor while scrolling — set the expiry date and it counts down. Less interruptive than a modal.",
-assets:"None (text + countdown + button)",
-budget:[["Heading","~50 characters (punchy)","opt"],["Paragraph (date/time + line)","1 short sentence","opt"],["CTA button","~25 characters","opt"]],
-uses:["Webinar / event registration with a countdown","Limited-time deal counting down to the deadline","Any date-driven announcement that stays visible while scrolling"],
-str:["Stays visible while scrolling without blocking the page","Built-in live countdown creates urgency","Dismissible — visitors can close it","Flexible placement: global by page type, or specific pages","One clear ask (heading + countdown + CTA)"],
-lim:["Needs an expiry date to count down to","Persistent footer uses a little screen space until dismissed","One message at a time"],
-anti:"Don't use it for evergreen content (no date = no countdown). Don't stack multiple persistent banners. Don't keep it running past the deadline."},
-
-{id:"steps",name:"Steps Section",cat:"process",ct:"customComponent",cthint:"set Component variant = steps_section, add exactly 3 Bento M (with images) under steps, optional button",vfield:"fields.componentVariant",variant:"steps_section",pillars:["translation_of_complexity","standard_setter"],chips:["translation_of_complexity"],cd:false,density:"medium",media:"image (3 cards)",
-kw:["steps","step","process","timeline","how it works","onboarding","implementation","rollout","phases","stages","day 1","sequence","walkthrough"],
-purpose:"A 3-step process/timeline: exactly three Bento M cards as steps (with step labels like Heute → Tag 14 → Tag 30), each with an image, heading and a short checklist. Optional button below.",
-tip:"Use it to show how something unfolds over time — set a step label per card (the timeline marker), an image, a heading and a short checklist. Exactly 3 steps, images required.",
-assets:"3 images (16:10), one per step — required (icon variant does NOT work here)",
-budget:[["Section eyebrow","~32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","1–2 sentences (optional)","opt"],["Step label (each)","short, ~12 characters","opt"],["Card heading (each)","80 characters","req"],["Card checklist (each)","short bullet lines","opt"],["Button","~25 characters","opt"],["Steps","exactly 3"]],
-uses:["“So läuft die Implementierung” — onboarding / rollout timeline","A 3-phase how-it-works","Before → during → after of a workflow, as discrete steps"],
-str:["Reads instantly as a time-ordered process (timeline + step labels)","Each step gets an image + heading + scannable checklist","Optional closing CTA (e.g. download a guide)","Turns a process into three digestible beats"],
-lim:["Exactly 3 steps — fewer/more breaks the design (Dusan to harden)","Images required — the icon variant doesn't work here","Each step is a Bento M, inheriting its card limits"],
-anti:"Not for non-sequential content (use a Grid Section). Don't try to fit 4+ steps. Don't leave out the images (icon-only breaks the layout)."},
-
-{id:"bentoxl",name:"Bento XL",cat:"content_single",ct:"bentoXL",cthint:"set Media (image 1:1 transparent, or video, or custom HTML), pick a Background + Image position, add a button / text link",pillars:["trust_anchor","standard_setter","translation_of_complexity","thought_leader","authority"],chips:[],cd:true,density:"medium",media:"image (1:1) / video / custom HTML",
-kw:["bento","bento xl","feature section","image and text","split section","showcase","integration","datev","sesam","navattic","custom html","embed","two column","feature","background"],
-purpose:"A large feature section: a 1:1 visual (image, video, or custom HTML embed like Navattic) beside text (eyebrow, heading, paragraph) with an optional button + text link. Several background styles; image left or right. Stands alone or inside a Grid Section.",
-tip:"Use it to give one feature or story a generous spotlight beside a square visual — set the image 1:1 with a transparent background (Contentful sets the bg), pick a background variant, and place the image left or right. Swap the image for a video or a custom HTML embed (e.g. Navattic).",
-assets:"Media required — 1 image 1:1 (square, transparent bg set in Contentful), or a video, or a custom HTML embed",
-budget:[["Eyebrow","~40 · 270 max","opt"],["Heading","~60 · 620 max","req"],["Paragraph","1–3 sentences","req"],["Button text","~25 characters","opt"],["Text link","~25 characters (optional)","opt"]],
-uses:["A standalone feature/story section (image + text + CTA)","Showcase an integration or capability (e.g. Sesam + DATEV export)","Embed an interactive product demo via custom HTML (Navattic)","A bento placed inside a larger Grid Section"],
-str:["Flexible media: a 1:1 image, a video, or a custom HTML embed","Six background styles + image left/right for visual variety","Generous heading/eyebrow room; supports a button + a text link","Works standalone or inside a Grid Section"],
-lim:["Image must be 1:1 with a transparent background (bg set in Contentful)","Media is required","The Icon field does nothing here (it's for the Bento Tab Section)"],
-anti:"Don't use a non-square or non-transparent image (the background won't show through correctly). Don't rely on the Icon field for the standalone Bento XL."}
-];
+const DATA=COMPONENTS;
 
 function cssvar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
 function pill(key){const [label,v]=PILLARS[key];const c=cssvar(v);return `<span class="pill" style="background:${c}1f;color:${c}">${label}</span>`;}
