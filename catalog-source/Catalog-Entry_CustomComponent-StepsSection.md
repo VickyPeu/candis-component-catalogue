@@ -77,16 +77,16 @@ Content type `customComponent`, **Component variant = `steps_section`**.
 | paragraph | RichText | the step's short checklist / description |
 
 ## Copy budget (for Alexander)
-| Field | Limit / recommended |
-|---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 1–2 sentences (optional) |
-| Step label (each) | short, ~12 characters (e.g. "Tag 14") |
-| Card heading (each) | 80 characters |
-| Card checklist (each) | short bullet lines |
-| Button | ~25 characters |
-| Steps | exactly 3 |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | ~32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 1–2 sentences (optional) | optional |
+| Step label (each) | short, ~12 characters (e.g. "Tag 14") | optional |
+| Card heading (each) | 80 characters | required |
+| Card checklist (each) | short bullet lines | optional |
+| Button | ~25 characters | optional |
+| Steps | exactly 3 | — |
 
 ## How to find it in Contentful
 Create a **Custom Component**, set **Component variant = `steps_section`**, write the section eyebrow +

@@ -78,15 +78,15 @@ Content type `gridSection`, selected via `variant = bento_M`.
 | stepLabel | Symbol (localized) | ⚠ no effect in Grid context — belongs to Steps Section; ignore here |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | 32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 1–2 sentences |
-| Card heading (each) | 80 characters, required |
-| Card paragraph (each) | short, 1–2 sentences |
-| Card link text | ~25 characters (optional) |
-| Cards | 2–9 (ideal 3 or 6) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | 32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 1–2 sentences | optional |
+| Card heading (each) | 80 characters | required |
+| Card paragraph (each) | short, 1–2 sentences | optional |
+| Card link text | ~25 characters (optional) | optional |
+| Cards | 2–9 (ideal 3 or 6) | — |
 
 ## How to find it in Contentful
 Add entry → **Grid Section** → set field **Variant** = `bento_M` → add 2–9 **Bento M** entries

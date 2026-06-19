@@ -83,14 +83,14 @@ _(The table type also has `isAccordionLayout` and `tablesCollapsedByDefault`, bu
 | category | Link → category | drives the selectable-category switching |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 1–2 sentences |
-| Column headers | short, ~15–20 characters |
-| Cell text | a sentence or two |
-| Category labels | short (selectable categories) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | ~32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 1–2 sentences | optional |
+| Column headers | short, ~15–20 characters | required |
+| Cell text | a sentence or two | required |
+| Category labels | short (selectable categories) | optional |
 
 ## How to find it in Contentful
 Add entry → **1-Column Section** → set **Media** to a **Table** entry with **Variant** =

@@ -82,16 +82,16 @@ Content type `oneColumnSection`, selected via `media = video`.
 | isYoutubeShort / shouldAutoplay / isDurationShownOnPlayButton | Boolean | behavior toggles |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 1–2 sentences |
-| Video display title | ~60 characters |
-| Video meta description | ~150–160 characters |
-| Video duration | 5 characters (e.g. “5 min”) |
-| Play-button alt text | short |
-| Link text | ~25 characters (optional) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | ~32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 1–2 sentences | optional |
+| Video display title | ~60 characters | optional |
+| Video meta description | ~150–160 characters | required |
+| Video duration | 5 characters (e.g. “5 min”) | required |
+| Play-button alt text | short | required |
+| Link text | ~25 characters (optional) | optional |
 
 ## How to find it in Contentful
 Add entry → **1-Column Section** → set **Media** to a **Video** entry. Eyebrow, heading

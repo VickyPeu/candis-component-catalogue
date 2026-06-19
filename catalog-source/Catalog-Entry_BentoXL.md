@@ -76,13 +76,13 @@ Content type `bentoXL`.
 | supportedIntegrations / supportedPricingPackages | Array | optional (integration logos / pricing-package tags) |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Limit / recommended |
-|---|---|
-| Eyebrow | ~40 recommended (270 max) |
-| Heading | ~60 recommended (620 max) |
-| Paragraph | 1–3 sentences |
-| Button text | ~25 characters |
-| Text link | ~25 characters (optional) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Eyebrow | ~40 recommended (270 max) | optional |
+| Heading | ~60 recommended (620 max) | required |
+| Paragraph | 1–3 sentences | required |
+| Button text | ~25 characters | optional |
+| Text link | ~25 characters (optional) | optional |
 
 ## How to find it in Contentful
 Create a **Bento XL**, write the eyebrow + heading + paragraph, set **Media** (a 1:1 transparent image,

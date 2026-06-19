@@ -78,14 +78,14 @@ Content type `oneColumnSection`, selected via `media = image`.
 | buttonImageWidth | Symbol | width when used as a button image |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 1–2 sentences |
-| Image alt text | ~125 characters |
-| Image title | ~60 characters |
-| Link text | ~25 characters (optional) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | ~32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 1–2 sentences | optional |
+| Image alt text | ~125 characters | optional |
+| Image title | ~60 characters | optional |
+| Link text | ~25 characters (optional) | optional |
 
 ## How to find it in Contentful
 Add entry → **1-Column Section** → set **Media** to an **Image** entry. Eyebrow, heading

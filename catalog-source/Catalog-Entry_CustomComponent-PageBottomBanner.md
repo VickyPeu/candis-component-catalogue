@@ -69,11 +69,11 @@ Content type `customComponent`, **Component variant = `page_bottom_banner`**. **
 | ~~toggleDisabledHeading~~ / ~~toggleDescriptionParagraph~~ | Symbol | ⚠️ inert — Before/After Section leftovers, Dusan to remove |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Heading | ~50 characters (punchy) |
-| Paragraph (date/time + line) | 1 short sentence |
-| CTA button | ~25 characters |
+| Field | Recommended | Required? |
+|---|---|---|
+| Heading | ~50 characters (punchy) | optional |
+| Paragraph (date/time + line) | 1 short sentence | optional |
+| CTA button | ~25 characters | optional |
 
 ## How to find it in Contentful
 Create a **Custom Component**, set **Component variant = `page_bottom_banner`**, write the heading +

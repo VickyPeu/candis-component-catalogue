@@ -85,14 +85,14 @@ Use **either** `ctaButton` (click mode) **or** `form` (sign-up mode).
 | pdfOpenedOnSubmit | Link → Asset | gated PDF opened on submit |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | 32 characters |
-| Section heading | 52 characters (punchy) |
-| Section paragraph | 120 characters |
-| Button text | ~25 characters |
-| Form success / error messages | short, 1 line each |
-| Privacy policy | as needed (form mode) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | 32 characters | optional |
+| Section heading | 52 characters (punchy) | optional |
+| Section paragraph | 120 characters | optional |
+| Button text | ~25 characters | required |
+| Form success / error messages | short, 1 line each | required |
+| Privacy policy | as needed (form mode) | optional |
 
 ## How to find it in Contentful
 Add entry → **CTA Section**. Set eyebrow / heading / paragraph. For a click CTA, link a **CTA Button**

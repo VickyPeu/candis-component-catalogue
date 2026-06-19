@@ -81,17 +81,17 @@ Content type `customComponent`, **Component variant = `feedback_section`**. **No
 _Submissions are delivered to Slack **#website-feedback-form-submit** (backend wiring, not a Contentful field)._
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 2–3 sentences |
-| Suggestion chips | short, ~25 characters each (a few) |
-| UI labels (choose one / or your own) | short |
-| Textarea placeholder | short |
-| Submit button | ~25 characters |
-| Visitor free-text answer | ~150 characters (their input) |
-| Success message | short, 1 line |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | ~32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 2–3 sentences | optional |
+| Suggestion chips | short, ~25 characters each (a few) | optional |
+| UI labels (choose one / or your own) | short | optional |
+| Textarea placeholder | short | optional |
+| Submit button | ~25 characters | optional |
+| Visitor free-text answer | ~150 characters (their input) | optional |
+| Success message | short, 1 line | optional |
 
 ## How to find it in Contentful
 Add entry → **Custom Component** → set **Component variant = `feedback_section`**. Fill eyebrow /

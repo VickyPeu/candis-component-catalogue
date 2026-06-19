@@ -108,15 +108,15 @@ content section.
 | sliderImages | Array → image | image slider inside the modal |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Eyebrow | ~32 characters |
-| Heading | ~50 characters |
-| Title | ~50 characters, required |
-| Close label | short, required |
-| Paragraph | 1–2 sentences |
-| Button text | ~25 characters |
-| Reassurance text | short line |
+| Field | Recommended | Required? |
+|---|---|---|
+| Eyebrow | ~32 characters | optional |
+| Heading | ~50 characters | optional |
+| Title | ~50 characters | required |
+| Close label | short | required |
+| Paragraph | 1–2 sentences | optional |
+| Button text | ~25 characters | optional |
+| Reassurance text | short line | optional |
 
 ## How to find it in Contentful
 Add entry → **Custom Component** → set **Component variant = `exit_intent_modal`**. Link an

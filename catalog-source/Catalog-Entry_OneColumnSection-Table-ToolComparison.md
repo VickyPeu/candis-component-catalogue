@@ -83,14 +83,14 @@ Content type `oneColumnSection` (media = table) → table content type, `variant
 | category | Link → category | optional categorization |
 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; “~” = recommendation
-| Field | Recommended |
-|---|---|
-| Section eyebrow | ~32 characters |
-| Section heading | ~60 characters |
-| Section paragraph | 1–2 sentences |
-| Column headers | short, ~15–20 characters |
-| Feature labels | concise, ~60 characters |
-| Section header tag | short (optional) |
+| Field | Recommended | Required? |
+|---|---|---|
+| Section eyebrow | ~32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | 1–2 sentences | optional |
+| Column headers | short, ~15–20 characters | required |
+| Feature labels | concise, ~60 characters | required |
+| Section header tag | short (optional) | optional |
 
 ## How to find it in Contentful
 Add entry → **1-Column Section** → set **Media** to a **Table** entry with **Variant** =
