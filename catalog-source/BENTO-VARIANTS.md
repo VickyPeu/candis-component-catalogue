@@ -28,7 +28,7 @@ _Last synced: 2026-06-19._
 | **Paragraph** | ≤130 | ≤130 | **no limit** | ≤70 | **no limit** *(req)* |
 | Link | — | `additionalLink` | `additionalLink` | `additionalLink` | `additionalLink` + `additionalLinkTwo` |
 | Special fields | `onClickScrollTo` (→ **bentoXL only**) | `topLineColor` (hex ≤7), `variant` | `stepLabel` (numbered flow) | — | `background`, `hasBorder`, `imagePosition`, `supportedIntegrations`, `supportedPricingPackages` |
-| In catalogue? | ✅ #16 | ⬜ todo | ✅ #1 | ⬜ todo | ✅ #12 (standalone) |
+| In catalogue? | ✅ #16 | ✅ #17 | ✅ #1 | ⬜ todo | ✅ #12 (standalone) |
 
 ## One-line "when to use which"
 - **XS** — tightest. Icon + a few words. A compact feature strip, or in-page nav (scroll to a Bento XL).
