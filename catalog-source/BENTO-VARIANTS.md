@@ -1,0 +1,52 @@
+# Bento variants — what's actually different
+
+The bentos look and behave similarly, so it's easy to lose track of which is which. This is the
+single source of truth for the real differences, pulled from the Contentful content models (CMA, so
+the enforced `size` limits are accurate). It also logs the **discrepancies / inconsistencies** worth
+cleaning up — see the bottom section (candidates for Dusan).
+
+> **Note on Bento XL:** it's the odd one out — the only bento that **stands on its own** as a component
+> (catalogued separately as "Bento XL", `customComponent`-style standalone). It *can* sit inside a Grid
+> Section (`bentoBoxesXL`, variant `bento_XL_*`) too, but we treat it as its own element. All the
+> others (XS / S / M / L) only ever live **inside a Grid Section**.
+
+_Last synced: 2026-06-19._
+
+## At-a-glance comparison
+
+| | **Bento XS** | **Bento S** | **Bento M** | **Bento L** | **Bento XL** |
+|---|---|---|---|---|---|
+| Content type | `bentoXS` | `bentoS` | `bentoM` | `bentoL` | `bentoXL` |
+| Grid field / count | `bentoBoxesXS` · **2–5** | `bentoBoxesS` · **3–12** | `bentoBoxesM` · **2–9** | `bentoBoxesL` · **2–4** | `bentoBoxesXL` · **0–10** |
+| Grid variant | `bento_XS` | `bento_S` (+ `bento_S_pricing_page_wow`) | `bento_M` | `bento_L` | `bento_XL`, `_sticky_scroll`, `_tabs` |
+| **Icon** | ✅ **required** | ✅ optional | ✅ optional | ❌ none | ✅ optional |
+| **Image** | ❌ **none** | ✅ optional | ✅ optional | ✅ **required** | ✅ `media` (image/video/HTML) **req** |
+| **Eyebrow** | ✅ ≤16 | ❌ | ❌ | ❌ | ✅ ≤270 |
+| **Heading** | ≤38 *(req)* | ≤65 *(req)* | ≤80 *(req)* | **≤23** *(req)* | ≤620 *(req)* |
+| **Paragraph** | ≤130 | ≤130 | **no limit** | ≤70 | **no limit** *(req)* |
+| Link | — | `additionalLink` | `additionalLink` | `additionalLink` | `additionalLink` + `additionalLinkTwo` |
+| Special fields | `onClickScrollTo` (→ **bentoXL only**) | `topLineColor` (hex ≤7), `variant` | `stepLabel` (numbered flow) | — | `background`, `hasBorder`, `imagePosition`, `supportedIntegrations`, `supportedPricingPackages` |
+| In catalogue? | ✅ #16 | ⬜ todo | ✅ #1 | ⬜ todo | ✅ #12 (standalone) |
+
+## One-line "when to use which"
+- **XS** — tightest. Icon + a few words. A compact feature strip, or in-page nav (scroll to a Bento XL).
+- **S** — small cards, many of them (up to 12). Icon *or* image, a bit more copy than XS.
+- **M** — the workhorse feature/benefit grid. Icon or image, generous copy, optional `stepLabel` for a numbered flow.
+- **L** — image-led, very short heading (≤23). Few big cards (2–4).
+- **XL** — stands alone. Big hero-ish block: image/video/custom HTML, long copy, integrations, pricing tags.
+
+## Discrepancies & inconsistencies (cleanup candidates → Dusan)
+1. **Heading limits don't follow size order.** L ("large") has the **shortest** heading at **23** chars,
+   shorter than XS (38), S (65) and M (80). Counter-intuitive; easy to trip over.
+2. **Paragraph limits are uneven.** XS = 130, S = 130, L = 70, but **M and XL have no enforced limit at
+   all.** Either M/XL should get a sane cap or the others should be loosened — pick one rule.
+3. **Icon vs image availability is all over the place.** XS = icon only · L = image only (required) ·
+   S/M = both optional · XL = icon + media. No consistent pattern, so it's hard to remember what each can show.
+4. **`onClickScrollTo` (Bento XS) is restricted to `→ bentoXL` only.** It reads like "scroll to any
+   section/page" but you can *only* anchor to a Bento XL. Either widen the allowed targets (other
+   sections/anchors) or rename/document the field so it's clear it's Bento-XL-only.
+5. **Eyebrow exists only on XS (≤16) and XL (≤270)** — not on S/M/L. And 16 vs 270 is a huge gap.
+6. **`stepLabel` lives only on M**, `topLineColor` + a nested `variant` only on S — these one-off fields
+   make the family feel inconsistent.
+
+_Add rows / notes here as we work through S and L._
