@@ -1,0 +1,18 @@
+<svg viewBox="0 0 680 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Grid Section — Bento XL Sticky Scroll</title>
+<desc id="sk-d">Low-fidelity wireframe: an optional section header on top, then a pinned image on the left that stays in place while several Bento XL text blocks scroll past on the right; the image swaps as each block becomes active.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text>
+<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text>
+<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text>
+<rect x="20" y="140" width="300" height="250" rx="10" class="fr"/><rect x="34" y="154" width="56" height="20" rx="10" class="ph"/><text x="62" y="168" text-anchor="middle" class="lb">sticky</text><text x="170" y="262" text-anchor="middle" class="lb">image / video</text><text x="170" y="280" text-anchor="middle" class="lb">stays pinned — swaps per block</text>
+<g opacity="0.4"><rect x="372" y="150" width="80" height="9" rx="3" class="ph"/><rect x="372" y="166" width="220" height="13" rx="3" class="ph"/><rect x="372" y="188" width="280" height="6" rx="3" class="ph"/><rect x="372" y="198" width="240" height="6" rx="3" class="ph"/></g>
+<rect x="360" y="226" width="4" height="98" rx="2" fill="#895fd5"/><text x="648" y="236" text-anchor="end" class="lb">active</text><rect x="372" y="234" width="80" height="9" rx="3" class="ph"/><rect x="372" y="250" width="230" height="13" rx="3" class="ph"/><rect x="372" y="268" width="180" height="13" rx="3" class="ph"/><rect x="372" y="290" width="280" height="6" rx="3" class="ph"/><rect x="372" y="300" width="250" height="6" rx="3" class="ph"/><rect x="372" y="310" width="210" height="6" rx="3" class="ph"/>
+<g opacity="0.4"><rect x="372" y="348" width="80" height="9" rx="3" class="ph"/><rect x="372" y="364" width="220" height="13" rx="3" class="ph"/><rect x="372" y="386" width="260" height="6" rx="3" class="ph"/></g>
+<text x="20" y="420" class="lb">several Bento XL · the image stays pinned and swaps as each block becomes active</text>
+<text x="20" y="436" class="lb">for a guided journey / lots of copy · to show all topics at a glance use Bento XL Tabs</text>
+</svg>
