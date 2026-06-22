@@ -72,6 +72,9 @@ Content type `gridSection`, **Variant = `bento_XS`**; boxes are `bentoXS` entrie
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; "~" = recommendation
 | Field | Limit | Required? |
 |---|---|---|
+| Section eyebrow | 32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | rich text | optional |
 | Card eyebrow (each) | 16 characters | optional |
 | Card heading (each) | 38 characters | required |
 | Card paragraph (each) | 130 characters | optional |

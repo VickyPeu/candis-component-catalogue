@@ -70,6 +70,9 @@ Content type `gridSection`, **Variant = `bento_S`**; boxes are `bentoS` entries 
 ## Copy budget (for Alexander) — a plain number = Contentful-enforced limit; "~" = recommendation
 | Field | Limit | Required? |
 |---|---|---|
+| Section eyebrow | 32 characters | optional |
+| Section heading | ~60 characters | optional |
+| Section paragraph | rich text | optional |
 | Card heading (each) | 65 characters | required |
 | Card paragraph (each) | 130 characters | optional |
 | Top line colour | hex value, e.g. #895fd5 | optional |
@@ -77,9 +80,11 @@ Content type `gridSection`, **Variant = `bento_S`**; boxes are `bentoS` entries 
 | Cards | 4 / 8 / 12 — rows of 4 | — |
 
 ## How to find it in Contentful
-Create / reuse a **Grid Section**, set **Variant = `bento_S`**, add Bento S to `bentoBoxesS` (4 / 8 / 12).
-Each needs a **heading** (≤65); add an optional paragraph (≤130), a text link, and ONE visual — an icon,
-an image, or a **colored top line** (a hex colour).
+1. Create a Grid Section
+2. Set Variant = `bento_S`; add Bento S to `bentoBoxesS` (4 / 8 / 12)
+3. Set image or icon or topLineColor
+
+Each card needs a **heading** (≤65); a paragraph (≤130), a text link and the chosen visual are optional.
 
 ## Skeleton
 Low-fi structure (no copy) → [`skeleton_bento-s.svg`](skeleton_bento-s.svg)
