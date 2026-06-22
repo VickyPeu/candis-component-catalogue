@@ -17,7 +17,9 @@ _Last synced: 2026-06-19._
 | | **Bento XS** | **Bento S** | **Bento M** | **Bento L** | **Bento XL** |
 |---|---|---|---|---|---|
 | Content type | `bentoXS` | `bentoS` | `bentoM` | `bentoL` | `bentoXL` |
-| Grid field / count | `bentoBoxesXS` · **2–5** | `bentoBoxesS` · **3–12** | `bentoBoxesM` · **2–9** | `bentoBoxesL` · **2–4** | `bentoBoxesXL` · **0–10** |
+| Grid field / **allowed count** (CMA) | `bentoBoxesXS` · **2–5** | `bentoBoxesS` · **3–12** | `bentoBoxesM` · **2–9** | `bentoBoxesL` · **2–4** | `bentoBoxesXL` · **0–10** |
+| **Layout in grid** (cols/row) | single row · 2–5 across | **rows of 4** (4 · 8 · 12) | **rows of 3** (3 · 6 · 9) | **rows of 2** (2 · 4) | **stands alone** · usually 1 |
+| **Counts actually used** (of 225 entries) | 5 (×22), 3 (×10), 4 (×2) | **4 (×48)**, 8 (×5) | 3 (×16), 2 (×10) | 2 (×3) | 1 (×3) |
 | Grid variant | `bento_XS` | `bento_S` (+ `bento_S_pricing_page_wow`) | `bento_M` | `bento_L` | `bento_XL`, `_sticky_scroll`, `_tabs` |
 | **Icon** | ✅ **required** | ✅ optional | ✅ optional | ❌ none | ✅ optional |
 | **Image** | ❌ **none** | ✅ optional | ✅ optional | ✅ **required** | ✅ `media` (image/video/HTML) **req** |
@@ -42,11 +44,23 @@ _Last synced: 2026-06-19._
    all.** Either M/XL should get a sane cap or the others should be loosened — pick one rule.
 3. **Icon vs image availability is all over the place.** XS = icon only · L = image only (required) ·
    S/M = both optional · XL = icon + media. No consistent pattern, so it's hard to remember what each can show.
-4. **`onClickScrollTo` (Bento XS) is restricted to `→ bentoXL` only.** It reads like "scroll to any
-   section/page" but you can *only* anchor to a Bento XL. Either widen the allowed targets (other
-   sections/anchors) or rename/document the field so it's clear it's Bento-XL-only.
+4. **Allowed count ≠ layout-friendly count.** The CMA `size` range is wider than the layout actually
+   wants, so editors can save combinations that render unbalanced:
+   - **S** allows **3–12** but lays out in **rows of 4** — usage proves it (48 of 67 use exactly 4, the
+     rest 8). Counts like 3, 5, 6, 7, 9–11 leave a ragged last row. Tighten to multiples of 4 (4/8/12).
+   - **M** allows 2–9 but lays out in rows of 3 (clean at 3/6/9); 2 is a deliberate half-row.
+   - **L** allows 2–4, lays out in rows of 2 (clean at 2/4); 3 leaves a gap.
+   - **XL** allows 0–10 but is the standalone bento — almost always **1** per section.
 5. **Eyebrow exists only on XS (≤16) and XL (≤270)** — not on S/M/L. And 16 vs 270 is a huge gap.
 6. **`stepLabel` lives only on M**, `topLineColor` + a nested `variant` only on S — these one-off fields
    make the family feel inconsistent.
+7. **Does XS even need to exist?** (Vicky's open question — discussing with Dusan.) XS is a tighter S
+   with icons-only and no images; a single row of 2–5. Candidate to fold into S to reduce the family to
+   **S / M / L / XL**. Needs a deeper look first.
+
+### Confirmed by-design (not bugs, just worth knowing)
+- **`onClickScrollTo` (Bento XS) targets a Bento XL only** — it anchor-scrolls to a Bento XL on the same
+  page, *not* an arbitrary section/page. This is intended behavior (confirmed 2026-06-19), just a known
+  constraint when using XS for in-page nav.
 
 _Add rows / notes here as we work through S and L._
