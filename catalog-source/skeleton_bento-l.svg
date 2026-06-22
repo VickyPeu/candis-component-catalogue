@@ -1,0 +1,16 @@
+<svg viewBox="0 0 680 356" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Grid Section — Bento L</title>
+<desc id="sk-d">Low-fidelity wireframe: an optional section eyebrow, heading and paragraph on top, then image-led cards in rows of 2 (2 or 4 cards). Each card pairs a required 16:10 image with a short heading, a brief paragraph and an optional link.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text>
+<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text>
+<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text>
+<rect x="20" y="140" width="300" height="160" rx="10" fill="none" stroke="#ded8d8"/><rect x="36" y="160" width="150" height="94" rx="6" class="fr"/><text x="111" y="211" text-anchor="middle" class="lb">image 16:10</text><rect x="200" y="162" width="104" height="13" rx="3" class="ph"/><rect x="200" y="188" width="104" height="6" rx="3" class="ph"/><rect x="200" y="199" width="96" height="6" rx="3" class="ph"/><rect x="200" y="210" width="72" height="6" rx="3" class="ph"/><rect x="200" y="246" width="64" height="10" rx="3" class="ph"/><text x="272" y="255" class="lb">link</text>
+<rect x="360" y="140" width="300" height="160" rx="10" fill="none" stroke="#ded8d8"/><rect x="376" y="160" width="150" height="94" rx="6" class="fr"/><text x="451" y="211" text-anchor="middle" class="lb">image 16:10</text><rect x="540" y="162" width="104" height="13" rx="3" class="ph"/><rect x="540" y="188" width="104" height="6" rx="3" class="ph"/><rect x="540" y="199" width="96" height="6" rx="3" class="ph"/><rect x="540" y="210" width="72" height="6" rx="3" class="ph"/><rect x="540" y="246" width="64" height="10" rx="3" class="ph"/>
+<text x="20" y="330" class="lb">image-led · 16:10 image required · heading ≤23 · paragraph ≤70 · optional link</text>
+<text x="20" y="346" class="lb">2 or 4 cards · rows of 2</text>
+</svg>

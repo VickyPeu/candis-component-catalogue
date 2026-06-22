@@ -198,5 +198,16 @@ anti:"Don't reach for it when each logo needs an explanation — there's no per-
  uses:["A row (or rows) of small feature / benefit cards","Compact highlights where each card needs a heading + a line + a link","Cards set apart by a colored top line instead of an icon/image"],
  str:["Small, flexible cards — icon, image, OR a colored top line per card","Holds more cards than the others (4 / 8 / 12…)","Optional text link per card","Heading up to 65 + a short paragraph"],
  lim:["Lays out in rows of 4 — 4 / 8 / 12 look balanced (odd counts leave a ragged row)","One visual per card — an icon, image or colored line, not several at once","Tight paragraph (≤130 chars)"],
- anti:"Don't mix visual treatments randomly across cards if it looks messy — keep them consistent. Don't overfill small cards with long copy. Don't use odd counts that leave a half-empty last row."}
+ anti:"Don't mix visual treatments randomly across cards if it looks messy — keep them consistent. Don't overfill small cards with long copy. Don't use odd counts that leave a half-empty last row."},
+{id:"bentol",name:"Grid Section — Bento L",cat:"feature_grids",ct:"gridSection",cthint:"set Variant = bento_L; add 2 or 4 Bento L to bentoBoxesL, set a 16:10 image + heading per box (paragraph and link optional)",vfield:"fields.variant",variant:"bento_L",pillars:["translation_of_complexity","standard_setter"],chips:["translation_of_complexity"],cd:true,density:"medium",media:"image (16:10) — required, one per card",
+ kw:["bento","bento l","large","big","grid","image","images","16:10","photo","picture","visual","feature","features","benefit","benefits","cards","two","four","image card"],
+ purpose:"Image-led cards in a grid (2 or 4, laid out in rows of 2). Each card pairs a 16:10 image with a short heading + a brief line, plus an optional link. The most visual of the in-grid bentos.",
+ tip:"Use when each point needs a real image (16:10) beside it. Copy is tight — heading ≤23, paragraph ≤70 — so let the image carry the weight. 2 or 4 cards (rows of 2). Add a link per card if it should lead somewhere.",
+ assets:"One 16:10 image per card (required) — 2 or 4 cards. Optional link per card.",
+ assetReqs:[{l:"Card image",s:"one 16:10 image per card · required · 2 or 4 cards",req:true,ic:"img"},{l:"Card link",s:"optional · a link per card",req:false,ic:"code"}],
+ budget:[["Section eyebrow","32 characters","opt"],["Section heading","~60 characters","opt"],["Section paragraph","rich text (optional)","opt"],["Card heading (each)","23 characters","req"],["Card paragraph (each)","70 characters","opt"],["Card link text","short label","opt"],["Cards","2 or 4 — rows of 2"]],
+ uses:["Image-led feature / benefit cards (a picture per point)","A small set of highlights where the visual matters most","Two or four cards in a clean 2-up layout"],
+ str:["Most visual of the small bentos — a 16:10 image per card","Clean 2-up layout (2 or 4 cards)","Optional link per card","Image carries the message, so copy stays short"],
+ lim:["Image is required — no icon-only or text-only cards","Very tight copy: heading ≤23 (the shortest of all bentos), paragraph ≤70","Lays out in rows of 2 — use 2 or 4 (3 leaves a ragged row)"],
+ anti:"Don't use it without good 16:10 images — the image is the point. Don't try to cram copy; the heading is only 23 characters. Don't use odd counts that leave a half-empty row."}
 ];

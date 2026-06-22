@@ -28,7 +28,7 @@ _Last synced: 2026-06-19._
 | **Paragraph** | ≤130 | ≤130 | **no limit** | ≤70 | **no limit** *(req)* |
 | Link | — | `additionalLink` | `additionalLink` | `additionalLink` | `additionalLink` + `additionalLinkTwo` |
 | Special fields | `onClickScrollTo` (→ **bentoXL only**) | `topLineColor` (hex ≤7), `variant` | `stepLabel` (numbered flow) | — | `background`, `hasBorder`, `imagePosition`, `supportedIntegrations`, `supportedPricingPackages` |
-| In catalogue? | ✅ #16 | ✅ #17 | ✅ #1 | ⬜ todo | ✅ #12 (standalone) |
+| In catalogue? | ✅ #16 | ✅ #17 | ✅ #1 | ✅ #18 | ✅ #12 (standalone) |
 
 ## One-line "when to use which"
 - **XS** — tightest. Icon + a few words. A compact feature strip, or in-page nav (scroll to a Bento XL).
@@ -63,4 +63,4 @@ _Last synced: 2026-06-19._
   page, *not* an arbitrary section/page. This is intended behavior (confirmed 2026-06-19), just a known
   constraint when using XS for in-page nav.
 
-_Add rows / notes here as we work through S and L._
+_All five bentos are now in the catalogue (XS #16 · S #17 · M #1 · L #18 · XL #12). Keep this doc in sync if any field/limit changes._
