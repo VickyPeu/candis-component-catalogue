@@ -1,16 +1,19 @@
-<svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
 <title id="sk-t">Skeleton: Grid Section — Bento XS</title>
-<desc id="sk-d">Low-fidelity wireframe: a row of 2–5 compact cards, each with an icon, a short heading and a one-line paragraph. Icons only, no images. A card can optionally scroll to a Bento XL anchor.</desc>
+<desc id="sk-d">Low-fidelity wireframe: an optional section eyebrow, heading and paragraph on top, then a row of 2–5 compact cards, each with an icon, a short heading and a one-line paragraph. Icons only, no images. A card can optionally scroll to a Bento XL anchor.</desc>
 <style>
   .ph{fill:#ded8d8}
   .lb{fill:#716571;font-size:11px}
   .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
 </style>
-<rect x="20" y="18" width="44" height="44" rx="10" class="fr"/><rect x="32" y="30" width="20" height="20" rx="4" class="ph"/><rect x="20" y="80" width="104" height="12" rx="3" class="ph"/><rect x="20" y="98" width="72" height="12" rx="3" class="ph"/><text x="130" y="90" class="lb">heading ≤38</text><rect x="20" y="124" width="108" height="7" rx="3" class="ph"/><rect x="20" y="136" width="84" height="7" rx="3" class="ph"/><text x="130" y="131" class="lb">paragraph ≤130</text>
-<rect x="152" y="18" width="44" height="44" rx="10" class="fr"/><rect x="164" y="30" width="20" height="20" rx="4" class="ph"/><rect x="152" y="80" width="104" height="12" rx="3" class="ph"/><rect x="152" y="98" width="72" height="12" rx="3" class="ph"/><rect x="152" y="124" width="108" height="7" rx="3" class="ph"/><rect x="152" y="136" width="84" height="7" rx="3" class="ph"/>
-<rect x="284" y="18" width="44" height="44" rx="10" class="fr"/><rect x="296" y="30" width="20" height="20" rx="4" class="ph"/><rect x="284" y="80" width="104" height="12" rx="3" class="ph"/><rect x="284" y="98" width="72" height="12" rx="3" class="ph"/><rect x="284" y="124" width="108" height="7" rx="3" class="ph"/><rect x="284" y="136" width="84" height="7" rx="3" class="ph"/>
-<rect x="416" y="18" width="44" height="44" rx="10" class="fr"/><rect x="428" y="30" width="20" height="20" rx="4" class="ph"/><rect x="416" y="80" width="104" height="12" rx="3" class="ph"/><rect x="416" y="98" width="72" height="12" rx="3" class="ph"/><rect x="416" y="124" width="108" height="7" rx="3" class="ph"/><rect x="416" y="136" width="84" height="7" rx="3" class="ph"/>
-<rect x="548" y="18" width="44" height="44" rx="10" class="fr"/><rect x="560" y="30" width="20" height="20" rx="4" class="ph"/><rect x="548" y="80" width="104" height="12" rx="3" class="ph"/><rect x="548" y="98" width="72" height="12" rx="3" class="ph"/><rect x="548" y="124" width="108" height="7" rx="3" class="ph"/><rect x="548" y="136" width="84" height="7" rx="3" class="ph"/>
-<text x="20" y="180" class="lb">2–5 cards · icons only (no images) · eyebrow ≤16 (optional)</text>
-<text x="20" y="197" class="lb">each card can “scroll to” a Bento XL anchor (optional in-page nav)</text>
+<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text>
+<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text>
+<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text>
+<rect x="20" y="140" width="44" height="44" rx="10" class="fr"/><rect x="32" y="152" width="20" height="20" rx="4" class="ph"/><rect x="20" y="202" width="104" height="12" rx="3" class="ph"/><rect x="20" y="220" width="72" height="12" rx="3" class="ph"/><rect x="20" y="246" width="108" height="7" rx="3" class="ph"/><rect x="20" y="258" width="84" height="7" rx="3" class="ph"/>
+<rect x="152" y="140" width="44" height="44" rx="10" class="fr"/><rect x="164" y="152" width="20" height="20" rx="4" class="ph"/><rect x="152" y="202" width="104" height="12" rx="3" class="ph"/><rect x="152" y="220" width="72" height="12" rx="3" class="ph"/><rect x="152" y="246" width="108" height="7" rx="3" class="ph"/><rect x="152" y="258" width="84" height="7" rx="3" class="ph"/>
+<rect x="284" y="140" width="44" height="44" rx="10" class="fr"/><rect x="296" y="152" width="20" height="20" rx="4" class="ph"/><rect x="284" y="202" width="104" height="12" rx="3" class="ph"/><rect x="284" y="220" width="72" height="12" rx="3" class="ph"/><rect x="284" y="246" width="108" height="7" rx="3" class="ph"/><rect x="284" y="258" width="84" height="7" rx="3" class="ph"/>
+<rect x="416" y="140" width="44" height="44" rx="10" class="fr"/><rect x="428" y="152" width="20" height="20" rx="4" class="ph"/><rect x="416" y="202" width="104" height="12" rx="3" class="ph"/><rect x="416" y="220" width="72" height="12" rx="3" class="ph"/><rect x="416" y="246" width="108" height="7" rx="3" class="ph"/><rect x="416" y="258" width="84" height="7" rx="3" class="ph"/>
+<rect x="548" y="140" width="44" height="44" rx="10" class="fr"/><rect x="560" y="152" width="20" height="20" rx="4" class="ph"/><rect x="548" y="202" width="104" height="12" rx="3" class="ph"/><rect x="548" y="220" width="72" height="12" rx="3" class="ph"/><rect x="548" y="246" width="108" height="7" rx="3" class="ph"/><rect x="548" y="258" width="84" height="7" rx="3" class="ph"/>
+<text x="20" y="292" class="lb">2–5 cards · icons only (no images) · card: icon + heading ≤38 + paragraph ≤130 · eyebrow ≤16</text>
+<text x="20" y="308" class="lb">each card can “scroll to” a Bento XL anchor (optional in-page nav)</text>
 </svg>
