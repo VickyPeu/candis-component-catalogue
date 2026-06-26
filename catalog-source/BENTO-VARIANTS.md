@@ -63,4 +63,4 @@ _Last synced: 2026-06-19._
   page, *not* an arbitrary section/page. This is intended behavior (confirmed 2026-06-19), just a known
   constraint when using XS for in-page nav.
 
-_All five bentos are now in the catalogue (XS #16 · S #17 · M #1 · L #18 · XL #12). Keep this doc in sync if any field/limit changes._
+_All five bentos are in the catalogue (XS #16 · S #17 · M #1 · L #18 · XL #12 standalone). The two XL **grid** variants are catalogued too: **Bento XL Sticky Scroll #19** (`bento_XL_sticky_scroll` — pinned image, scroll-through story) and **Bento XL Tabs #20** (`bento_XL_tabs`, internally the "big booty bento" — all topics at a glance via tabs). Note: in the Tabs variant the bentoXL `heading` doubles as the tab label, so it must stay short despite the ≤620 field limit; and ~5 tabs max is a layout constraint, not enforced in Contentful. Keep this doc in sync if any field/limit changes._

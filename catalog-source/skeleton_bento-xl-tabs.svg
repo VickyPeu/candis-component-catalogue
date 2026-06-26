@@ -1,0 +1,24 @@
+<svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Grid Section — Bento XL Tabs</title>
+<desc id="sk-d">Low-fidelity wireframe: an optional section header on top, then a row of tabs (every topic visible at a glance, the heading is the tab label) with one active, and a panel below showing the active Bento XL — a big image/video with rich copy. Up to about five tabs.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text>
+<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text>
+<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text>
+<text x="20" y="120" class="lb">tabs — every topic visible at a glance · the heading is the tab label</text>
+<rect x="20" y="128" width="150" height="34" rx="8" fill="#f6f1fd" stroke="#895fd5"/><rect x="40" y="139" width="110" height="12" rx="3" class="ph"/>
+<rect x="182" y="128" width="150" height="34" rx="8" fill="none" stroke="#ded8d8"/><rect x="202" y="139" width="100" height="12" rx="3" class="ph"/>
+<rect x="344" y="128" width="150" height="34" rx="8" fill="none" stroke="#ded8d8"/><rect x="364" y="139" width="100" height="12" rx="3" class="ph"/>
+<rect x="506" y="128" width="150" height="34" rx="8" fill="none" stroke="#ded8d8"/><rect x="526" y="139" width="100" height="12" rx="3" class="ph"/>
+<rect x="20" y="180" width="640" height="190" rx="12" fill="none" stroke="#ded8d8"/>
+<rect x="40" y="198" width="260" height="154" rx="8" class="fr"/><text x="170" y="279" text-anchor="middle" class="lb">image / video</text>
+<rect x="330" y="206" width="240" height="16" rx="4" class="ph"/><rect x="330" y="228" width="180" height="16" rx="4" class="ph"/><text x="586" y="220" class="lb">heading</text>
+<rect x="330" y="258" width="300" height="7" rx="3" class="ph"/><rect x="330" y="270" width="290" height="7" rx="3" class="ph"/><rect x="330" y="282" width="260" height="7" rx="3" class="ph"/>
+<rect x="330" y="318" width="90" height="14" rx="7" class="ph"/><text x="430" y="328" class="lb">link</text>
+<text x="20" y="396" class="lb">active tab's Bento XL — big visual + rich copy · click a tab to switch the panel</text>
+<text x="20" y="412" class="lb">up to ~5 tabs (fewer is better) · each tab = a short heading + media + paragraph</text>
+</svg>
