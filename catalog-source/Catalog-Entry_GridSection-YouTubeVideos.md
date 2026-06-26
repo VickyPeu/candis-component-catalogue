@@ -22,7 +22,7 @@ _Category: Feature grids (it's a `gridSection`)._
 - **Pillars:** **Thought Leader** (primary) — an educational video presence · **Translation of
   Complexity** (secondary) — videos explain features simply.
 - **Content density:** low
-- **Media:** YouTube video thumbnails — a custom `thumbnailImage` per video entry
+- **Media:** YouTube video thumbnails — a custom **16:9** `thumbnailImage` per video entry
 
 ## What it is
 A `gridSection` (variant `youtube_playlists`) whose `content` holds **`video` entries**. Each `video`
@@ -63,7 +63,7 @@ Content type `gridSection`, **Variant = `youtube_playlists`** (sibling: `youtube
 | Field | Type | Notes |
 |---|---|---|
 | youtubeUrl | Symbol | a single video URL **or** a playlist URL |
-| thumbnailImage | Link → image | the custom thumbnail (carries the card) |
+| thumbnailImage | Link → image | the custom thumbnail (carries the card) · **16:9** |
 | displayTitle | Symbol | shown under the card |
 | videoDuration | Symbol | e.g. "3 min" / "1:54" |
 | playButtonAlt | Symbol | accessibility label for the play button |
