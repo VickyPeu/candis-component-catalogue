@@ -17,8 +17,6 @@ video (16:9), and trust proof. Its job is to give a fast overview of the topic a
 they're in the right place. An optional Bento XS row sits underneath.
 _Category: Hero._
 
-> **Navbar note:** the example screenshots include the site navbar — that is **not** part of this component.
-
 ## Tags (for search & the AI recommender)
 - **Pillars:** **Trust Anchor** (reassurance, badges) + **Translation of Complexity** (fast clear
   overview). The actual pillar follows the page's topic, so it's marked content-dependent.
