@@ -1,24 +1,24 @@
-<svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
 <title id="sk-t">Skeleton: Grid Section — Bento XL Tabs</title>
-<desc id="sk-d">Low-fidelity wireframe: an optional section header on top, then a row of tabs (every topic visible at a glance, the heading is the tab label) with one active, and a panel below showing the active Bento XL — a big image/video with rich copy. Up to about five tabs.</desc>
+<desc id="sk-d">Low-fidelity wireframe: section header, then vertical tabs on the left (every topic visible; scroll steps through them one after another, or click for full control; the active tab is highlighted and can carry an icon), the active Bento XL's paragraph in the middle, and a 1:1 image on the right.</desc>
 <style>
   .ph{fill:#ded8d8}
   .lb{fill:#716571;font-size:11px}
   .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
 </style>
-<rect x="280" y="24" width="120" height="14" rx="7" class="ph"/><text x="410" y="35" class="lb">eyebrow · max 32</text>
-<rect x="190" y="52" width="300" height="20" rx="4" class="ph"/><text x="500" y="67" class="lb">heading</text>
-<rect x="170" y="86" width="340" height="8" rx="4" class="ph"/><rect x="210" y="100" width="260" height="8" rx="4" class="ph"/><text x="520" y="98" class="lb">paragraph</text>
-<text x="20" y="120" class="lb">tabs — every topic visible at a glance · the heading is the tab label</text>
-<rect x="20" y="128" width="150" height="34" rx="8" fill="#f6f1fd" stroke="#895fd5"/><rect x="40" y="139" width="110" height="12" rx="3" class="ph"/>
-<rect x="182" y="128" width="150" height="34" rx="8" fill="none" stroke="#ded8d8"/><rect x="202" y="139" width="100" height="12" rx="3" class="ph"/>
-<rect x="344" y="128" width="150" height="34" rx="8" fill="none" stroke="#ded8d8"/><rect x="364" y="139" width="100" height="12" rx="3" class="ph"/>
-<rect x="506" y="128" width="150" height="34" rx="8" fill="none" stroke="#ded8d8"/><rect x="526" y="139" width="100" height="12" rx="3" class="ph"/>
-<rect x="20" y="180" width="640" height="190" rx="12" fill="none" stroke="#ded8d8"/>
-<rect x="40" y="198" width="260" height="154" rx="8" class="fr"/><text x="170" y="279" text-anchor="middle" class="lb">image / video</text>
-<rect x="330" y="206" width="240" height="16" rx="4" class="ph"/><rect x="330" y="228" width="180" height="16" rx="4" class="ph"/><text x="586" y="220" class="lb">heading</text>
-<rect x="330" y="258" width="300" height="7" rx="3" class="ph"/><rect x="330" y="270" width="290" height="7" rx="3" class="ph"/><rect x="330" y="282" width="260" height="7" rx="3" class="ph"/>
-<rect x="330" y="318" width="90" height="14" rx="7" class="ph"/><text x="430" y="328" class="lb">link</text>
-<text x="20" y="396" class="lb">active tab's Bento XL — big visual + rich copy · click a tab to switch the panel</text>
-<text x="20" y="412" class="lb">up to ~5 tabs (fewer is better) · each tab = a short heading + media + paragraph</text>
+<rect x="20" y="26" width="140" height="12" rx="6" class="ph"/><text x="168" y="36" class="lb">eyebrow · max 32</text>
+<rect x="20" y="50" width="300" height="20" rx="4" class="ph"/><text x="330" y="65" class="lb">heading</text>
+<text x="20" y="102" class="lb">tabs — all topics</text><text x="250" y="102" class="lb">paragraph</text>
+<g opacity="0.5"><rect x="20" y="110" width="210" height="60" rx="10" fill="none" stroke="#ded8d8"/><rect x="36" y="126" width="28" height="28" rx="6" fill="none" stroke="#c1babe"/><rect x="76" y="128" width="120" height="10" rx="3" class="ph"/><rect x="76" y="144" width="90" height="10" rx="3" class="ph"/></g>
+<g opacity="0.5"><rect x="20" y="182" width="210" height="60" rx="10" fill="none" stroke="#ded8d8"/><rect x="36" y="198" width="28" height="28" rx="6" fill="none" stroke="#c1babe"/><rect x="76" y="200" width="120" height="10" rx="3" class="ph"/><rect x="76" y="216" width="90" height="10" rx="3" class="ph"/></g>
+<rect x="20" y="254" width="210" height="60" rx="10" fill="#ffffff" stroke="#ded8d8"/><rect x="36" y="270" width="28" height="28" rx="6" class="ph"/><rect x="76" y="272" width="120" height="10" rx="3" class="ph"/><rect x="76" y="288" width="90" height="10" rx="3" class="ph"/><rect x="20" y="311" width="210" height="3" rx="2" fill="#895fd5"/>
+<g opacity="0.5"><rect x="20" y="326" width="210" height="60" rx="10" fill="none" stroke="#ded8d8"/><rect x="36" y="342" width="28" height="28" rx="6" fill="none" stroke="#c1babe"/><rect x="76" y="344" width="120" height="10" rx="3" class="ph"/><rect x="76" y="360" width="90" height="10" rx="3" class="ph"/></g>
+<rect x="250" y="118" width="210" height="7" rx="3" class="ph"/><rect x="250" y="130" width="200" height="7" rx="3" class="ph"/><rect x="250" y="142" width="170" height="7" rx="3" class="ph"/>
+<circle cx="258" cy="176" r="8" fill="#2b1a2e"/><polyline points="254,176 257,179 263,172" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="276" y="170" width="184" height="6" rx="3" class="ph"/><rect x="276" y="182" width="150" height="6" rx="3" class="ph"/>
+<circle cx="258" cy="212" r="8" fill="#2b1a2e"/><polyline points="254,212 257,215 263,208" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="276" y="206" width="184" height="6" rx="3" class="ph"/><rect x="276" y="218" width="150" height="6" rx="3" class="ph"/>
+<circle cx="258" cy="248" r="8" fill="#2b1a2e"/><polyline points="254,248 257,251 263,244" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="276" y="242" width="184" height="6" rx="3" class="ph"/><rect x="276" y="254" width="140" height="6" rx="3" class="ph"/>
+<rect x="480" y="118" width="170" height="170" rx="10" class="fr"/><text x="565" y="208" text-anchor="middle" class="lb">image 1:1</text>
+<text x="20" y="418" class="lb">vertical tabs — scroll steps through them one after another, or click a tab for full control</text>
+<text x="20" y="436" class="lb">each tab = a Bento XL: icon (shown only here) · headline = tab label · paragraph = content · image 1:1</text>
+<text x="20" y="454" class="lb">up to ~5 tabs (fewer is better — not enforced, but more breaks on mobile)</text>
 </svg>
