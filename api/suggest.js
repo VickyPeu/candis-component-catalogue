@@ -66,6 +66,8 @@ For each included component, write a 1–2 sentence "why" that is TAILORED to th
 Then decide whether the BRIEF is asking for a WHOLE PAGE, a wireframe, or several connected sections that work together.
 ONLY in that case, propose a WIREFRAME: an ordered top-to-bottom list of components for that page (a component type may repeat), each with a one-line "role" (what that section does on the page) and the "pillar" it serves most.
 If the brief is a single need, a single section, or a "what component does X" question, return an EMPTY wireframe array [] and just return the matching suggestion(s).
+Return AT MOST 6 suggestions — only the strongest fits, best first. Never enumerate the whole catalogue.
+If the brief is vague, meta, or asks to list/show "everything" or "all components", do NOT list the catalogue — return the 3–5 most versatile starting points (with a short "why") and an empty wireframe.
 Respond with MINIFIED JSON ONLY, no prose, in exactly this shape:
 {"suggestions":[{"id":"<catalogue id>","why":"..."}],"wireframe":[{"id":"<catalogue id>","role":"...","pillar":"<pillar id or empty>"}]}
 Use only component ids and pillar ids that exist in the data provided.`;
