@@ -1,0 +1,15 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Grid Section — YouTube Shorts</title>
+<desc id="sk-d">Low-fidelity wireframe: a heading, then a row of tall vertical (9:16) YouTube Short cards — each a custom thumbnail with a play button and a short duration — with optional titles beneath. Each card links out to a Short on YouTube.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="30" y="24" width="240" height="18" rx="4" class="ph"/><text x="280" y="39" class="lb">heading</text>
+<rect x="30" y="58" width="120" height="190" rx="10" class="fr"/><circle cx="90" cy="153" r="18" fill="#895fd5"/><polygon points="84,144 84,162 99,153" fill="#ffffff"/><rect x="102" y="226" width="40" height="15" rx="4" fill="#2b1a2e"/><text x="122" y="237" text-anchor="middle" fill="#ffffff" font-size="9">0:30</text><rect x="30" y="258" width="110" height="8" rx="3" class="ph"/><rect x="30" y="269" width="80" height="8" rx="3" class="ph"/>
+<rect x="200" y="58" width="120" height="190" rx="10" class="fr"/><circle cx="260" cy="153" r="18" fill="#895fd5"/><polygon points="254,144 254,162 269,153" fill="#ffffff"/><rect x="272" y="226" width="40" height="15" rx="4" fill="#2b1a2e"/><text x="292" y="237" text-anchor="middle" fill="#ffffff" font-size="9">0:45</text><rect x="200" y="258" width="110" height="8" rx="3" class="ph"/><rect x="200" y="269" width="80" height="8" rx="3" class="ph"/>
+<rect x="370" y="58" width="120" height="190" rx="10" class="fr"/><circle cx="430" cy="153" r="18" fill="#895fd5"/><polygon points="424,144 424,162 439,153" fill="#ffffff"/><rect x="442" y="226" width="40" height="15" rx="4" fill="#2b1a2e"/><text x="462" y="237" text-anchor="middle" fill="#ffffff" font-size="9">0:28</text><rect x="370" y="258" width="110" height="8" rx="3" class="ph"/><rect x="370" y="269" width="80" height="8" rx="3" class="ph"/>
+<rect x="540" y="58" width="120" height="190" rx="10" class="fr"/><circle cx="600" cy="153" r="18" fill="#895fd5"/><polygon points="594,144 594,162 609,153" fill="#ffffff"/><rect x="612" y="226" width="40" height="15" rx="4" fill="#2b1a2e"/><text x="632" y="237" text-anchor="middle" fill="#ffffff" font-size="9">0:52</text><rect x="540" y="258" width="110" height="8" rx="3" class="ph"/><rect x="540" y="269" width="80" height="8" rx="3" class="ph"/>
+<text x="30" y="294" class="lb">vertical Shorts (9:16) · custom thumbnail · play · each links out to a YouTube Short</text>
+</svg>
