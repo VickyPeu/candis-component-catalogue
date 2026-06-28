@@ -1,0 +1,14 @@
+<svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Slider Section — Logos</title>
+<desc id="sk-d">Low-fidelity wireframe: a short eyebrow and heading on the left, and a continuous, auto-rolling band of customer/reference logos on the right (the last one runs off the edge to imply rolling).</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="20" y="44" width="90" height="9" rx="4" class="ph"/><text x="118" y="53" class="lb">eyebrow</text>
+<rect x="20" y="64" width="240" height="15" rx="4" class="ph"/><rect x="20" y="86" width="180" height="15" rx="4" class="ph"/><text x="270" y="76" class="lb">heading</text>
+<rect x="310" y="66" width="96" height="26" rx="4" class="fr"/><rect x="424" y="66" width="80" height="26" rx="4" class="fr"/><rect x="522" y="66" width="110" height="26" rx="4" class="fr"/><rect x="650" y="66" width="54" height="26" rx="4" class="fr"/>
+<text x="310" y="116" class="lb">recognizable reference logos — auto-rolling →</text>
+<text x="20" y="150" class="lb">pick references that fit the page's target group and that visitors recognize · mode = continuous_slide</text>
+</svg>
