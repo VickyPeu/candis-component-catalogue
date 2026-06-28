@@ -1,0 +1,15 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Image Section</title>
+<desc id="sk-d">Low-fidelity wireframe: a full-width background image with an eyebrow and heading centered over it and, optionally, one or two buttons (or none). A separate mobile image is required, and the text must stay legible over the image.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+</style>
+<rect x="10" y="10" width="660" height="280" rx="12" fill="#2f2535"/>
+<text x="28" y="36" fill="#ffffff" opacity="0.75" font-size="11">full-width image — keep the text legible</text>
+<rect x="280" y="112" width="120" height="9" rx="4" fill="#ffffff" opacity="0.8"/>
+<rect x="180" y="132" width="320" height="18" rx="4" fill="#ffffff"/>
+<rect x="280" y="176" width="120" height="32" rx="6" fill="none" stroke="#ffffff"/><text x="340" y="196" text-anchor="middle" fill="#ffffff" font-size="11">button</text>
+<text x="340" y="238" text-anchor="middle" fill="#ffffff" opacity="0.7" font-size="11">eyebrow + heading · 1 or 2 buttons — optional (or none)</text>
+<text x="652" y="280" text-anchor="end" fill="#ffffff" opacity="0.7" font-size="11">mobile image required</text>
+</svg>
