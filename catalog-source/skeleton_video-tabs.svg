@@ -1,0 +1,16 @@
+<svg viewBox="0 0 680 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Tab Section — Video Tabs</title>
+<desc id="sk-d">Low-fidelity wireframe: a section heading, then 1–4 numbered tabs (each a short heading + paragraph + progress bar, first active) over a large video. Muted screen recordings autoplay (≤20s, can form a storyline), or sound videos are clicked to play (interviews, with a 16:9 thumbnail).</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="190" y="24" width="300" height="18" rx="4" class="ph"/><text x="500" y="38" class="lb">heading</text>
+<rect x="24" y="58" width="200" height="96" rx="10" fill="#ffffff" stroke="#ded8d8"/><rect x="40" y="78" width="120" height="12" rx="3" class="ph"/><rect x="40" y="100" width="168" height="6" rx="3" class="ph"/><rect x="40" y="110" width="140" height="6" rx="3" class="ph"/><text x="40" y="146" fill="#895fd5" font-size="12" font-weight="600">01</text><rect x="62" y="138" width="146" height="3" rx="2" class="ph"/><rect x="62" y="138" width="60" height="3" rx="2" fill="#895fd5"/>
+<rect x="240" y="58" width="200" height="96" rx="10" fill="#ffffff" stroke="#ded8d8"/><rect x="256" y="78" width="120" height="12" rx="3" class="ph"/><rect x="256" y="100" width="168" height="6" rx="3" class="ph"/><rect x="256" y="110" width="140" height="6" rx="3" class="ph"/><text x="256" y="146" fill="#716571" font-size="12" font-weight="600">02</text><rect x="278" y="138" width="146" height="3" rx="2" class="ph"/>
+<rect x="456" y="58" width="200" height="96" rx="10" fill="#ffffff" stroke="#ded8d8"/><rect x="472" y="78" width="120" height="12" rx="3" class="ph"/><rect x="472" y="100" width="168" height="6" rx="3" class="ph"/><rect x="472" y="110" width="140" height="6" rx="3" class="ph"/><text x="472" y="146" fill="#716571" font-size="12" font-weight="600">03</text><rect x="494" y="138" width="146" height="3" rx="2" class="ph"/>
+<rect x="24" y="176" width="632" height="160" rx="12" class="fr"/><circle cx="340" cy="256" r="24" fill="#895fd5"/><rect x="333" y="246" width="5" height="20" rx="1" fill="#ffffff"/><rect x="343" y="246" width="5" height="20" rx="1" fill="#ffffff"/><text x="340" y="318" text-anchor="middle" class="lb">short video per tab (screen recording or interview)</text>
+<text x="24" y="362" class="lb">muted screen recordings · autoplay ≤20s · tabs can flow as one storyline (1→2→3)</text>
+<text x="24" y="380" class="lb">— or — sound videos · click to play (interviews) · need a 16:9 thumbnail each</text>
+</svg>
