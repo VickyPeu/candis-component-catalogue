@@ -1,0 +1,21 @@
+<svg viewBox="0 0 680 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
+<title id="sk-t">Skeleton: Hero Section — Logo Slider</title>
+<desc id="sk-d">Low-fidelity wireframe: the common-hero layout — eyebrow, heading, trust chips, a short ~4-line paragraph and two buttons on the left, one media (image 1:1 or video 16:9) on the right — plus an integrated customer logo slider along the bottom. No Bento XS in this variant.</desc>
+<style>
+  .ph{fill:#ded8d8}
+  .lb{fill:#716571;font-size:11px}
+  .fr{fill:#ede8e8;stroke:#c1babe;stroke-width:1}
+</style>
+<rect x="20" y="28" width="170" height="11" rx="5" class="ph"/><text x="198" y="38" class="lb">eyebrow ≤42</text>
+<rect x="20" y="50" width="300" height="18" rx="4" class="ph"/><rect x="20" y="74" width="230" height="18" rx="4" class="ph"/><text x="330" y="63" class="lb">heading</text>
+<rect x="20" y="100" width="120" height="22" rx="11" fill="#ffffff" stroke="#ded8d8"/><circle cx="36" cy="111" r="4" fill="#206062"/><rect x="46" y="107" width="80" height="8" rx="3" class="ph"/><rect x="150" y="100" width="140" height="22" rx="11" fill="#ffffff" stroke="#ded8d8"/><circle cx="166" cy="111" r="4" fill="#206062"/><rect x="176" y="107" width="100" height="8" rx="3" class="ph"/>
+<rect x="20" y="138" width="310" height="7" rx="3" class="ph"/><rect x="20" y="150" width="300" height="7" rx="3" class="ph"/><rect x="20" y="162" width="280" height="7" rx="3" class="ph"/><rect x="20" y="174" width="240" height="7" rx="3" class="ph"/>
+<rect x="20" y="196" width="140" height="30" rx="6" fill="#2b1a2e"/><text x="90" y="215" text-anchor="middle" fill="#ffffff" font-size="11">primary</text>
+<rect x="170" y="196" width="150" height="30" rx="6" fill="none" stroke="#ded8d8"/><text x="245" y="215" text-anchor="middle" class="lb">secondary</text>
+<text x="20" y="244" class="lb">choose your preferred date</text>
+<rect x="368" y="28" width="292" height="164" rx="10" class="fr"/><circle cx="514" cy="100" r="24" fill="#895fd5"/><polygon points="506,88 506,112 528,100" fill="#ffffff"/><rect x="600" y="168" width="48" height="16" rx="4" fill="#2b1a2e"/><text x="624" y="180" text-anchor="middle" fill="#ffffff" font-size="9">06 min</text><rect x="384" y="158" width="120" height="8" rx="3" fill="#ffffff" opacity="0.85"/>
+<text x="368" y="208" class="lb">image 1:1 or video 16:9 (caption optional)</text>
+<text x="20" y="278" class="lb">100+ companies — integrated customer logo slider (extreme trust)</text>
+<rect x="20" y="288" width="92" height="36" rx="6" class="fr"/><rect x="128" y="288" width="92" height="36" rx="6" class="fr"/><rect x="236" y="288" width="92" height="36" rx="6" class="fr"/><rect x="344" y="288" width="92" height="36" rx="6" class="fr"/><rect x="452" y="288" width="92" height="36" rx="6" class="fr"/><rect x="560" y="288" width="92" height="36" rx="6" class="fr"/>
+<text x="20" y="344" class="lb">~4-line paragraph · no bullets, no Bento XS in this variant</text>
+</svg>
