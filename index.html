@@ -58,17 +58,18 @@
   .pchip.on .dot{background:#fff}
   .interpret{font-size:14px;color:var(--muted);margin:22px 0 10px;min-height:18px}
   .interpret b{color:var(--ink);font-weight:600}
-  #wire{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:16px;padding:18px 20px;margin-bottom:16px}
+  #wire{display:flex;gap:18px;align-items:flex-start;margin-bottom:16px}
+  .wire-listbox{flex:1;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:16px;padding:18px 20px}
   .wire-h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-  .wire-toggle{float:right;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--accent-line);border-radius:6px;padding:3px 9px;cursor:pointer;margin-top:-3px}
   .wire-list{margin:0;padding-left:20px}
   .wire-list li{margin-bottom:9px;font-size:14px}
   .wire-why{font-size:13px;color:var(--muted)}
-  .wire-sketch{display:flex;flex-direction:column;gap:14px}
-  .wire-step-h{font-size:13px;margin-bottom:6px}
-  .wire-step-h .num{font-family:var(--mono);color:var(--accent);font-weight:600;margin-right:4px}
-  .wire-sketch .visual{margin:0;background:var(--surface)}
-  .wire-sketch .visual svg{max-height:300px}
+  .wire-sketch{flex:0 0 188px;display:flex;flex-direction:column;gap:7px}
+  .wire-sketch .visual{margin:0;padding:7px;background:var(--surface);border-radius:8px}
+  .wire-sketch .visual .vlabel{display:none}
+  .wire-sketch .visual::after{display:none}
+  .wire-sketch .visual svg{max-height:none}
+  @media(max-width:760px){#wire{flex-direction:column}.wire-sketch{flex-basis:auto;max-width:260px}}
   .empty{text-align:center;color:var(--muted);padding:72px 20px;border:1px dashed var(--line);border-radius:16px;margin-top:18px;background:var(--surface)}
   .empty .big{font-family:var(--serif);font-size:21px;color:var(--ink);margin-bottom:6px}
   /* peek slider — active card centred, neighbours lean in */
@@ -296,7 +297,7 @@ function cardHTML(d){
  </div>`;
 }
 
-let results=[], cur=0, aiNotes={}, aiWire=[], noteLabel="For your brief", annotating=false, wireView="list";
+let results=[], cur=0, aiNotes={}, aiWire=[], noteLabel="For your brief", annotating=false;
 const selP=new Set(),selC=new Set();
 const $=id=>document.getElementById(id);
 function heuristic(){
@@ -315,14 +316,10 @@ function wirePill(s){return (s.pillar&&PILLARS[s.pillar])?' · <span style="colo
 function paintWire(){
  const w=$("wire");
  if(!aiWire.length){w.style.display="none";w.innerHTML="";return;}
- w.style.display="block";
- const toggle='<button class="wire-toggle" data-act="togglewire">'+(wireView==="sketch"?"List view":"Sketch it ⤢")+'</button>';
- const head='<div class="wire-h">Suggested wireframe — top to bottom'+toggle+'</div>';
- if(wireView==="sketch"){
-  w.innerHTML=head+'<div class="wire-sketch">'+aiWire.map((s,i)=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;const sk=SK[s.id]||'<div class="wire-why" style="padding:14px">(no sketch for this one)</div>';return '<div class="wire-step"><div class="wire-step-h"><span class="num">'+(i+1)+'</span><b>'+nm+'</b>'+wirePill(s)+(s.role?' — <span class="wire-why">'+s.role+'</span>':'')+'</div><figure class="visual">'+sk+'</figure></div>';}).join('')+'</div>';
- }else{
-  w.innerHTML=head+'<ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;return '<li><b>'+nm+'</b>'+wirePill(s)+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol>';
- }
+ w.style.display="flex";
+ const sketch='<div class="wire-sketch">'+aiWire.map(s=>SK[s.id]?'<figure class="visual">'+SK[s.id]+'</figure>':'').join('')+'</div>';
+ const list='<div class="wire-listbox"><div class="wire-h">Suggested wireframe — top to bottom</div><ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;return '<li><b>'+nm+'</b>'+wirePill(s)+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol></div>';
+ w.innerHTML=sketch+list;
 }
 function paint(list,interpHTML){
  paintWire();
@@ -410,8 +407,6 @@ document.addEventListener("click",e=>{
 });
 lbx.addEventListener("click",closeLbx);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLbx();});
-// Wireframe: toggle between the concise list and a stacked-skeleton sketch
-$("wire").addEventListener("click",e=>{if(e.target.closest("[data-act=togglewire]")){wireView=wireView==="sketch"?"list":"sketch";paintWire();}});
 showStart();
 </script>
 </body>
