@@ -69,9 +69,9 @@ For EACH component in the catalogue, reason about its ARCHITECTURE and decide wh
 ONLY include components that are a real, good fit. If a component does not clearly help the brief, leave it out. If none fit, return empty arrays.
 Do surface genuine ALTERNATIVES, not only the single most obvious component: if a more flexible component can also serve the brief well (e.g. a Bento XL — which can hold a video — for a "video with explanation" brief, alongside the dedicated 1-Column Video), include it too and let its "why" note the trade-off. (Still only genuine fits — don't pad with weak matches.)
 For each included component, write a 1–2 sentence "why" that is TAILORED to the user's actual content (reference what they said), explaining how to use this component for their case.
-Then decide whether the BRIEF is asking for a WHOLE PAGE, a wireframe, or several connected sections that work together.
-ONLY in that case, propose a WIREFRAME: an ordered top-to-bottom list of components for that page (a component type may repeat), each with a one-line "role" (what that section does on the page) and the "pillar" it serves most.
-If the brief is a single need, a single section, or a "what component does X" question, return an EMPTY wireframe array [] and just return the matching suggestion(s).
+Propose a WIREFRAME ONLY IF the brief EXPLICITLY asks for a whole page or multiple sections — e.g. "build a page for…", "a landing page", "the … page", "sections for our …", "top to bottom". In that case the wireframe is an ordered top-to-bottom list of components (a type may repeat), each with a one-line "role" and the "pillar" it serves most.
+Otherwise return an EMPTY wireframe array []. A brief that states a single goal, message, feeling or need — even a broad one like "we need finance teams to trust us" or "show how fast approvals are" — is NOT a page request: just return the matching component suggestion(s), wireframe [].
+When in doubt, return an empty wireframe.
 Respond with MINIFIED JSON ONLY, no prose, in exactly this shape:
 {"suggestions":[{"id":"<catalogue id>","why":"..."}],"wireframe":[{"id":"<catalogue id>","role":"...","pillar":"<pillar id or empty>"}]}
 Use only component ids and pillar ids that exist in the data provided.`;
