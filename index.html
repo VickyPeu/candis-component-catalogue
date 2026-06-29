@@ -60,9 +60,15 @@
   .interpret b{color:var(--ink);font-weight:600}
   #wire{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:16px;padding:18px 20px;margin-bottom:16px}
   .wire-h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .wire-toggle{float:right;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--accent-line);border-radius:6px;padding:3px 9px;cursor:pointer;margin-top:-3px}
   .wire-list{margin:0;padding-left:20px}
   .wire-list li{margin-bottom:9px;font-size:14px}
   .wire-why{font-size:13px;color:var(--muted)}
+  .wire-sketch{display:flex;flex-direction:column;gap:14px}
+  .wire-step-h{font-size:13px;margin-bottom:6px}
+  .wire-step-h .num{font-family:var(--mono);color:var(--accent);font-weight:600;margin-right:4px}
+  .wire-sketch .visual{margin:0;background:var(--surface)}
+  .wire-sketch .visual svg{max-height:300px}
   .empty{text-align:center;color:var(--muted);padding:72px 20px;border:1px dashed var(--line);border-radius:16px;margin-top:18px;background:var(--surface)}
   .empty .big{font-family:var(--serif);font-size:21px;color:var(--ink);margin-bottom:6px}
   /* peek slider — active card centred, neighbours lean in */
@@ -290,7 +296,7 @@ function cardHTML(d){
  </div>`;
 }
 
-let results=[], cur=0, aiNotes={}, aiWire=[], noteLabel="For your brief", annotating=false;
+let results=[], cur=0, aiNotes={}, aiWire=[], noteLabel="For your brief", annotating=false, wireView="list";
 const selP=new Set(),selC=new Set();
 const $=id=>document.getElementById(id);
 function heuristic(){
@@ -305,7 +311,19 @@ function repaintActive(){
  [...$("track").children].forEach(s=>s.classList.toggle("active",+s.dataset.i===cur));
  $("jump").value=cur;
 }
-function paintWire(){const w=$("wire");if(!aiWire.length){w.style.display="none";w.innerHTML="";return;}w.style.display="block";w.innerHTML='<div class="wire-h">Suggested wireframe — top to bottom</div><ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;const pl=(s.pillar&&PILLARS[s.pillar])?' · <span style="color:'+cssvar(PILLARS[s.pillar][1])+'">'+PILLARS[s.pillar][0]+'</span>':'';return '<li><b>'+nm+'</b>'+pl+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol>';}
+function wirePill(s){return (s.pillar&&PILLARS[s.pillar])?' · <span style="color:'+cssvar(PILLARS[s.pillar][1])+'">'+PILLARS[s.pillar][0]+'</span>':'';}
+function paintWire(){
+ const w=$("wire");
+ if(!aiWire.length){w.style.display="none";w.innerHTML="";return;}
+ w.style.display="block";
+ const toggle='<button class="wire-toggle" data-act="togglewire">'+(wireView==="sketch"?"List view":"Sketch it ⤢")+'</button>';
+ const head='<div class="wire-h">Suggested wireframe — top to bottom'+toggle+'</div>';
+ if(wireView==="sketch"){
+  w.innerHTML=head+'<div class="wire-sketch">'+aiWire.map((s,i)=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;const sk=SK[s.id]||'<div class="wire-why" style="padding:14px">(no sketch for this one)</div>';return '<div class="wire-step"><div class="wire-step-h"><span class="num">'+(i+1)+'</span><b>'+nm+'</b>'+wirePill(s)+(s.role?' — <span class="wire-why">'+s.role+'</span>':'')+'</div><figure class="visual">'+sk+'</figure></div>';}).join('')+'</div>';
+ }else{
+  w.innerHTML=head+'<ol class="wire-list">'+aiWire.map(s=>{const d=DATA.find(x=>x.id===s.id);const nm=d?d.name:s.id;return '<li><b>'+nm+'</b>'+wirePill(s)+(s.role?'<br><span class="wire-why">'+s.role+'</span>':'')+'</li>';}).join('')+'</ol>';
+ }
+}
 function paint(list,interpHTML){
  paintWire();
  if(!list.length){$("slider").style.display="none";$("empty").style.display="none";$("interpret").innerHTML=interpHTML||"No good-fit components.";return;}
@@ -392,6 +410,8 @@ document.addEventListener("click",e=>{
 });
 lbx.addEventListener("click",closeLbx);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLbx();});
+// Wireframe: toggle between the concise list and a stacked-skeleton sketch
+$("wire").addEventListener("click",e=>{if(e.target.closest("[data-act=togglewire]")){wireView=wireView==="sketch"?"list":"sketch";paintWire();}});
 showStart();
 </script>
 </body>
