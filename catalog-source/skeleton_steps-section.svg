@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 444" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sk-t sk-d" font-family="Inter, system-ui, sans-serif">
 <title id="sk-t">Skeleton: Steps Section</title>
-<desc id="sk-d">Low-fidelity wireframe: centered eyebrow and heading, a timeline of three step labels, then three cards each with an image, a heading and a short checklist, and an optional button below.</desc>
+<desc id="sk-d">Low-fidelity wireframe: centered eyebrow and heading, a timeline of step labels (up to 5 steps), then cards each with an image, a heading and a short checklist, and an optional button below.</desc>
 <style>
   .ph{fill:#ded8d8}
   .lb{fill:#716571;font-size:11px}
@@ -18,7 +18,7 @@
 <rect x="66" y="82" width="80" height="24" rx="6" class="pill"/>
 <rect x="300" y="82" width="80" height="24" rx="6" class="pill"/>
 <rect x="534" y="82" width="80" height="24" rx="6" class="pill"/>
-<text x="66" y="126" class="lb">step labels (timeline)</text>
+<text x="66" y="126" class="lb">step labels (timeline) · up to 5 steps</text>
 <!-- three step cards -->
 <g>
   <rect x="24" y="140" width="196" height="262" rx="10" class="card"/>
