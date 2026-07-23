@@ -5,7 +5,7 @@ nested_content_type: table
 nested_variant: decision_overview
 reference_entry: GRZ6rlXINOxBKVOj8QytE
 nested_reference_entry: 3TyLwIvlSYst1WgsnsMPK1
-last_synced: 2026-06-16
+last_synced: 2026-06-19
 skeleton: skeleton_one-column-section-table-decision-overview.svg
 status: reviewed
 ---
@@ -14,7 +14,7 @@ status: reviewed
 
 A centered single-column section hosting a text-based comparison table — for nuanced, not-black-and-white
 comparisons that give context on what Candis and others bring, and leave the "right fit" call to the reader.
-_Category: Content (single) · `media = table`, table `variant = decision_overview`._
+_Category: Content (single) · a table with `variant = decision_overview`, added via the section's `decisionOverviewTables` field._
 
 ## Tags (for search & the AI recommender)
 - **Pillars — strong:** Standard Setter · Trust Anchor
@@ -55,7 +55,7 @@ Not when a simple yes/no comparison is enough — use the tool_comparison table 
 non-comparative content. Don't let cells become walls of text.
 
 ## Structure in Contentful — auto-pulled, don't hand-edit
-Content type `oneColumnSection` (media = table) → table content type, `variant = decision_overview`.
+Content type `oneColumnSection` → a `table` (`variant = decision_overview`) added via the **`decisionOverviewTables`** field (NOT `media` — `media`→Table is the tool_comparison variant).
 **No character limits are set** (Symbols cap at 256). Cell text lives inside `richTextTable`.
 _(The table type also has `isAccordionLayout` and `tablesCollapsedByDefault`, but they have no effect for this variant — omitted here.)_
 
@@ -67,8 +67,8 @@ _(The table type also has `isAccordionLayout` and `tablesCollapsedByDefault`, bu
 | useSansSerifForHeading | Boolean | serif ↔ sans toggle |
 | paragraph | RichText (localized) | |
 | paragraphAlignment | Symbol | e.g. center |
-| media | Link → image / table / video | here: a single decision_overview table |
-| decisionOverviewTables | Array → table | **the selectable-category version** — add several decision_overview tables, each with a category |
+| decisionOverviewTables | Array → table | **the decision_overview table(s) go here** — one, or several (each with a category) for the selectable-category version |
+| media | Link → image / table / video | leave empty here (media→Table is the tool_comparison variant) |
 | background | Symbol (required) | e.g. default |
 | highlightColor | Symbol | e.g. blue |
 | additionalLink | Link → link | optional; text or button |
@@ -93,10 +93,12 @@ _(The table type also has `isAccordionLayout` and `tablesCollapsedByDefault`, bu
 | Category labels | short (selectable categories) | optional |
 
 ## How to find it in Contentful
-Add entry → **1-Column Section** → set **Media** to a **Table** entry with **Variant** =
-`decision_overview` (text cells). For the selectable-category experience, add several decision_overview
-tables to the section's **Decision Overview Tables** field, each assigned a **Category** — the front-end
-then shows a category selector that swaps the displayed table.
+1. Create a **Table** entry, set **Variant = `decision_overview`** and fill its text cells (`richTextTable`).
+2. In the **1-Column Section**, add that table to the **Decision Overview Tables** field (leave **Media** empty).
+3. Add the section's eyebrow + heading + intro.
+
+For the selectable-category experience, add several decision_overview tables, each assigned a
+**Category** — the front-end then shows a category selector that swaps the displayed table.
 
 ## Skeleton
 Low-fi structure (no copy) → [`skeleton_one-column-section-table-decision-overview.svg`](skeleton_one-column-section-table-decision-overview.svg)

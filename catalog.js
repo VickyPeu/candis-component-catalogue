@@ -48,7 +48,7 @@ str:["Side-by-side reads as “we measure up”","Honest red crosses build credi
 lim:["Needs accurate, maintained competitive data","Dense — too many rows/columns overwhelm","2–4 comparison columns max (+ label column)"],
 anti:"Not for non-comparative content. Don't make claims you can't back up. Don't overload with columns/rows."},
 
-{id:"decision",name:"1-Column Section — Table (Decision Overview)",cat:"content_single",ct:"oneColumnSection",cthint:"set Media = Table, Variant = decision_overview",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"high",media:"table",
+{id:"decision",name:"1-Column Section — Table (Decision Overview)",cat:"content_single",ct:"table",cthint:"set the table's Variant = decision_overview and fill in its content, then add this table to a 1-Column Section's decisionOverviewTables field (leave Media empty), plus the section's eyebrow + heading + intro",vfield:"fields.variant",variant:"decision_overview",pillars:["standard_setter","trust_anchor"],chips:["standard_setter","trust_anchor"],cd:false,density:"high",media:"table",
 kw:["compare","comparison","versus","vs","candis vs","competitor","alternative","others","nuanced","context","decision","it depends","trade-off","tradeoff","table","fit"],
 purpose:"A text-based comparison table for nuanced, not-black-and-white comparisons; leaves the “right fit” call to the reader.",
 tip:"When it's not black-and-white, write a sentence per cell on what each option really offers and let the reader decide — that reads as honest.",
