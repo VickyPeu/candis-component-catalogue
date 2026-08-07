@@ -8,11 +8,7 @@
 <rect x="20" y="20" width="300" height="282" rx="14" fill="#2f2550"/>
 <rect x="44" y="48" width="150" height="15" rx="4" fill="#ffffff"/><rect x="44" y="69" width="205" height="15" rx="4" fill="#ffffff"/>
 <circle cx="48" cy="100" r="4" fill="#6fcf97"/><text x="60" y="104" fill="#ffffff" opacity="0.6" font-size="11">online</text>
-<path d="M104 152 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z" fill="#8f7fe0"/>
-<rect x="118" y="156" width="104" height="112" rx="16" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.3"/>
-<rect x="136" y="172" width="68" height="42" rx="8" fill="#ffffff" fill-opacity="0.92"/><circle cx="156" cy="191" r="3.2" fill="#2f2550"/><circle cx="184" cy="191" r="3.2" fill="#2f2550"/><path d="M154 200 Q170 210 186 200" stroke="#2f2550" stroke-width="2" fill="none" stroke-linecap="round"/>
-<rect x="138" y="226" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/><rect x="156" y="226" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/><rect x="174" y="226" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/><rect x="192" y="226" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/>
-<rect x="138" y="242" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/><rect x="156" y="242" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/><rect x="174" y="242" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/><rect x="192" y="242" width="12" height="9" rx="2" fill="#ffffff" fill-opacity="0.5"/>
+<rect x="90" y="150" width="160" height="118" rx="12" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.3"/><text x="170" y="213" text-anchor="middle" fill="#ffffff" opacity="0.5" font-size="11">Cal image</text>
 <rect x="336" y="20" width="324" height="282" rx="14" fill="#ffffff" stroke="#ded8d8"/>
 <circle cx="362" cy="54" r="13" fill="#ede8e8" stroke="#c1babe"/>
 <rect x="386" y="40" width="256" height="46" rx="10" fill="#f6f1fd"/><rect x="398" y="50" width="228" height="6" rx="3" class="ph"/><rect x="398" y="61" width="212" height="6" rx="3" class="ph"/><rect x="398" y="72" width="150" height="6" rx="3" class="ph"/>
