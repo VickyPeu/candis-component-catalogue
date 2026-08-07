@@ -17,7 +17,7 @@ _Pulled 2026-06-19. Covers all 31 catalogued components (+ their nested types)._
 
 ### Sections
 
-- **gridSection** — eyebrowHeading **32** · heading — none · paragraph (RichText) — none
+- **gridSection** — eyebrowHeading **36** · heading — none · paragraph (RichText) — none
 - **oneColumnSection** — eyebrowHeading — none · heading — none · paragraph — none
 - **ctaSection** — eyebrowHeading **32** · heading **52** · paragraph **120**
 - **heroSection** — eyebrowHeading **42** · heading — none · trustChipsText — none · paragraph — none · additionalParagraph — none
@@ -57,7 +57,7 @@ The limits were clearly set ad-hoc per component, not by a shared rule. The same
 heading, paragraph) has very different caps — or none — depending on where it lives.
 
 ### 1. Eyebrow — six different rules
-`16` (Bento XS) · `32` (grid, CTA) · `42` (hero) · `50` (tabContent) · `270` (Bento XL) · **none** (1-column,
+`16` (Bento XS) · `32` (CTA) · `36` (grid) · `42` (hero) · `50` (tabContent) · `270` (Bento XL) · **none** (1-column,
 image, slider, tab, customComponent). → **Pick one cap** (e.g. ~40) and apply everywhere. `270` (Bento XL)
 is almost certainly wrong for an eyebrow; `16` (Bento XS) is very tight.
 
